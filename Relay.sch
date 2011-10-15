@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/14/2011 9:55:46 PM
+EESchema Schematic File Version 2  date 10/15/2011 5:06:23 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,7 +30,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:PNP
-LIBS:MiataPNP-cache
 EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
@@ -66,28 +65,37 @@ Wire Wire Line
 Wire Wire Line
 	3250 1550 3250 1250
 $Comp
-L DIODE D?
+L DIODE D3
 U 1 1 4E98F412
 P 3250 1750
-F 0 "D?" H 3250 1850 40  0000 C CNN
+AR Path="/4E98F7A4/4E98F412" Ref="D3"  Part="1" 
+AR Path="/4E98F795/4E98F412" Ref="D4"  Part="1" 
+AR Path="/4E98F68A/4E98F412" Ref="D5"  Part="1" 
+F 0 "D5" H 3250 1850 40  0000 C CNN
 F 1 "1N4002" H 3250 1650 40  0000 C CNN
 	1    3250 1750
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R?
+L R R11
 U 1 1 4E98F3FA
 P 2550 2300
-F 0 "R?" V 2630 2300 50  0000 C CNN
+AR Path="/4E98F7A4/4E98F3FA" Ref="R11"  Part="1" 
+AR Path="/4E98F795/4E98F3FA" Ref="R12"  Part="1" 
+AR Path="/4E98F68A/4E98F3FA" Ref="R13"  Part="1" 
+F 0 "R13" V 2630 2300 50  0000 C CNN
 F 1 "1K" V 2550 2300 50  0000 C CNN
 	1    2550 2300
 	0    1    1    0   
 $EndComp
 $Comp
-L NPN Q?
+L NPN Q3
 U 1 1 4E98F367
 P 3150 2300
-F 0 "Q?" H 3150 2150 50  0000 R CNN
+AR Path="/4E98F7A4/4E98F367" Ref="Q3"  Part="1" 
+AR Path="/4E98F795/4E98F367" Ref="Q4"  Part="1" 
+AR Path="/4E98F68A/4E98F367" Ref="Q5"  Part="1" 
+F 0 "Q5" H 3150 2150 50  0000 R CNN
 F 1 "2n2222" H 3150 2450 50  0000 R CNN
 	1    3150 2300
 	1    0    0    -1  

@@ -1,0 +1,7 @@
+EESchema-DOCLIB  Version 2.0  Date: 10/15/2011 3:26:56 AM
+#
+$CMP TIP121
+F transistors/bipolar/*.*
+$ENDCMP
+#
+#End Doc Library
