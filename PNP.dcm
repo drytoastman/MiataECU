@@ -1,4 +1,12 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/15/2011 3:26:56 AM
+EESchema-DOCLIB  Version 2.0  Date: 10/15/2011 9:27:25 PM
+#
+$CMP 2N2222A
+F transistors/bipolar/*.*
+$ENDCMP
+#
+$CMP Bypass
+D Condensateur non polarise
+$ENDCMP
 #
 $CMP TIP121
 F transistors/bipolar/*.*

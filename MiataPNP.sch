@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/15/2011 5:06:23 AM
+EESchema Schematic File Version 2  date 10/16/2011 12:53:16 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,13 +30,14 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:PNP
+LIBS:MiataPNP-cache
 EELAYER 25  0
 EELAYER END
 $Descr User 17000 11000
 encoding utf-8
 Sheet 1 8
 Title ""
-Date "15 oct 2011"
+Date "16 oct 2011"
 Rev ""
 Comp ""
 Comment1 ""
@@ -44,14 +45,44 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 3850 6700 0    60   ~ 0
-VSS
+Text Label 5500 2000 0    60   ~ 0
+GND
+Text Label 5500 1900 0    60   ~ 0
+ExtraAD4
+Text Label 5500 1800 0    60   ~ 0
+GND
+Text Label 5500 1700 0    60   ~ 0
+ExtraAD3
+Text Label 5500 1600 0    60   ~ 0
+GND
 Wire Wire Line
-	3800 6700 4050 6700
+	5400 2000 5700 2000
 Wire Wire Line
-	3800 8500 4100 8500
+	5400 1800 5700 1800
 Wire Wire Line
-	3800 6500 4050 6500
+	5400 1600 5700 1600
+Wire Wire Line
+	3800 8600 4600 8600
+Wire Wire Line
+	9850 3700 10150 3700
+Wire Wire Line
+	5400 1400 5700 1400
+Wire Wire Line
+	3800 8400 4600 8400
+Wire Wire Line
+	3800 7600 4100 7600
+Wire Wire Line
+	11000 1300 11000 1500
+Wire Wire Line
+	11600 1300 11600 1800
+Wire Wire Line
+	11600 1800 9850 1800
+Wire Wire Line
+	9850 1500 10150 1500
+Wire Wire Line
+	3800 6900 4100 6900
+Wire Wire Line
+	3800 6700 4100 6700
 Wire Wire Line
 	14000 8250 14150 8250
 Wire Wire Line
@@ -176,7 +207,7 @@ Wire Wire Line
 Wire Wire Line
 	14700 2100 14300 2100
 Wire Wire Line
-	3800 6400 4050 6400
+	3800 6400 4100 6400
 Connection ~ 4550 9200
 Wire Wire Line
 	3800 9200 4550 9200
@@ -346,7 +377,7 @@ Wire Wire Line
 Wire Wire Line
 	1600 9200 1150 9200
 Wire Wire Line
-	3800 6300 4050 6300
+	3800 6300 4100 6300
 Wire Wire Line
 	14700 1950 14300 1950
 Wire Wire Line
@@ -412,17 +443,141 @@ Wire Wire Line
 Wire Wire Line
 	9850 3200 10150 3200
 Wire Wire Line
-	3800 6600 4050 6600
+	3800 6600 4100 6600
 Wire Wire Line
-	3800 8600 4100 8600
-Text Label 3900 8600 0    60   ~ 0
+	3800 6800 4100 6800
+Wire Wire Line
+	4300 8300 4600 8300
+Wire Wire Line
+	9850 1600 11400 1600
+Wire Wire Line
+	11400 1600 11400 1300
+Wire Wire Line
+	3800 7700 4100 7700
+Wire Wire Line
+	5400 1300 5700 1300
+Wire Wire Line
+	5400 1500 5700 1500
+Wire Wire Line
+	3800 8500 4600 8500
+Wire Wire Line
+	3800 8700 4600 8700
+Wire Wire Line
+	5400 1700 5700 1700
+Wire Wire Line
+	5400 1900 5700 1900
+Text Label 4250 8700 0    60   ~ 0
+ExtraAD4
+Text Label 4250 8600 0    60   ~ 0
+ExtraAD3
+Text Label 4250 8500 0    60   ~ 0
+OilPressure
+Text Label 10000 3700 0    60   ~ 0
+WB
+Text Label 5500 1500 0    60   ~ 0
+OilPressure
+Text Label 5500 1400 0    60   ~ 0
+GND
+Text Label 5500 1300 0    60   ~ 0
+WB
+$Comp
+L CONN_8 P1
+U 1 1 4E9A8A42
+P 5050 1650
+F 0 "P1" V 5000 1650 60  0000 C CNN
+F 1 "CONN_8" V 5100 1650 60  0000 C CNN
+F 2 "SIL3.5" H 5050 1650 60  0001 C CNN
+F 4 "A98184-ND" V 5050 1650 60  0001 C CNN "Digikey"
+F 5 "A98174-ND" V 5050 1650 60  0001 C CNN "Matching"
+	1    5050 1650
+	-1   0    0    -1  
+$EndComp
+Text Label 7200 7050 1    60   ~ 0
+5V
+Text Label 4250 8400 0    60   ~ 0
+KnockReport
+Text Label 3850 7700 0    60   ~ 0
 IGN2
-Text Label 3900 8500 0    60   ~ 0
+Text Label 3850 7600 0    60   ~ 0
 IGN1
+Text Label 11000 1450 1    60   ~ 0
+GND
+$Comp
+L DB9 J1
+U 1 1 4E9A62F7
+P 11400 850
+F 0 "J1" H 11400 1400 70  0000 C CNN
+F 1 "DB9" H 11400 300 70  0000 C CNN
+F 2 "DB9FC" H 11400 850 60  0001 C CNN
+	1    11400 850 
+	0    -1   -1   0   
+$EndComp
+Text Label 9950 1500 0    60   ~ 0
+MAP
+$Comp
+L BYPASS C7
+U 1 1 4E9A6131
+P 1450 7450
+F 0 "C7" H 1460 7530 50  0000 L CNN
+F 1 "BYPASS" V 1400 7320 50  0000 L CNN
+F 2 "C2" H 1300 7750 60  0001 C CNN
+F 4 "399-4329-ND" H 1600 7650 60  0001 C CNN "Digikey"
+	1    1450 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L BYPASS C1
+U 1 1 4E9A612F
+P 1150 7700
+F 0 "C1" H 1160 7780 50  0000 L CNN
+F 1 "BYPASS" V 1100 7570 50  0000 L CNN
+F 2 "C2" H 1000 8000 60  0001 C CNN
+F 4 "399-4329-ND" H 1300 7900 60  0001 C CNN "Digikey"
+	1    1150 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L BYPASS C8
+U 1 1 4E9A611A
+P 7200 7400
+F 0 "C8" H 7210 7480 50  0000 L CNN
+F 1 "BYPASS" V 7150 7270 50  0000 L CNN
+F 2 "C2" H 7050 7700 60  0001 C CNN
+F 4 "399-4329-ND" H 7350 7600 60  0001 C CNN "Digikey"
+	1    7200 7400
+	1    0    0    -1  
+$EndComp
+Text Label 4400 8300 0    60   ~ 0
+Idle
+$Comp
+L R R26
+U 1 1 4E9A6060
+P 4050 8300
+F 0 "R26" V 4130 8300 50  0000 C CNN
+F 1 "1K" V 4050 8300 50  0000 C CNN
+F 2 "SM1206" H 4050 8300 60  0001 C CNN
+	1    4050 8300
+	0    1    1    0   
+$EndComp
+$Comp
+L TIP121 Q2
+U 1 1 4E9A5643
+P 13300 8250
+F 0 "Q2" H 13300 8100 50  0000 R CNN
+F 1 "TIP121" H 13300 8400 50  0000 R CNN
+F 2 "TO220" H 13200 8000 60  0001 C CNN
+F 4 "TIP121GOS-ND" H 13400 8200 60  0001 C CNN "Digikey"
+	1    13300 8250
+	-1   0    0    -1  
+$EndComp
+Text Label 3850 6900 0    60   ~ 0
+KCS
+Text Label 3850 6800 0    60   ~ 0
+WIN
+Text Label 3850 6700 0    60   ~ 0
+VSS
 Text Label 3850 6600 0    60   ~ 0
 Idle+
-Text Label 3850 6500 0    60   ~ 0
-Idle
 Text Label 9950 3200 0    60   ~ 0
 Idle
 Text Notes 14750 6850 0    60   ~ 0
@@ -436,7 +591,7 @@ PWM Idle Driver
 Text Label 14050 8250 0    60   ~ 0
 Idle+
 Text Label 12950 8050 0    60   ~ 0
-12V
+12VRAW
 Text Label 12950 8450 0    60   ~ 0
 IAC
 $Comp
@@ -444,7 +599,8 @@ L R R10
 U 1 1 4E9963F0
 P 13750 8250
 F 0 "R10" V 13830 8250 50  0000 C CNN
-F 1 "R" V 13750 8250 50  0000 C CNN
+F 1 "1K" V 13750 8250 50  0000 C CNN
+F 2 "SM1206" H 13750 8250 60  0001 C CNN
 	1    13750 8250
 	0    1    1    0   
 $EndComp
@@ -457,24 +613,6 @@ F 1 "DIODE" H 12750 8150 40  0000 C CNN
 	1    12750 8250
 	0    -1   -1   0   
 $EndComp
-$Comp
-L TIP121 Q2
-U 1 1 4E9962F3
-P 13300 8250
-F 0 "Q2" H 13300 8100 50  0000 R CNN
-F 1 "TIP121" H 13300 8400 50  0000 R CNN
-	1    13300 8250
-	-1   0    0    -1  
-$EndComp
-$Comp
-L C C8
-U 1 1 4E994D9C
-P 1450 7450
-F 0 "C8" H 1500 7550 50  0000 L CNN
-F 1 "0.1uF" H 1500 7350 50  0000 L CNN
-	1    1450 7450
-	1    0    0    -1  
-$EndComp
 Text Label 6450 6950 1    60   ~ 0
 CANL
 Text Label 5950 6950 1    60   ~ 0
@@ -485,10 +623,11 @@ U 1 1 4E994CAF
 P 6200 7050
 F 0 "R2" V 6280 7050 50  0000 C CNN
 F 1 "120" V 6200 7050 50  0000 C CNN
+F 2 "SM1206" H 6200 7050 60  0001 C CNN
 	1    6200 7050
 	0    1    1    0   
 $EndComp
-Text Label 4300 8000 0    60   ~ 0
+Text Label 4300 7950 0    60   ~ 0
 5V
 Text Label 5500 7800 0    60   ~ 0
 GND
@@ -499,15 +638,6 @@ P 4850 7600
 F 0 "U3" H 4750 8050 60  0000 C CNN
 F 1 "MCP2551" H 4900 7450 60  0000 C CNN
 	1    4850 7600
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C7
-U 1 1 4E99482D
-P 1150 7700
-F 0 "C7" H 1200 7800 50  0000 L CNN
-F 1 "0.1uF" H 1200 7600 50  0000 L CNN
-	1    1150 7700
 	1    0    0    -1  
 $EndComp
 Text Label 1150 5450 0    60   ~ 0
@@ -528,15 +658,16 @@ L R R1
 U 1 1 4E993F05
 P 4750 9000
 F 0 "R1" V 4830 9000 50  0000 C CNN
-F 1 "R" V 4750 9000 50  0000 C CNN
+F 1 "1K" V 4750 9000 50  0000 C CNN
+F 2 "SM1206" H 4750 9000 60  0001 C CNN
 	1    4750 9000
 	0    1    1    0   
 $EndComp
-Text Label 12250 5200 0    60   ~ 0
+Text Label 12300 5200 0    60   ~ 0
 5V
-Text Label 12250 5100 0    60   ~ 0
+Text Label 12300 5100 0    60   ~ 0
 GND
-Text Label 12250 5000 0    60   ~ 0
+Text Label 12300 5000 0    60   ~ 0
 MAP
 $Comp
 L MXP4250A U5
@@ -544,6 +675,7 @@ U 1 1 4E993CFD
 P 13150 5250
 F 0 "U5" H 12900 5600 60  0000 C CNN
 F 1 "MXP4250A" H 13050 4900 60  0000 C CNN
+F 2 "MXP4250A" H 13150 5250 60  0001 C CNN
 	1    13150 5250
 	1    0    0    -1  
 $EndComp
@@ -553,20 +685,20 @@ Text Notes 12700 7450 0    60   ~ 0
 Flyback Control
 Text Label 9050 4850 0    60   ~ 0
 GND
-Text Label 8100 1300 0    60   ~ 0
+Text Label 8150 1300 0    60   ~ 0
 PA0
-Text Label 10150 2300 0    60   ~ 0
+Text Label 9950 2300 0    60   ~ 0
 WLED
-Text Label 10150 1900 0    60   ~ 0
+Text Label 9950 1900 0    60   ~ 0
 ALED
-Text Label 12300 4200 0    60   ~ 0
+Text Label 12350 4200 0    60   ~ 0
 Purge
-Text Label 12300 4050 0    60   ~ 0
+Text Label 12350 4050 0    60   ~ 0
 WLED
-Text Label 12300 3800 0    60   ~ 0
+Text Label 12350 3800 0    60   ~ 0
 GND
-Text Label 12300 3650 0    60   ~ 0
-12V
+Text Label 12350 3650 0    60   ~ 0
+12VRAW
 $Sheet
 S 12650 3550 550  750 
 U 4E98F7A4
@@ -587,22 +719,22 @@ F3 "12V" B L 12650 2550 60
 F4 "GND" B L 12650 2700 60 
 F5 "OUT" O L 12650 3100 60 
 $EndSheet
-Text Label 12300 2550 0    60   ~ 0
-12V
-Text Label 12300 2700 0    60   ~ 0
+Text Label 12350 2550 0    60   ~ 0
+12VRAW
+Text Label 12350 2700 0    60   ~ 0
 GND
-Text Label 12300 2950 0    60   ~ 0
+Text Label 12350 2950 0    60   ~ 0
 ALED
-Text Label 12300 3100 0    60   ~ 0
+Text Label 12350 3100 0    60   ~ 0
 CEL
-Text Label 12300 2000 0    60   ~ 0
+Text Label 12350 2000 0    60   ~ 0
 FAN
-Text Label 12300 1850 0    60   ~ 0
+Text Label 12350 1850 0    60   ~ 0
 PA0
-Text Label 12300 1600 0    60   ~ 0
+Text Label 12350 1600 0    60   ~ 0
 GND
-Text Label 12300 1450 0    60   ~ 0
-12V
+Text Label 12350 1450 0    60   ~ 0
+12VRAW
 $Sheet
 S 12650 1350 550  750 
 U 4E98F68A
@@ -613,9 +745,9 @@ F3 "12V" B L 12650 1450 60
 F4 "GND" B L 12650 1600 60 
 F5 "OUT" O L 12650 2000 60 
 $EndSheet
-Text Label 8100 3850 0    60   ~ 0
+Text Label 8150 3850 0    60   ~ 0
 IGN1
-Text Label 8100 3600 0    60   ~ 0
+Text Label 8150 3600 0    60   ~ 0
 IGN2
 Text Label 12850 6250 0    60   ~ 0
 FB
@@ -627,6 +759,10 @@ U 1 1 4E98EE7B
 P 13250 7050
 F 0 "D2" H 13250 7150 40  0000 C CNN
 F 1 "36V" H 13250 6950 40  0000 C CNN
+F 2 "D11" H 13250 7050 60  0001 C CNN
+F 4 "1N4753ADICT-ND" H 13250 7050 60  0001 C CNN "Digikey"
+F 5 "26mm" H 13250 7050 60  0001 C CNN "Body"
+F 6 "0.86mm" H 13250 7050 60  0001 C CNN "Pin"
 	1    13250 7050
 	0    -1   -1   0   
 $EndComp
@@ -636,6 +772,8 @@ U 1 1 4E98EE55
 P 13250 6500
 F 0 "R9" V 13330 6500 50  0000 C CNN
 F 1 "270" V 13250 6500 50  0000 C CNN
+F 2 "R3" H 13250 6500 60  0001 C CNN
+F 4 "270QBK-ND" V 13250 6500 60  0001 C CNN "Digikey"
 	1    13250 6500
 	1    0    0    -1  
 $EndComp
@@ -644,7 +782,9 @@ L PNP Q1
 U 1 1 4E98EDF5
 P 12800 6800
 F 0 "Q1" H 12800 6650 60  0000 R CNN
-F 1 "PNP" H 12800 6950 60  0000 R CNN
+F 1 "TIP42" H 12800 6950 60  0000 R CNN
+F 2 "TO220" H 12800 6800 60  0001 C CNN
+F 4 "TIP42C-ND" H 12800 6800 60  0001 C CNN "Digikey"
 	1    12800 6800
 	-1   0    0    1   
 $EndComp
@@ -660,29 +800,29 @@ F5 "GND" I L 14700 4750 60
 F6 "VCC" I L 14700 4900 60 
 F7 "IN" I L 14700 5050 60 
 $EndSheet
-Text Label 14300 4750 0    60   ~ 0
+Text Label 14350 4750 0    60   ~ 0
 GND
-Text Label 14300 4900 0    60   ~ 0
+Text Label 14350 4900 0    60   ~ 0
 5V
-Text Label 14300 5050 0    60   ~ 0
+Text Label 14350 5050 0    60   ~ 0
 sig3
-Text Label 14300 4300 0    60   ~ 0
+Text Label 14350 4300 0    60   ~ 0
 BIGGND
-Text Label 14300 4450 0    60   ~ 0
+Text Label 14350 4450 0    60   ~ 0
 INJ3
-Text Label 14300 4600 0    60   ~ 0
+Text Label 14350 4600 0    60   ~ 0
 FB
-Text Label 14300 6000 0    60   ~ 0
+Text Label 14350 6000 0    60   ~ 0
 FB
-Text Label 14300 5850 0    60   ~ 0
+Text Label 14350 5850 0    60   ~ 0
 INJ4
-Text Label 14300 5700 0    60   ~ 0
+Text Label 14350 5700 0    60   ~ 0
 BIGGND
-Text Label 14300 6450 0    60   ~ 0
+Text Label 14350 6450 0    60   ~ 0
 sig4
-Text Label 14300 6300 0    60   ~ 0
+Text Label 14350 6300 0    60   ~ 0
 5V
-Text Label 14300 6150 0    60   ~ 0
+Text Label 14350 6150 0    60   ~ 0
 GND
 $Sheet
 S 14700 5550 550  1050
@@ -708,29 +848,29 @@ F5 "GND" I L 14700 3350 60
 F6 "VCC" I L 14700 3500 60 
 F7 "IN" I L 14700 3650 60 
 $EndSheet
-Text Label 14300 3350 0    60   ~ 0
+Text Label 14350 3350 0    60   ~ 0
 GND
-Text Label 14300 3500 0    60   ~ 0
+Text Label 14350 3500 0    60   ~ 0
 5V
-Text Label 14300 3650 0    60   ~ 0
+Text Label 14350 3650 0    60   ~ 0
 sig2
-Text Label 14300 2900 0    60   ~ 0
+Text Label 14350 2900 0    60   ~ 0
 BIGGND
-Text Label 14300 3050 0    60   ~ 0
+Text Label 14350 3050 0    60   ~ 0
 INJ2
-Text Label 14300 3200 0    60   ~ 0
+Text Label 14350 3200 0    60   ~ 0
 FB
-Text Label 14300 1800 0    60   ~ 0
+Text Label 14350 1800 0    60   ~ 0
 FB
-Text Label 14300 1650 0    60   ~ 0
+Text Label 14350 1650 0    60   ~ 0
 INJ1
-Text Label 14300 1500 0    60   ~ 0
+Text Label 14350 1500 0    60   ~ 0
 BIGGND
-Text Label 14300 2250 0    60   ~ 0
+Text Label 14350 2250 0    60   ~ 0
 sig1
-Text Label 14300 2100 0    60   ~ 0
+Text Label 14350 2100 0    60   ~ 0
 5V
-Text Label 14300 1950 0    60   ~ 0
+Text Label 14350 1950 0    60   ~ 0
 GND
 $Sheet
 S 14700 1350 550  1050
@@ -783,9 +923,9 @@ Text Label 3850 7500 0    60   ~ 0
 CanRx
 Text Label 3850 7400 0    60   ~ 0
 CanTx
-Text Label 10150 2900 0    60   ~ 0
+Text Label 9950 2900 0    60   ~ 0
 FuelPressure
-Text Label 10150 2800 0    60   ~ 0
+Text Label 9950 2800 0    60   ~ 0
 KnockReport
 Text Label 11050 2600 0    60   ~ 0
 5V
@@ -815,6 +955,7 @@ U 1 1 4E97E835
 P 6650 8200
 F 0 "R3" V 6730 8200 50  0000 C CNN
 F 1 "1k" V 6650 8200 50  0000 C CNN
+F 2 "SM1206" H 6650 8200 60  0001 C CNN
 	1    6650 8200
 	0    1    1    0   
 $EndComp
@@ -833,6 +974,7 @@ U 1 1 4E97E81D
 P 7650 8300
 F 0 "R4" V 7730 8300 50  0000 C CNN
 F 1 "1M" V 7650 8300 50  0000 C CNN
+F 2 "SM1206" H 7650 8300 60  0001 C CNN
 	1    7650 8300
 	0    1    1    0   
 $EndComp
@@ -871,25 +1013,14 @@ Text Label 9300 8200 0    60   ~ 0
 KSDI
 Text Label 9300 8100 0    60   ~ 0
 KSCLK
-Text Label 7600 8100 0    60   ~ 0
+Text Label 7650 8100 0    60   ~ 0
 KCS
-Text Label 7600 8000 0    60   ~ 0
+Text Label 7650 8000 0    60   ~ 0
 WIN
 Text Label 7550 7500 0    60   ~ 0
 GND
-Text Label 10700 7100 0    60   ~ 0
+Text Label 10500 7100 0    60   ~ 0
 GND
-Text Label 7200 6900 0    60   ~ 0
-5V
-$Comp
-L CP1 C1
-U 1 1 4E97DA14
-P 7200 7400
-F 0 "C1" H 7250 7500 50  0000 L CNN
-F 1 "CP1" H 7250 7300 50  0000 L CNN
-	1    7200 7400
-	1    0    0    -1  
-$EndComp
 $Comp
 L CP1 C2
 U 1 1 4E97D6D9
@@ -899,13 +1030,13 @@ F 1 "CP1" H 10200 7000 50  0000 L CNN
 	1    10150 7100
 	0    -1   -1   0   
 $EndComp
-Text Label 8100 2100 0    60   ~ 0
+Text Label 8150 2100 0    60   ~ 0
 sig3
-Text Label 8100 1900 0    60   ~ 0
+Text Label 8150 1900 0    60   ~ 0
 sig4
-Text Label 8100 1800 0    60   ~ 0
+Text Label 8150 1800 0    60   ~ 0
 sig2
-Text Label 8100 1600 0    60   ~ 0
+Text Label 8150 1600 0    60   ~ 0
 sig1
 $Comp
 L TPIC8101 U4
@@ -927,7 +1058,7 @@ TACH
 Text Label 3550 4050 0    60   ~ 0
 CRANK
 Text Label 3550 3950 0    60   ~ 0
-VREF
+Vref
 Text Label 3550 3850 0    60   ~ 0
 CAM
 Text Label 3550 3650 0    60   ~ 0
@@ -938,53 +1069,53 @@ Text Label 3600 2700 0    60   ~ 0
 FAN
 Text Label 3550 1600 0    60   ~ 0
 CEL
-Text Label 1500 3500 0    60   ~ 0
+Text Label 1550 3500 0    60   ~ 0
 INJ4
-Text Label 1500 3400 0    60   ~ 0
+Text Label 1550 3400 0    60   ~ 0
 INJ3
-Text Label 1500 3300 0    60   ~ 0
+Text Label 1550 3300 0    60   ~ 0
 INJ2
-Text Label 1500 3200 0    60   ~ 0
+Text Label 1550 3200 0    60   ~ 0
 INJ1
-Text Label 1500 2500 0    60   ~ 0
+Text Label 1550 2500 0    60   ~ 0
 FuelPump
-Text Label 1500 2400 0    60   ~ 0
+Text Label 1550 2400 0    60   ~ 0
 IAC
-Text Label 1500 2300 0    60   ~ 0
+Text Label 1550 2300 0    60   ~ 0
 Purge
-Text Label 1500 2000 0    60   ~ 0
+Text Label 1550 2000 0    60   ~ 0
 Clutch
-Text Label 1500 1900 0    60   ~ 0
+Text Label 1550 1900 0    60   ~ 0
 IGN2
-Text Label 1500 1800 0    60   ~ 0
+Text Label 1550 1800 0    60   ~ 0
 IGN1
-Text Label 1250 1600 0    60   ~ 0
+Text Label 1300 1600 0    60   ~ 0
 TPS
 Text Label 1500 1300 0    60   ~ 0
 BIGGND
-Text Label 1500 1500 0    60   ~ 0
+Text Label 1650 1500 0    60   ~ 0
 GND
-Text Label 1500 2600 0    60   ~ 0
+Text Label 1550 2600 0    60   ~ 0
 12VRAW
 Text Label 3550 1400 0    60   ~ 0
 12VRAW
-Text Label 10150 1150 0    60   ~ 0
+Text Label 10150 1300 0    60   ~ 0
 12VRAW
-Text Label 10150 3800 0    60   ~ 0
+Text Label 10000 3800 0    60   ~ 0
 TACH
-Text Label 10150 3400 0    60   ~ 0
+Text Label 10000 3400 0    60   ~ 0
 FuelPump
-Text Label 10150 2700 0    60   ~ 0
+Text Label 9950 2700 0    60   ~ 0
 Vref
-Text Label 10150 3300 0    60   ~ 0
+Text Label 10000 3300 0    60   ~ 0
 CRANK
-Text Label 10150 2600 0    60   ~ 0
+Text Label 9950 2600 0    60   ~ 0
 CAM
-Text Label 10150 2500 0    60   ~ 0
+Text Label 9950 2500 0    60   ~ 0
 TPS
-Text Label 10150 2100 0    60   ~ 0
+Text Label 9950 2100 0    60   ~ 0
 MAT
-Text Label 10150 1700 0    60   ~ 0
+Text Label 9950 1700 0    60   ~ 0
 CLT
 $Comp
 L USMODULE U1
@@ -992,7 +1123,7 @@ U 1 1 4E967618
 P 9100 2850
 F 0 "U1" H 8700 4550 60  0000 C CNN
 F 1 "USMODULE" H 9350 1000 60  0000 C CNN
-F 2 "USMODULE" H 9350 4550 60  0000 C CNN
+F 2 "USMODULE" H 9350 4550 60  0001 C CNN
 	1    9100 2850
 	1    0    0    -1  
 $EndComp
@@ -1012,7 +1143,7 @@ U 1 1 4E9651F0
 P 2500 2750
 F 0 "U2" H 2250 4300 60  0000 C CNN
 F 1 "ECU" H 3000 700 60  0000 C CNN
-F 2 "99MiataConnector" H 2800 4300 60  0000 C CNN
+F 2 "MiataECU" H 2800 4300 60  0001 C CNN
 	1    2500 2750
 	1    0    0    -1  
 $EndComp
