@@ -1,15 +1,38 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/15/2011 9:27:25 PM
+EESchema-DOCLIB  Version 2.0  Date: 10/17/2011 2:15:22 AM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
 $ENDCMP
 #
-$CMP Bypass
+$CMP BYPASS
 D Condensateur non polarise
+$ENDCMP
+#
+$CMP ECU
+D ECU Connector and Pinouts for a 99 miata
+K miata 99 ecu
+$ENDCMP
+#
+$CMP LM2595
+F http://www.national.com/profile/snip.cgi/openDS=LM2595
+$ENDCMP
+#
+$CMP MCP2551
+F http://ww1.microchip.com/downloads/en/DeviceDoc/21667d.pdf
+$ENDCMP
+#
+$CMP MXP4250A
+F http://www.freescale.com/files/sensors/doc/data_sheet/MPX4250A.pdf
 $ENDCMP
 #
 $CMP TIP121
 F transistors/bipolar/*.*
+$ENDCMP
+#
+$CMP TPIC8101
+D TPIC8101 Knock Sensor Interface 
+K knock
+F http://www.ti.com/lit/gpn/tpic8101
 $ENDCMP
 #
 #End Doc Library
