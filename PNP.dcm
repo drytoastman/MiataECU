@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/18/2011 11:16:59 AM
+EESchema-DOCLIB  Version 2.0  Date: 10/19/2011 1:10:57 AM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -37,6 +37,11 @@ $CMP TPIC8101
 D TPIC8101 Knock Sensor Interface 
 K knock
 F http://www.ti.com/lit/gpn/tpic8101
+$ENDCMP
+#
+$CMP VNS3NV04D
+D FULLY AUTOPROTECTED POWER MOSFET
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00002222.pdf
 $ENDCMP
 #
 #End Doc Library
