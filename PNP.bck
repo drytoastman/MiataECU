@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/17/2011 2:11:54 AM
+EESchema-DOCLIB  Version 2.0  Date: 10/18/2011 11:16:00 AM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -15,6 +15,10 @@ $ENDCMP
 #
 $CMP LM2595
 F http://www.national.com/profile/snip.cgi/openDS=LM2595
+$ENDCMP
+#
+$CMP LM2937
+F http://www.national.com/profile/snip.cgi/openDS=LM2937
 $ENDCMP
 #
 $CMP MCP2551
