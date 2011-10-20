@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/19/2011 1:10:57 AM
+EESchema-DOCLIB  Version 2.0  Date: 10/19/2011 1:40:02 PM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -23,6 +23,10 @@ $ENDCMP
 #
 $CMP MCP2551
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21667d.pdf
+$ENDCMP
+#
+$CMP MPX4250AP
+F http://www.freescale.com/files/sensors/doc/data_sheet/MPX4250A.pdf
 $ENDCMP
 #
 $CMP MXP4250A
