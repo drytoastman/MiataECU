@@ -1,0 +1,1075 @@
+# EESchema Netlist Version 1.1 created  10/20/2011 2:11:02 AM
+(
+ ( /4E9FE3CD SM1206  R1 1K {Lib=R}
+  (    1 /SpeedSensor )
+  (    2 N-000051 )
+ )
+ ( /4E9FE252 SM1206  R5 10K {Lib=R}
+  (    1 /5V )
+  (    2 /Idle )
+ )
+ ( /4E9FE07E SIL-2  R12 0 {Lib=R}
+  (    1 /MISO )
+  (    2 N-000102 )
+ )
+ ( /4E9FE079 SIL-2  R11 0 {Lib=R}
+  (    1 /MOSI )
+  (    2 N-000103 )
+ )
+ ( /4E9FE074 SIL-2  R10 0 {Lib=R}
+  (    1 /SCLK )
+  (    2 N-000104 )
+ )
+ ( /4E9FDB66 SM1206  R3 1K {Lib=R}
+  (    1 /IGN2 )
+  (    2 N-000053 )
+ )
+ ( /4E9FDB60 SM1206  R2 1K {Lib=R}
+  (    1 /IGN1 )
+  (    2 N-000052 )
+ )
+ ( /4E9FA343 JACK_ALIM  K1 CONN_3 {Lib=CONN_3}
+  (    1 /12VRAW )
+  (    2 /GND )
+  (    3 ? )
+ )
+ ( /4E9F35B8 MPX4250AP  U8 MPX4250AP {Lib=MPX4250AP}
+  (    1 /MAP )
+  (    2 /GND )
+  (    3 /5V )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+ )
+ ( /4E9E8ACA PIN_ARRAY_3x2  P1 DIL6 {Lib=DIL6}
+  (    1 /MISO )
+  (    2 /SCLK )
+  (    3 /RESET )
+  (    4 /GND )
+  (    5 /MOSI )
+  (    6 /5V )
+ )
+ ( /4E9E879C SM1206  R20 1K {Lib=R}
+  (    1 /FTP )
+  (    2 /FuelPressure )
+ )
+ ( /4E9E879B SM1206  C16 220nF {Lib=C}
+  (    1 /FuelPressure )
+  (    2 /GND )
+ )
+ ( /4E9E879A SM1206  C15 220nF {Lib=C}
+  (    1 /ExtraAD4 )
+  (    2 /GND )
+ )
+ ( /4E9E8799 SM1206  R19 1K {Lib=R}
+  (    1 /External4 )
+  (    2 /ExtraAD4 )
+ )
+ ( /4E9E8791 SM1206  R17 1K {Lib=R}
+  (    1 /External2 )
+  (    2 /ExtraAD2 )
+ )
+ ( /4E9E8790 SM1206  C13 220nF {Lib=C}
+  (    1 /ExtraAD2 )
+  (    2 /GND )
+ )
+ ( /4E9E871F SM1206  C14 220nF {Lib=C}
+  (    1 /ExtraAD3 )
+  (    2 /GND )
+ )
+ ( /4E9E8709 SM1206  R18 1K {Lib=R}
+  (    1 /External3 )
+  (    2 /ExtraAD3 )
+ )
+ ( /4E9E8628 SO8N  U4 VNS3NV04D {Lib=VNS3NV04D}
+  (    1 /GND )
+  (    2 /PurgeControl )
+  (    3 /GND )
+  (    4 /Idle+ )
+  (    5 /IAC )
+  (    6 /IAC )
+  (    7 /Purge )
+  (    8 /Purge )
+ )
+ ( /4E9E1CF4 C2  F1 FUSE {Lib=FUSE}
+  (    1 N-000029 )
+  (    2 /5V )
+ )
+ ( /4E9DC29E TO220  U3 LM2937 {Lib=LM2937}
+  (    1 N-000030 )
+  (    2 /GND )
+  (    3 N-000029 )
+ )
+ ( /4E9DC155 D4  D4 22V_1W {Lib=ZENER}
+  (    1 /GND )
+  (    2 N-000030 )
+ )
+ ( /4E9DC145 D4  D3 1N4001 {Lib=DIODE}
+  (    1 /12VRAW )
+  (    2 N-000030 )
+ )
+ ( /4E9DC135 D4  D2 12V_1W {Lib=ZENER}
+  (    1 N-000031 )
+  (    2 /GND )
+ )
+ ( /4E9DC128 D4  D1 1N4001 {Lib=DIODE}
+  (    1 N-000031 )
+  (    2 /12VRAW )
+ )
+ ( /4E9DC114 R4  M1 MOV {Lib=R}
+  (    1 /12VRAW )
+  (    2 /GND )
+ )
+ ( /4E9C8C02 SM1206  C12 BYPASS {Lib=BYPASS}
+  (    1 /GND )
+  (    2 /5V )
+ )
+ ( /4E9BF1E2 D4  D5 5.6V_1W {Lib=ZENER}
+  (    1 ? )
+  (    2 /5V )
+ )
+ ( /4E9BF19C C2V8  C6 33uF {Lib=CP1}
+  (    1 N-000030 )
+  (    2 /GND )
+ )
+ ( /4E9BF18D C2V8  C7 33uF {Lib=CP1}
+  (    1 N-000029 )
+  (    2 /GND )
+ )
+ ( /4E9BE83D SIL-10  J2 SIL10 {Lib=SIL10}
+  (    1 /A_PB3 )
+  (    2 /A_PB4 )
+  (    3 /A_PC1 )
+  (    4 /A_PC7 )
+  (    5 /A_PD2 )
+  (    6 /M_PA0 )
+  (    7 /M_PE1 )
+  (    8 /M_ADC7 )
+  (    9 ? )
+  (   10 ? )
+ )
+ ( /4E9BE663 DB9FC  J1 DB9 {Lib=DB9}
+  (    1 ? )
+  (    2 N-000129 )
+  (    3 N-000025 )
+  (    4 ? )
+  (    5 /GND )
+  (    6 ? )
+  (    7 ? )
+  (    8 ? )
+  (    9 ? )
+ )
+ ( /4E9BD65D SOT323  D6 DOUBLE_SCHOTTKY {Lib=DOUBLE_SCHOTTKY}
+  (    1 /GND )
+  (    2 /Launch )
+  (    3 /Clutch )
+ )
+ ( /4E9BD276 SM1206  R16 10K {Lib=R}
+  (    1 /5V )
+  (    2 /Launch )
+ )
+ ( /4E9BCD59 SM1206  C2 BYPASS {Lib=BYPASS}
+  (    1 N-000048 )
+  (    2 /GND )
+ )
+ ( /4E9BCD4C SM1206  C1 BYPASS {Lib=BYPASS}
+  (    1 N-000058 )
+  (    2 /GND )
+ )
+ ( /4E9BCD45 SM1206  C3 BYPASS {Lib=BYPASS}
+  (    1 /GND )
+  (    2 /5V )
+ )
+ ( /4E9BCA8B SM1206  C9 4.7uF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4E9BCA7C SM1206  C10 BYPASS {Lib=BYPASS}
+  (    1 /GND )
+  (    2 N-000101 )
+ )
+ ( /4E9B6F84 External2  P3 CONN_2 {Lib=CONN_2}
+  (    1 /CANH )
+  (    2 /CANL )
+ )
+ ( /4E9B54C8 PHBOARD  U5 PHBOARD {Lib=PHBOARD}
+  (    1 /sig1 )
+  (    2 /sig2 )
+  (    3 /sig3 )
+  (    4 /sig4 )
+  (    5 /GND )
+  (    6 /5V )
+  (    7 /BIGGND )
+  (    8 /INJ1 )
+  (    9 /BIGGND )
+  (   10 /INJ2 )
+  (   11 /BIGGND )
+  (   12 /INJ3 )
+  (   13 /BIGGND )
+  (   14 /INJ4 )
+ )
+ ( /4E9A8A42 External8  P2 CONN_8 {Lib=CONN_8}
+  (    1 /WB )
+  (    2 /GND )
+  (    3 /External2 )
+  (    4 /GND )
+  (    5 /External3 )
+  (    6 /GND )
+  (    7 /External4 )
+  (    8 /GND )
+ )
+ ( /4E994CAF R4  R6 120 {Lib=R}
+  (    1 /CANL )
+  (    2 /CANH )
+ )
+ ( /4E994AB0 SO8E  U2 MCP2551 {Lib=MCP2551}
+  (    1 /CanTx )
+  (    2 /GND )
+  (    3 /5V )
+  (    4 /CanRx )
+  (    5 ? )
+  (    6 /CANL )
+  (    7 /CANH )
+  (    8 /GND )
+ )
+ ( /4E9947FE R4  L1 1uH {Lib=INDUCTOR}
+  (    1 /5V )
+  (    2 N-000058 )
+ )
+ ( /4E993F05 SM1206  R4 10K {Lib=R}
+  (    1 /5V )
+  (    2 /RESET )
+ )
+ ( /4E97F0C2 HC-46X  X1 16MHz {Lib=CRYSTAL}
+  (    1 N-000017 )
+  (    2 N-000069 )
+ )
+ ( /4E97F046 SM1206  C5 22pF {Lib=C}
+  (    1 /GND )
+  (    2 N-000069 )
+ )
+ ( /4E97F033 SM1206  C4 22pF {Lib=C}
+  (    1 /GND )
+  (    2 N-000017 )
+ )
+ ( /4E97EB9D SM1206  R15 470 {Lib=R}
+  (    1 /5V )
+  (    2 /CAM )
+ )
+ ( /4E97EB45 R4  R14 470 {Lib=R}
+  (    1 /12VRAW )
+  (    2 N-000065 )
+ )
+ ( /4E97E835 SM1206  R7 1k {Lib=R}
+  (    1 N-000006 )
+  (    2 /SharedClock )
+ )
+ ( /4E97E82D SM1206  C8 470pF {Lib=C}
+  (    1 /KnockXin )
+  (    2 N-000006 )
+ )
+ ( /4E97E81D R4  R8 1M {Lib=R}
+  (    1 N-000007 )
+  (    2 /KnockXin )
+ )
+ ( /4E97E79E C2  C11 3.3nF {Lib=C}
+  (    1 /KNOCK )
+  (    2 N-000009 )
+ )
+ ( /4E97E765 R4  R13 TBD {Lib=R}
+  (    1 N-000009 )
+  (    2 N-000109 )
+ )
+ ( /4E97E744 R4  R9 TBD {Lib=R}
+  (    1 N-000109 )
+  (    2 N-000010 )
+ )
+ ( /4E97A1D4 SO20L  U6 TPIC8101 {Lib=TPIC8101}
+  (    1 /5V )
+  (    2 /GND )
+  (    3 N-000101 )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+  (    7 /Window )
+  (    8 /ChipSelect )
+  (    9 /KnockXin )
+  (   10 N-000007 )
+  (   11 N-000102 )
+  (   12 N-000103 )
+  (   13 N-000104 )
+  (   14 ? )
+  (   15 ? )
+  (   16 ? )
+  (   17 ? )
+  (   18 N-000010 )
+  (   19 N-000109 )
+  (   20 N-000101 )
+ )
+ ( /4E967618 USMODULE  U7 USMODULE {Lib=USMODULE}
+  (    1 /12VRAW )
+  (    2 /12VRAW )
+  (    3 /MAP )
+  (    4 N-000025 )
+  (    5 /CLT )
+  (    6 N-000129 )
+  (    7 /CEL )
+  (    8 ? )
+  (    9 ? )
+  (   10 /CANH )
+  (   11 /FAN )
+  (   12 /CANL )
+  (   13 /TPS )
+  (   14 /CAM )
+  (   15 /Vref )
+  (   16 /M_ADC7 )
+  (   17 /KnockReport )
+  (   18 /Launch )
+  (   19 N-000065 )
+  (   20 /Idle )
+  (   21 /CRANK )
+  (   22 /FuelPump )
+  (   23 ? )
+  (   24 ? )
+  (   25 ? )
+  (   26 ? )
+  (   27 /WB )
+  (   28 ? )
+  (   29 /TACH )
+  (   30 ? )
+  (   31 /GND )
+  (   32 ? )
+  (   33 /GND )
+  (   34 ? )
+  (   35 /GND )
+  (   36 ? )
+  (   37 /GND )
+  (   38 ? )
+  (   39 /GND )
+  (   40 ? )
+  (   41 /GND )
+  (   42 ? )
+  (   43 /GND )
+  (   44 /IGN2 )
+  (   45 /GND )
+  (   46 ? )
+  (   47 /GND )
+  (   48 /IGN1 )
+  (   49 /GND )
+  (   50 ? )
+  (   B1 /M_PA0 )
+  (   B2 /M_PE1 )
+  (   B3 ? )
+  (   B4 /sig1 )
+  (   B5 ? )
+  (   B6 /sig2 )
+  (   B7 /sig4 )
+  (   B8 ? )
+  (   B9 /sig3 )
+  (  B10 ? )
+ )
+ ( /4E965278 TQFP32  IC1 ATMEGA16M1-A {Lib=ATMEGA16M1-A}
+  (    1 /A_PD2 )
+  (    2 /Idle+ )
+  (    3 /A_PC1 )
+  (    4 /5V )
+  (    5 /GND )
+  (    6 /CanTx )
+  (    7 /CanRx )
+  (    8 /MISO )
+  (    9 /MOSI )
+  (   10 N-000017 )
+  (   11 N-000069 )
+  (   12 /Idle )
+  (   13 N-000051 )
+  (   14 N-000052 )
+  (   15 N-000053 )
+  (   16 /FuelPressure )
+  (   17 /ExtraAD2 )
+  (   18 /ExtraAD3 )
+  (   19 N-000058 )
+  (   20 /GND )
+  (   21 N-000048 )
+  (   22 /ExtraAD4 )
+  (   23 /A_PB3 )
+  (   24 /A_PB4 )
+  (   25 /A_PC7 )
+  (   26 /Window )
+  (   27 /ChipSelect )
+  (   28 /SCLK )
+  (   29 /KnockReport )
+  (   30 /PurgeControl )
+  (   31 /RESET )
+  (   32 /SharedClock )
+ )
+ ( /4E9651F0 MiataECU  U1 ECU {Lib=ECU}
+  (   1A ? )
+  (   1B /12VRAW )
+  (   1D ? )
+  (   1E /CEL )
+  (   1F ? )
+  (   1G ? )
+  (   1H ? )
+  (   1I ? )
+  (   1O ? )
+  (   1P ? )
+  (   1Q ? )
+  (   1R /FAN )
+  (   1S ? )
+  (   1T ? )
+  (   1U ? )
+  (   1V ? )
+  (   2A /FTP )
+  (   2B ? )
+  (   2C ? )
+  (   2D /SpeedSensor )
+  (   2E /CLT )
+  (   2F /KNOCK )
+  (   2H /CAM )
+  (   2I /Vref )
+  (   2J /CRANK )
+  (   2K /TACH )
+  (   2L ? )
+  (   2M ? )
+  (   2N ? )
+  (   2O ? )
+  (   2P ? )
+  (   3A /BIGGND )
+  (   3B /BIGGND )
+  (   3C /GND )
+  (   3E /TPS )
+  (   3F /GND )
+  (   3G /IGN1 )
+  (   3H /IGN2 )
+  (   3I /Clutch )
+  (   3J ? )
+  (   3K ? )
+  (   3L /Purge )
+  (   3M /IAC )
+  (   3N /FuelPump )
+  (   3O /12VRAW )
+  (   3Q ? )
+  (   3S ? )
+  (   3T ? )
+  (   3U ? )
+  (   3V ? )
+  (   3W /INJ1 )
+  (   3X /INJ2 )
+  (   3Y /INJ3 )
+  (   3Z /INJ4 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R20
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C16
+ SM*
+ C?
+ C1-1
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$component R19
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R17
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ SM*
+ C?
+ C1-1
+$endlist
+$component R18
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D4
+ D?
+ SO*
+ SM*
+$endlist
+$component D3
+ D?
+ S*
+$endlist
+$component D2
+ D?
+ SO*
+ SM*
+$endlist
+$component D1
+ D?
+ S*
+$endlist
+$component M1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$component D5
+ D?
+ SO*
+ SM*
+$endlist
+$component C6
+ CP*
+ SM*
+$endlist
+$component C7
+ CP*
+ SM*
+$endlist
+$component J1
+ DB9*
+$endlist
+$component R16
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component R15
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C8
+ SM*
+ C?
+ C1-1
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component IC1
+ TQFP44
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "/SpeedSensor" "SpeedSensor"
+ R1 1
+ U1 2D
+Net 2 "/GND" "GND"
+ U7 41
+ U7 31
+ D2 2
+ M1 2
+ C12 1
+ C6 2
+ C7 2
+ U5 5
+ D6 1
+ C2 2
+ C1 2
+ C3 1
+ C9 2
+ C10 1
+ U7 39
+ U7 49
+ IC1 5
+ IC1 20
+ U1 3C
+ U1 3F
+ U7 33
+ U7 43
+ U7 35
+ U7 45
+ U7 37
+ U7 47
+ U4 1
+ U4 3
+ U3 2
+ C16 2
+ C15 2
+ K1 2
+ U8 2
+ P1 4
+ C13 2
+ C14 2
+ U6 2
+ P2 2
+ U2 2
+ P2 4
+ C5 1
+ C4 1
+ J1 5
+ U2 8
+ D4 1
+ P2 6
+ P2 8
+Net 3 "/5V" "5V"
+ R5 1
+ U5 6
+ P1 6
+ U2 3
+ F1 2
+ R16 1
+ C3 2
+ C9 1
+ IC1 4
+ U8 3
+ R15 1
+ L1 1
+ C12 2
+ D5 2
+ R4 1
+ U6 1
+Net 5 "/BIGGND" "BIGGND"
+ U5 13
+ U1 3A
+ U5 11
+ U5 9
+ U1 3B
+ U5 7
+Net 6 "" ""
+ C8 2
+ R7 1
+Net 7 "" ""
+ U6 10
+ R8 1
+Net 8 "/KNOCK" "KNOCK"
+ C11 1
+ U1 2F
+Net 9 "" ""
+ R13 1
+ C11 2
+Net 10 "" ""
+ R9 2
+ U6 18
+Net 11 "/MISO" "MISO"
+ R12 1
+ P1 1
+ IC1 8
+Net 12 "/MOSI" "MOSI"
+ P1 5
+ IC1 9
+ R11 1
+Net 13 "/SCLK" "SCLK"
+ P1 2
+ R10 1
+ IC1 28
+Net 17 "" ""
+ X1 1
+ IC1 10
+ C4 2
+Net 18 "/12VRAW" "12VRAW"
+ R14 1
+ D3 1
+ M1 1
+ D1 2
+ U1 1B
+ K1 1
+ U1 3O
+ U7 1
+ U7 2
+Net 19 "/A_PB3" "A_PB3"
+ IC1 23
+ J2 1
+Net 20 "/A_PB4" "A_PB4"
+ IC1 24
+ J2 2
+Net 23 "/Idle+" "Idle+"
+ IC1 2
+ U4 4
+Net 25 "" ""
+ J1 3
+ U7 4
+Net 29 "" ""
+ U3 3
+ F1 1
+ C7 1
+Net 30 "" ""
+ D3 2
+ C6 1
+ D4 2
+ U3 1
+Net 31 "" ""
+ D1 1
+ D2 1
+Net 33 "/M_PE1" "M_PE1"
+ J2 7
+ U7 B2
+Net 34 "/A_PD2" "A_PD2"
+ IC1 1
+ J2 5
+Net 35 "/A_PC7" "A_PC7"
+ IC1 25
+ J2 4
+Net 36 "/A_PC1" "A_PC1"
+ IC1 3
+ J2 3
+Net 37 "/CANH" "CANH"
+ U7 10
+ U2 7
+ R6 2
+ P3 1
+Net 38 "/CANL" "CANL"
+ U7 12
+ P3 2
+ U2 6
+ R6 1
+Net 39 "/INJ4" "INJ4"
+ U5 14
+ U1 3Z
+Net 40 "/INJ3" "INJ3"
+ U5 12
+ U1 3Y
+Net 41 "/INJ2" "INJ2"
+ U1 3X
+ U5 10
+Net 42 "/INJ1" "INJ1"
+ U1 3W
+ U5 8
+Net 43 "/sig2" "sig2"
+ U7 B6
+ U5 2
+Net 46 "/Clutch" "Clutch"
+ U1 3I
+ D6 3
+Net 47 "/Launch" "Launch"
+ R16 2
+ D6 2
+ U7 18
+Net 48 "" ""
+ C2 1
+ IC1 21
+Net 49 "/ExtraAD4" "ExtraAD4"
+ R19 2
+ C15 1
+ IC1 22
+Net 50 "/SharedClock" "SharedClock"
+ R7 2
+ IC1 32
+Net 51 "" ""
+ R1 2
+ IC1 13
+Net 52 "" ""
+ R2 2
+ IC1 14
+Net 53 "" ""
+ R3 2
+ IC1 15
+Net 54 "/FuelPressure" "FuelPressure"
+ C16 1
+ R20 2
+ IC1 16
+Net 55 "/ExtraAD2" "ExtraAD2"
+ R17 2
+ IC1 17
+ C13 1
+Net 56 "/ChipSelect" "ChipSelect"
+ IC1 27
+ U6 8
+Net 57 "/ExtraAD3" "ExtraAD3"
+ IC1 18
+ C14 1
+ R18 2
+Net 58 "" ""
+ C1 1
+ IC1 19
+ L1 2
+Net 59 "/KnockReport" "KnockReport"
+ U7 17
+ IC1 29
+Net 63 "/IGN1" "IGN1"
+ R2 1
+ U7 48
+ U1 3G
+Net 65 "" ""
+ R14 2
+ U7 19
+Net 66 "/sig3" "sig3"
+ U5 3
+ U7 B9
+Net 68 "/CanRx" "CanRx"
+ IC1 7
+ U2 4
+Net 69 "" ""
+ IC1 11
+ C5 2
+ X1 2
+Net 95 "/FuelPump" "FuelPump"
+ U1 3N
+ U7 22
+Net 96 "/IAC" "IAC"
+ U4 6
+ U4 5
+ U1 3M
+Net 97 "/Purge" "Purge"
+ U4 8
+ U4 7
+ U1 3L
+Net 98 "/TPS" "TPS"
+ U7 13
+ U1 3E
+Net 99 "/TACH" "TACH"
+ U1 2K
+ U7 29
+Net 100 "/Window" "Window"
+ U6 7
+ IC1 26
+Net 101 "" ""
+ U6 20
+ U6 3
+ C10 2
+Net 102 "" ""
+ R12 2
+ U6 11
+Net 103 "" ""
+ R11 2
+ U6 12
+Net 104 "" ""
+ U6 13
+ R10 2
+Net 109 "" ""
+ R9 1
+ R13 2
+ U6 19
+Net 110 "/FTP" "FTP"
+ R20 1
+ U1 2A
+Net 114 "/CAM" "CAM"
+ U1 2H
+ R15 2
+ U7 14
+Net 117 "/IGN2" "IGN2"
+ R3 1
+ U7 44
+ U1 3H
+Net 118 "/sig1" "sig1"
+ U7 B4
+ U5 1
+Net 119 "/Vref" "Vref"
+ U1 2I
+ U7 15
+Net 122 "/M_ADC7" "M_ADC7"
+ U7 16
+ J2 8
+Net 126 "/WB" "WB"
+ P2 1
+ U7 27
+Net 127 "/sig4" "sig4"
+ U7 B7
+ U5 4
+Net 128 "/CLT" "CLT"
+ U7 5
+ U1 2E
+Net 129 "" ""
+ J1 2
+ U7 6
+Net 130 "/CEL" "CEL"
+ U1 1E
+ U7 7
+Net 133 "/Idle" "Idle"
+ IC1 12
+ U7 20
+ R5 2
+Net 137 "/FAN" "FAN"
+ U7 11
+ U1 1R
+Net 138 "/CRANK" "CRANK"
+ U1 2J
+ U7 21
+Net 139 "/M_PA0" "M_PA0"
+ U7 B1
+ J2 6
+Net 143 "/CanTx" "CanTx"
+ IC1 6
+ U2 1
+Net 144 "/KnockXin" "KnockXin"
+ U6 9
+ R8 2
+ C8 1
+Net 145 "/MAP" "MAP"
+ U8 1
+ U7 3
+Net 149 "/RESET" "RESET"
+ R4 2
+ IC1 31
+ P1 3
+Net 150 "/PurgeControl" "PurgeControl"
+ U4 2
+ IC1 30
+Net 151 "/External4" "External4"
+ P2 7
+ R19 1
+Net 152 "/External3" "External3"
+ R18 1
+ P2 5
+Net 153 "/External2" "External2"
+ R17 1
+ P2 3
+}
+#End
