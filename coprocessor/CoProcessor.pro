@@ -1,23 +1,10 @@
-update=10/17/2011 2:28:44 AM
-version=1
+update=10/20/2011 1:48:47 PM
 last_client=eeschema
-[cvpcb]
-version=1
-NetITyp=0
-NetIExt=.net
-PkgIExt=.pkg
-NetDir=
-LibDir=
-NetType=0
-[cvpcb/libraries]
-EquName1=devcms
-[general]
-version=1
 [pcbnew]
 version=1
-PadDrlX=320
-PadDimH=600
-PadDimV=600
+PadDrlX=1200
+PadDimH=1600
+PadDimV=1600
 BoardThickness=630
 TxtPcbV=800
 TxtPcbH=600
@@ -29,7 +16,7 @@ DrawLar=150
 EdgeLar=150
 TxtLar=120
 MSegLar=150
-LastNetListRead=
+LastNetListRead=CoProcessor.net
 [pcbnew/libraries]
 LibDir=
 LibName1=sockets
@@ -45,7 +32,7 @@ LibName10=dip_sockets
 LibName11=PNPFootprints
 [eeschema]
 version=1
-LibDir=
+LibDir=../libs
 NetFmt=1
 HPGLSpd=20
 HPGLDm=15
@@ -105,4 +92,4 @@ LibName27=opto
 LibName28=atmel
 LibName29=contrib
 LibName30=valves
-LibName31=PNP
+LibName31=PNPComponents
