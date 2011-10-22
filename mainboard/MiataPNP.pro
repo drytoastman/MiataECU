@@ -1,4 +1,4 @@
-update=10/20/2011 1:58:41 PM
+update=10/21/2011 2:09:02 PM
 version=1
 last_client=pcbnew
 [cvpcb]
@@ -92,7 +92,7 @@ DrawLar=150
 EdgeLar=150
 TxtLar=120
 MSegLar=150
-LastNetListRead=
+LastNetListRead=MiataPNP.net
 [pcbnew/libraries]
 LibDir=../libs
 LibName1=sockets
