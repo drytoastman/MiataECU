@@ -1,7 +1,15 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/19/2011 1:40:02 PM
+EESchema-DOCLIB  Version 2.0  Date: 10/22/2011 2:18:08 PM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
+$ENDCMP
+#
+$CMP 3.3V_REGULATOR
+F http://www.national.com/profile/snip.cgi/openDS=LM2937
+$ENDCMP
+#
+$CMP ADXL335BOARD
+F http://www.analog.com/en/sensors/inertial-sensors/adxl335/products/product.html
 $ENDCMP
 #
 $CMP BYPASS
