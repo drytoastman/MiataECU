@@ -1,10 +1,10 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/21/2011 8:40:19 PM
+EESchema-DOCLIB  Version 2.0  Date: 10/22/2011 2:18:08 PM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
 $ENDCMP
 #
-$CMP 3.3V_regulator
+$CMP 3.3V_REGULATOR
 F http://www.national.com/profile/snip.cgi/openDS=LM2937
 $ENDCMP
 #
