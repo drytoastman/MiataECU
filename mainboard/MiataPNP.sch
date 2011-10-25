@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/24/2011 4:50:11 AM
+EESchema Schematic File Version 2  date 10/25/2011 1:56:18 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -36,29 +36,33 @@ EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 2
-Title ""
-Date "24 oct 2011"
-Rev ""
+Title "Standalone ECU for 99 Miata using MicroSquirtModule"
+Date "25 oct 2011"
+Rev "1"
 Comp ""
 Comment1 ""
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 9400 6450 0    60   ~ 0
-Jumpers for NA alternator
-Text Label 9500 6200 2    60   ~ 0
-AlternatorX
-Text Label 9500 6100 2    60   ~ 0
+Text Label 10400 6250 0    60   ~ 0
+ChargeLight
+Text Label 10400 6150 0    60   ~ 0
+PhaseSense
+Text Label 9500 6050 2    60   ~ 0
+FieldDriver
+Text Label 9500 6250 2    60   ~ 0
+12VRAW
+Text Label 9500 6150 2    60   ~ 0
 FieldCtl
-Text Label 3200 2650 0    60   ~ 0
-AlternatorX
+Wire Wire Line
+	10350 6050 10850 6050
+Wire Wire Line
+	10350 6250 10850 6250
+Wire Wire Line
+	9550 6050 9150 6050
 Wire Wire Line
 	3100 2650 3450 2650
-Wire Wire Line
-	10350 6100 10700 6100
-Wire Wire Line
-	9550 6100 9250 6100
 Wire Wire Line
 	3100 2350 3450 2350
 Wire Wire Line
@@ -336,27 +340,29 @@ Wire Wire Line
 Wire Wire Line
 	3100 2850 3450 2850
 Wire Wire Line
-	9550 6200 9250 6200
+	9550 6150 9150 6150
 Wire Wire Line
-	10350 6200 10700 6200
-Text Label 10400 6200 0    60   ~ 0
-ChargeLight
-Text Label 10400 6100 0    60   ~ 0
-12VRAW
+	9550 6250 9150 6250
+Wire Wire Line
+	10350 6150 10850 6150
 $Comp
-L CONN_2X2 P?
-U 1 1 4EA54B1E
-P 9950 6150
-F 0 "P?" H 9950 6300 50  0000 C CNN
-F 1 "CONN_2X2" H 9960 6020 40  0000 C CNN
-	1    9950 6150
+L CONN_3X2 P?
+U 1 1 4EA5B563
+P 9950 6200
+F 0 "P?" H 9950 6450 50  0000 C CNN
+F 1 "CONN_3X2" V 9950 6250 40  0000 C CNN
+	1    9950 6200
 	1    0    0    -1  
 $EndComp
-Text Label 3200 2850 0    60   ~ 0
+Text Notes 9400 6450 0    60   ~ 0
+Jumpers for NA/NB alternator\nTop NB, Bottom NA
+Text Label 3150 2650 0    60   ~ 0
+PhaseSense
+Text Label 3150 2850 0    60   ~ 0
 Neutral
-Text Label 3200 2350 0    60   ~ 0
+Text Label 3150 2350 0    60   ~ 0
 ChargeLight
-Text Label 3200 2150 0    60   ~ 0
+Text Label 3150 2150 0    60   ~ 0
 FieldCtl
 Text Label 5900 1100 0    60   ~ 0
 5V
@@ -687,27 +693,27 @@ F 2 "R4" H 8850 3000 60  0001 C CNN
 	1    8850 3000
 	0    1    1    0   
 $EndComp
-Text Label 3200 3000 0    60   ~ 0
+Text Label 3150 3000 0    60   ~ 0
 FuelPressure
-Text Label 3200 3300 0    60   ~ 0
+Text Label 3150 3300 0    60   ~ 0
 VSSSignal
-Text Label 3200 3500 0    60   ~ 0
+Text Label 3150 3500 0    60   ~ 0
 KnockSensor
-Text Label 3200 3900 0    60   ~ 0
+Text Label 3150 3900 0    60   ~ 0
 TACH
-Text Label 3200 3800 0    60   ~ 0
+Text Label 3150 3800 0    60   ~ 0
 CRANK
-Text Label 3200 3700 0    60   ~ 0
+Text Label 3150 3700 0    60   ~ 0
 Vref
-Text Label 3200 3600 0    60   ~ 0
+Text Label 3150 3600 0    60   ~ 0
 CAM
-Text Label 3200 3400 0    60   ~ 0
+Text Label 3150 3400 0    60   ~ 0
 CLT
-Text Label 3200 3100 0    60   ~ 0
+Text Label 3150 3100 0    60   ~ 0
 IAT
-Text Label 3200 2450 0    60   ~ 0
+Text Label 3150 2450 0    60   ~ 0
 FAN
-Text Label 3200 1350 0    60   ~ 0
+Text Label 3150 1350 0    60   ~ 0
 CEL
 Text Label 1200 3250 0    60   ~ 0
 INJ4
@@ -737,7 +743,7 @@ Text Label 1300 1250 0    60   ~ 0
 GND
 Text Label 1200 2350 0    60   ~ 0
 12VRAW
-Text Label 3200 1150 0    60   ~ 0
+Text Label 3150 1150 0    60   ~ 0
 12VRAW
 Text Label 8450 1200 0    60   ~ 0
 12VRAW
