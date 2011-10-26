@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/24/2011 12:01:26 PM
+EESchema-DOCLIB  Version 2.0  Date: 10/26/2011 2:49:24 PM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -42,6 +42,10 @@ F http://www.freescale.com/files/sensors/doc/data_sheet/MPX4250A.pdf
 $ENDCMP
 #
 $CMP TIP121
+F transistors/bipolar/*.*
+$ENDCMP
+#
+$CMP TIP42C
 F transistors/bipolar/*.*
 $ENDCMP
 #
