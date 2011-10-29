@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/29/2011 4:15:13 AM
+EESchema Schematic File Version 2  date 10/29/2011 5:48:19 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,10 +45,10 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 6300 5650 0    60   Input ~ 0
-Phase12V
-Text Label 3450 2850 0    60   ~ 0
-12VMeasure
+Text Label 8200 6150 2    60   ~ 0
+GND
+Wire Wire Line
+	8300 6150 7850 6150
 Wire Wire Line
 	3400 2850 3950 2850
 Wire Wire Line
@@ -270,6 +270,21 @@ Wire Wire Line
 	6800 5500 6300 5500
 Wire Wire Line
 	6800 5800 6300 5800
+Wire Wire Line
+	8900 6150 9050 6150
+$Comp
+L SW_PUSH SW?
+U 1 1 4EABF573
+P 8600 6150
+F 0 "SW?" H 8750 6260 50  0000 C CNN
+F 1 "SW_PUSH" H 8600 6070 50  0000 C CNN
+	1    8600 6150
+	-1   0    0    1   
+$EndComp
+Text HLabel 6300 5650 0    60   Input ~ 0
+Phase12V
+Text Label 3450 2850 0    60   ~ 0
+12VMeasure
 Text Label 4800 6350 0    60   ~ 0
 12V
 Text HLabel 5200 6350 2    60   Input ~ 0
@@ -291,8 +306,8 @@ F0 "alternator" 60
 F1 "alternator.sch" 60
 F2 "5V" I L 6800 5150 60 
 F3 "GND" I L 6800 5300 60 
-F4 "12VMeasure" I L 6800 5500 60 
-F5 "Phase5V" I L 6800 5800 60 
+F4 "12VMeasure" O L 6800 5500 60 
+F5 "Phase5V" O L 6800 5800 60 
 F6 "Phase12V" I L 6800 5650 60 
 F7 "12V" I L 6800 5000 60 
 $EndSheet
@@ -313,7 +328,7 @@ GND
 Text Label 9000 5250 2    60   ~ 0
 5V
 $Sheet
-S 9050 5150 500  1000
+S 9050 5150 550  1100
 U 4EABC9CA
 F0 "accelerometer" 60
 F1 "accelerometer.sch" 60
@@ -322,7 +337,8 @@ F3 "GND" I L 9050 5400 60
 F4 "SCL" I L 9050 5550 60 
 F5 "SDI" I L 9050 5700 60 
 F6 "CS" I L 9050 6000 60 
-F7 "SDO" I L 9050 5850 60 
+F7 "SDO" O L 9050 5850 60 
+F8 "/ISOLATE" I L 9050 6150 60 
 $EndSheet
 Text Notes 2150 5700 0    60   ~ 0
 ISP Header

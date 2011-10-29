@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/29/2011 4:15:13 AM
+EESchema Schematic File Version 2  date 10/29/2011 5:48:19 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,176 +45,102 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 3350 2400 0    60   Input ~ 0
+Wire Wire Line
+	3700 4450 5250 4450
+Wire Wire Line
+	5100 4000 5500 4000
+Wire Wire Line
+	5500 4000 5500 2300
+Connection ~ 5250 4450
+Wire Wire Line
+	5400 3600 5400 3300
+Wire Wire Line
+	6050 3600 5850 3600
+Wire Wire Line
+	5850 3600 5850 3900
+Wire Wire Line
+	5850 3900 5100 3900
+Wire Wire Line
+	6050 3700 5100 3700
+Connection ~ 5250 3500
+Wire Wire Line
+	5250 4450 5250 2850
+Wire Wire Line
+	5250 2850 4650 2850
+Connection ~ 3900 4450
+Wire Wire Line
+	3800 4450 3800 3500
+Wire Wire Line
+	3800 3500 3900 3500
+Connection ~ 5500 3200
+Wire Wire Line
+	5100 3400 5100 3200
+Wire Wire Line
+	5100 3200 6050 3200
+Connection ~ 3650 2300
+Wire Wire Line
+	3650 2300 3650 3400
+Wire Wire Line
+	3900 4450 3900 4100
+Wire Wire Line
+	5100 4450 5100 4100
+Wire Wire Line
+	3900 3800 3650 3800
+Wire Wire Line
+	3900 3600 3650 3600
+Wire Wire Line
+	4100 2300 3350 2300
+Wire Wire Line
+	3900 3700 3650 3700
+Wire Wire Line
+	3900 3900 3650 3900
+Wire Wire Line
+	3650 3400 3900 3400
+Wire Wire Line
+	5500 2300 5250 2300
+Wire Wire Line
+	5100 3500 5250 3500
+Connection ~ 5100 4450
+Connection ~ 3800 4450
+Wire Wire Line
+	5400 3600 5100 3600
+Wire Wire Line
+	5400 3300 6050 3300
+Wire Wire Line
+	5100 3800 6050 3800
+Wire Wire Line
+	3900 4000 3650 4000
+Text HLabel 3650 4000 0    60   Input ~ 0
+/ISOLATE
+$Comp
+L SI8441 U?
+U 1 1 4EABF319
+P 4500 3650
+F 0 "U?" H 4300 4050 60  0000 C CNN
+F 1 "SI8441" H 4400 3050 60  0000 C CNN
+	1    4500 3650
+	1    0    0    -1  
+$EndComp
+Text HLabel 3350 2300 0    60   Input ~ 0
 5V
-Text HLabel 3400 5000 0    60   Input ~ 0
+Text HLabel 3700 4450 0    60   Input ~ 0
 GND
-Connection ~ 4550 5000
-Wire Wire Line
-	3400 5000 5500 5000
-Connection ~ 5500 3100
-Connection ~ 5050 5000
-Wire Wire Line
-	5500 5000 5500 3100
-Wire Wire Line
-	5050 5000 5050 4850
-Wire Wire Line
-	4550 5000 4550 4850
-Connection ~ 4800 4100
-Wire Wire Line
-	4800 4350 4800 4100
-Wire Wire Line
-	6050 3800 5300 3800
-Wire Wire Line
-	5300 4250 5300 3800
-Wire Wire Line
-	4250 4250 5300 4250
-Wire Wire Line
-	6050 3300 5100 3300
-Wire Wire Line
-	5100 3950 5100 3300
-Wire Wire Line
-	4250 3950 5100 3950
-Wire Wire Line
-	3400 4100 3750 4100
-Wire Wire Line
-	4350 3700 4700 3700
-Wire Wire Line
-	6050 3600 4700 3600
-Wire Wire Line
-	4700 3600 4700 3700
-Wire Wire Line
-	6050 3100 4650 3100
-Wire Wire Line
-	4650 3100 4650 2950
-Wire Wire Line
-	4100 2400 3350 2400
-Wire Wire Line
-	5250 2400 5250 3200
-Wire Wire Line
-	3950 3700 3400 3700
-Wire Wire Line
-	6050 3200 4150 3200
-Wire Wire Line
-	4150 3200 4150 3400
-Connection ~ 5250 3200
-Connection ~ 4550 3200
-Connection ~ 4550 3700
-Wire Wire Line
-	3750 3950 3400 3950
-Wire Wire Line
-	3750 4250 3400 4250
-Wire Wire Line
-	4250 4100 5200 4100
-Wire Wire Line
-	5200 4100 5200 3700
-Wire Wire Line
-	5200 3700 6050 3700
-Wire Wire Line
-	5050 4250 5050 4350
-Connection ~ 5050 4250
-Wire Wire Line
-	4550 4350 4550 3950
-Connection ~ 4550 3950
-Wire Wire Line
-	4800 4850 4800 5000
-Connection ~ 4800 5000
-Connection ~ 3750 2400
-Text HLabel 3400 4250 0    60   Input ~ 0
+Text HLabel 3650 3800 0    60   Input ~ 0
 SCL
-Text HLabel 3400 4100 0    60   Input ~ 0
+Text HLabel 3650 3700 0    60   Input ~ 0
 SDI
-Text HLabel 3400 3950 0    60   Input ~ 0
+Text HLabel 3650 3600 0    60   Input ~ 0
 CS
-Text HLabel 3400 3700 0    60   Input ~ 0
+Text HLabel 3650 3900 0    60   Output ~ 0
 SDO
-$Comp
-L R R33
-U 1 1 4EABCC8E
-P 5050 4600
-F 0 "R33" V 5130 4600 50  0000 C CNN
-F 1 "10K" V 5050 4600 50  0000 C CNN
-F 2 "R4" H 5050 4600 60  0001 C CNN
-	1    5050 4600
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R32
-U 1 1 4EABCC8A
-P 4800 4600
-F 0 "R32" V 4880 4600 50  0000 C CNN
-F 1 "10K" V 4800 4600 50  0000 C CNN
-F 2 "R4" H 4800 4600 60  0001 C CNN
-	1    4800 4600
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R31
-U 1 1 4EABCC86
-P 4550 4600
-F 0 "R31" V 4630 4600 50  0000 C CNN
-F 1 "10K" V 4550 4600 50  0000 C CNN
-F 2 "R4" H 4550 4600 60  0001 C CNN
-	1    4550 4600
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R29
-U 1 1 4EABCC5E
-P 4000 4250
-F 0 "R29" V 4080 4250 50  0000 C CNN
-F 1 "10K" V 4000 4250 50  0000 C CNN
-F 2 "R4" H 4000 4250 60  0001 C CNN
-	1    4000 4250
-	0    1    1    0   
-$EndComp
-$Comp
-L R R27
-U 1 1 4EABCC58
-P 4000 3950
-F 0 "R27" V 4080 3950 50  0000 C CNN
-F 1 "10K" V 4000 3950 50  0000 C CNN
-F 2 "R4" H 4000 3950 60  0001 C CNN
-	1    4000 3950
-	0    1    1    0   
-$EndComp
-$Comp
-L R R30
-U 1 1 4EABCBD3
-P 4550 3450
-F 0 "R30" V 4630 3450 50  0000 C CNN
-F 1 "10K" V 4550 3450 50  0000 C CNN
-F 2 "R4" H 4550 3450 60  0001 C CNN
-	1    4550 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L MOSFET_N Q6
-U 1 1 4EABCB82
-P 4150 3600
-F 0 "Q6" H 4160 3770 60  0000 R CNN
-F 1 "BSS138" H 4160 3450 60  0000 R CNN
-	1    4150 3600
-	0    -1   1    0   
-$EndComp
-$Comp
-L R R28
-U 1 1 4EABCA77
-P 4000 4100
-F 0 "R28" V 4080 4100 50  0000 C CNN
-F 1 "10K" V 4000 4100 50  0000 C CNN
-F 2 "R4" H 4000 4100 60  0001 C CNN
-	1    4000 4100
-	0    1    1    0   
-$EndComp
 $Comp
 L 3.3V_REGULATOR U14
 U 1 1 4EABCA04
-P 4650 2500
-F 0 "U14" H 4450 2300 60  0000 C CNN
-F 1 "3.3V_REGULATOR" H 4700 2750 60  0000 C CNN
-F 2 "SOT23-5" H 4350 2650 60  0001 C CNN
-	1    4650 2500
+P 4650 2400
+F 0 "U14" H 4450 2200 60  0000 C CNN
+F 1 "3.3V_REGULATOR" H 4700 2650 60  0000 C CNN
+F 2 "SOT23-5" H 4350 2550 60  0001 C CNN
+	1    4650 2400
 	1    0    0    -1  
 $EndComp
 $Comp

@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/29/2011 2:39:03 AM
+EESchema-DOCLIB  Version 2.0  Date: 10/29/2011 5:35:28 AM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -43,6 +43,10 @@ $ENDCMP
 #
 $CMP MXP4250A
 F http://www.freescale.com/files/sensors/doc/data_sheet/MPX4250A.pdf
+$ENDCMP
+#
+$CMP SI8441
+F https://www.silabs.com/Support%20Documents/TechnicalDocs/Si844x.pdf
 $ENDCMP
 #
 $CMP TIP121
