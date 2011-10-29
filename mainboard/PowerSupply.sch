@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/26/2011 3:30:46 PM
+EESchema Schematic File Version 2  date 10/29/2011 4:15:13 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 3 8
+Sheet 2 10
 Title ""
-Date "26 oct 2011"
+Date "29 oct 2011"
 Rev ""
 Comp ""
 Comment1 ""
@@ -45,45 +45,66 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 7000 2900 2    60   Input ~ 0
-GND
-Connection ~ 6700 2900
+Text HLabel 4200 1700 0    60   Input ~ 0
+12V
+Connection ~ 4600 1700
 Wire Wire Line
-	7000 2900 3600 2900
-Connection ~ 6700 2100
+	4200 1700 4950 1700
 Wire Wire Line
-	6600 2100 7000 2100
-Connection ~ 5750 2900
-Connection ~ 4600 2900
-Wire Wire Line
-	4600 2900 4600 2500
-Connection ~ 3850 2900
-Wire Wire Line
-	5150 2900 5150 2650
-Connection ~ 4350 2100
-Wire Wire Line
-	4300 2100 4600 2100
-Connection ~ 3850 2100
-Wire Wire Line
-	3900 2100 3050 2100
-Connection ~ 3600 2100
-Wire Wire Line
-	3600 2900 3600 2600
-Wire Wire Line
-	4350 2900 4350 2500
-Connection ~ 4350 2900
-Wire Wire Line
-	5750 2500 5750 2900
-Connection ~ 5150 2900
-Wire Wire Line
-	5750 2100 6100 2100
+	4600 1700 4600 2100
+Connection ~ 3600 2900
 Wire Wire Line
 	6700 2900 6700 2500
-Connection ~ 3600 2900
+Wire Wire Line
+	6100 2100 5750 2100
+Connection ~ 5150 2900
+Wire Wire Line
+	5750 2500 5750 2900
+Connection ~ 4350 2900
+Wire Wire Line
+	4350 2900 4350 2500
+Wire Wire Line
+	3600 2600 3600 2900
+Connection ~ 3600 2100
+Wire Wire Line
+	3900 2100 3050 2100
+Connection ~ 3850 2100
+Wire Wire Line
+	4600 2100 4300 2100
+Connection ~ 4350 2100
+Wire Wire Line
+	5150 2900 5150 2650
+Connection ~ 3850 2900
+Wire Wire Line
+	4600 2900 4600 2500
+Connection ~ 4600 2900
+Connection ~ 5750 2900
+Wire Wire Line
+	6600 2100 7000 2100
+Connection ~ 6700 2100
+Wire Wire Line
+	3600 2900 7000 2900
+Connection ~ 6700 2900
+Wire Wire Line
+	5350 1700 5750 1700
+Wire Wire Line
+	5750 1700 5750 2100
+$Comp
+L DIODE D13
+U 1 1 4EABC49D
+P 5150 1700
+F 0 "D13" H 5150 1800 40  0000 C CNN
+F 1 "1N4001" H 5150 1600 40  0000 C CNN
+F 2 "D4" H 5150 1700 60  0001 C CNN
+	1    5150 1700
+	-1   0    0    1   
+$EndComp
+Text HLabel 7000 2900 2    60   Input ~ 0
+GND
 Text HLabel 7000 2100 2    60   Input ~ 0
 5V
 Text HLabel 3050 2100 0    60   Input ~ 0
-12V
+12VRAW
 $Comp
 L CP1 C2
 U 1 1 4EA86FAB

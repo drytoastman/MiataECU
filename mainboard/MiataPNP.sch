@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/26/2011 3:30:46 PM
+EESchema Schematic File Version 2  date 10/29/2011 4:15:13 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 1 8
+Sheet 1 10
 Title "Standalone ECU for 99 Miata using MicroSquirtModule"
-Date "26 oct 2011"
+Date "29 oct 2011"
 Rev "1"
 Comp ""
 Comment1 ""
@@ -45,10 +45,14 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 4850 4800 2    60   ~ 0
-BIGGND
-Text Label 4850 4600 2    60   ~ 0
-Flyback
+Text Label 2700 5600 0    60   ~ 0
+Phase12V
+Text Label 4600 7000 2    60   ~ 0
+FieldDriver
+Wire Wire Line
+	4650 7000 4300 7000
+Wire Wire Line
+	5450 5550 5850 5550
 Wire Wire Line
 	4900 4800 4450 4800
 Connection ~ 9800 2300
@@ -61,9 +65,7 @@ Wire Wire Line
 Wire Wire Line
 	8100 5850 7700 5850
 Wire Wire Line
-	5450 5450 5800 5450
-Wire Wire Line
-	4900 5450 4500 5450
+	4900 5550 4500 5550
 Wire Wire Line
 	4850 1150 4550 1150
 Wire Wire Line
@@ -319,13 +321,39 @@ Wire Wire Line
 Wire Wire Line
 	4850 2950 4550 2950
 Wire Wire Line
-	4900 5750 4500 5750
+	4900 5700 4500 5700
 Wire Wire Line
 	9600 2400 9800 2400
 Wire Wire Line
 	9800 2400 9800 2000
 Wire Wire Line
 	4900 4600 4450 4600
+Wire Wire Line
+	4900 5400 4500 5400
+Wire Wire Line
+	5700 6800 6100 6800
+Text Label 4600 6400 2    60   ~ 0
+Phase12V
+Text Label 5750 6800 0    60   ~ 0
+12V
+$Sheet
+S 4900 5300 550  500 
+U 4EA86F7C
+F0 "PowerSupply" 60
+F1 "PowerSupply.sch" 60
+F2 "5V" I R 5450 5550 60 
+F3 "12V" I L 4900 5550 60 
+F4 "GND" I L 4900 5700 60 
+F5 "12VRAW" I L 4900 5400 60 
+$EndSheet
+Text Label 4850 5550 2    60   ~ 0
+12V
+Text Label 4850 5400 2    60   ~ 0
+12VRAW
+Text Label 4850 4800 2    60   ~ 0
+BIGGND
+Text Label 4850 4600 2    60   ~ 0
+Flyback
 $Sheet
 S 4900 4450 550  500 
 U 4EA87E8C
@@ -351,21 +379,10 @@ F 4 "CP-102A-ND" V 8450 5850 60  0001 C CNN "Digikey"
 $EndComp
 Text Notes 7800 6200 0    60   ~ 0
 External Power
-Text Label 5500 5450 0    60   ~ 0
+Text Label 5500 5550 0    60   ~ 0
 5V
-Text Label 4850 5750 2    60   ~ 0
+Text Label 4850 5700 2    60   ~ 0
 GND
-Text Label 4850 5450 2    60   ~ 0
-12VRAW
-$Sheet
-S 4900 5300 550  600 
-U 4EA86F7C
-F0 "PowerSupply" 60
-F1 "PowerSupply.sch" 60
-F2 "5V" I R 5450 5450 60 
-F3 "12V" I L 4900 5450 60 
-F4 "GND" I L 4900 5750 60 
-$EndSheet
 $Sheet
 S 4850 2650 700  550 
 U 4EA86E88
@@ -506,7 +523,8 @@ U 1 1 4EA319A1
 P 8450 5200
 F 0 "K1" V 8400 5200 50  0000 C CNN
 F 1 "3.5mm" V 8500 5200 40  0000 C CNN
-F 2 "TO220" H 8450 5200 60  0001 C CNN
+F 2 "MiniJack" H 8450 5200 60  0001 C CNN
+F 4 "CP1-3523N-ND" V 8450 5200 60  0001 C CNN "Digikey"
 	1    8450 5200
 	1    0    0    -1  
 $EndComp
@@ -551,20 +569,22 @@ VSSSignal
 Text Label 4600 6500 2    60   ~ 0
 IAC
 $Sheet
-S 4650 6300 1050 750 
+S 4650 6300 1050 800 
 U 4EA3092F
 F0 "CoProcessor" 60
 F1 "CoProcessor.sch" 60
-F2 "ExtraDriver" I L 4650 6400 60 
-F3 "IAC" I L 4650 6500 60 
-F4 "CANL" I R 5700 6700 60 
-F5 "KnockSensor" I L 4650 6700 60 
-F6 "Ignition2" I L 4650 6800 60 
-F7 "Ignition1" I L 4650 6900 60 
-F8 "VSSSignal" I L 4650 6600 60 
-F9 "5V" I R 5700 6400 60 
-F10 "GND" I R 5700 6500 60 
-F11 "CANH" I R 5700 6600 60 
+F2 "IAC" I L 4650 6500 60 
+F3 "CANL" I R 5700 6700 60 
+F4 "KnockSensor" I L 4650 6700 60 
+F5 "Ignition2" I L 4650 6800 60 
+F6 "Ignition1" I L 4650 6900 60 
+F7 "VSSSignal" I L 4650 6600 60 
+F8 "5V" I R 5700 6400 60 
+F9 "GND" I R 5700 6500 60 
+F10 "CANH" I R 5700 6600 60 
+F11 "12V" I R 5700 6800 60 
+F12 "Phase12V" I L 4650 6400 60 
+F13 "FieldDriver" I L 4650 7000 60 
 $EndSheet
 Text Label 8900 3000 0    60   ~ 0
 Purge
@@ -655,7 +675,7 @@ F 2 "R4" H 9350 2400 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text Label 9600 2900 0    60   ~ 0
-12VRAW
+12V
 $Comp
 L R R2
 U 1 1 4E97EB45
@@ -688,34 +708,34 @@ Text Label 3150 2450 0    60   ~ 0
 FAN
 Text Label 3150 1350 0    60   ~ 0
 CEL
-Text Label 1200 3250 0    60   ~ 0
+Text Label 1500 3250 2    60   ~ 0
 INJ4
-Text Label 1200 3150 0    60   ~ 0
+Text Label 1500 3150 2    60   ~ 0
 INJ3
-Text Label 1200 3050 0    60   ~ 0
+Text Label 1500 3050 2    60   ~ 0
 INJ2
-Text Label 1200 2950 0    60   ~ 0
+Text Label 1500 2950 2    60   ~ 0
 INJ1
-Text Label 1200 2250 0    60   ~ 0
+Text Label 1500 2250 2    60   ~ 0
 FuelPump
-Text Label 1200 2150 0    60   ~ 0
+Text Label 1500 2150 2    60   ~ 0
 IAC
-Text Label 1200 2050 0    60   ~ 0
+Text Label 1500 2050 2    60   ~ 0
 Purge
-Text Label 1200 1750 0    60   ~ 0
+Text Label 1500 1750 2    60   ~ 0
 Clutch
-Text Label 1200 1650 0    60   ~ 0
+Text Label 1500 1650 2    60   ~ 0
 IGN2
-Text Label 1200 1550 0    60   ~ 0
+Text Label 1500 1550 2    60   ~ 0
 IGN1
 Text Label 950  1350 0    60   ~ 0
 TPS
-Text Label 1150 1050 0    60   ~ 0
+Text Label 1500 1050 2    60   ~ 0
 BIGGND
-Text Label 1300 1250 0    60   ~ 0
+Text Label 1500 1250 2    60   ~ 0
 GND
-Text Label 1200 2350 0    60   ~ 0
-12VRAW
+Text Label 1500 2350 2    60   ~ 0
+12V
 Text Label 3150 1150 0    60   ~ 0
 12VRAW
 Text Label 9100 1100 0    60   ~ 0

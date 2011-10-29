@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/26/2011 3:30:46 PM
+EESchema Schematic File Version 2  date 10/29/2011 4:15:13 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 8 8
+Sheet 8 10
 Title "CoProcessor"
-Date "26 oct 2011"
+Date "29 oct 2011"
 Rev "1"
 Comp ""
 Comment1 ""
@@ -45,232 +45,292 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 7500 5350 0    60   ~ 0
-Accelerometer
-Text Notes 2150 5700 0    60   ~ 0
-ISP Header
-Text Label 3450 3550 0    60   ~ 0
-ExtraPin
+Text HLabel 6300 5650 0    60   Input ~ 0
+Phase12V
+Text Label 3450 2850 0    60   ~ 0
+12VMeasure
 Wire Wire Line
-	3400 3550 3900 3550
+	3400 2850 3950 2850
 Wire Wire Line
-	1200 2250 1200 2350
+	6800 5650 6300 5650
 Wire Wire Line
-	1200 1550 1200 1250
+	6800 5300 6300 5300
 Wire Wire Line
-	7950 4900 7650 4900
+	6800 5000 6300 5000
 Wire Wire Line
-	7950 4700 7650 4700
+	3400 3750 3900 3750
+Connection ~ 1200 1850
+Connection ~ 1200 2250
 Wire Wire Line
-	7200 5050 7550 5050
+	1200 2350 1200 1850
 Wire Wire Line
-	7550 5050 7550 4600
+	9050 5850 8600 5850
 Wire Wire Line
-	7550 4600 7950 4600
+	9050 5550 8600 5550
 Wire Wire Line
-	3400 3050 3900 3050
+	9050 5250 8600 5250
+Connection ~ 900  2750
 Wire Wire Line
-	9050 5950 8450 5950
+	900  2750 1200 2750
 Wire Wire Line
-	8600 5950 8600 6100
-Connection ~ 8600 5950
+	1200 1850 900  1850
+Connection ~ 1200 1250
 Wire Wire Line
-	8600 6100 8450 6100
+	1450 1250 900  1250
 Wire Wire Line
-	7250 6100 6400 6100
-Wire Wire Line
-	9050 6250 8450 6250
-Wire Wire Line
-	5800 2500 5700 2500
-Wire Wire Line
-	3900 3950 4400 3950
-Wire Wire Line
-	3400 3650 3900 3650
-Wire Wire Line
-	2750 5400 2950 5400
-Wire Wire Line
-	1950 5500 1600 5500
-Wire Wire Line
-	1950 5300 1600 5300
-Wire Wire Line
-	8450 6400 8600 6400
-Wire Wire Line
-	8600 6400 8600 6250
-Wire Wire Line
-	7050 5600 7050 6250
-Wire Wire Line
-	7050 6250 7250 6250
-Connection ~ 900  1850
-Wire Wire Line
-	1850 1250 2350 1250
-Wire Wire Line
-	7500 3350 6450 3350
-Wire Wire Line
-	6450 3350 6450 2150
-Wire Wire Line
-	6450 2150 3400 2150
-Wire Wire Line
-	5700 2500 5700 2650
-Wire Wire Line
-	5700 2650 5500 2650
-Wire Wire Line
-	4050 2750 4050 2850
-Wire Wire Line
-	4050 2750 3400 2750
-Wire Wire Line
-	4050 2850 4350 2850
-Wire Wire Line
-	3400 3950 3400 3950
-Wire Wire Line
-	3400 2950 3900 2950
-Wire Wire Line
-	3900 3850 4400 3850
-Wire Wire Line
-	5500 2550 5600 2550
-Wire Wire Line
-	5600 2550 5600 3050
-Wire Wire Line
-	5600 3050 4300 3050
-Wire Wire Line
-	4300 3050 4300 2650
-Wire Wire Line
-	4300 2650 4350 2650
-Wire Wire Line
-	4600 4250 4850 4250
-Wire Wire Line
-	3400 3450 6000 3450
-Wire Wire Line
-	3400 1650 3900 1650
-Connection ~ 4150 4450
-Wire Wire Line
-	3400 4450 4150 4450
-Connection ~ 3500 4350
-Wire Wire Line
-	3500 4550 3500 4350
-Wire Wire Line
-	3550 4350 3400 4350
-Wire Wire Line
-	3400 2250 3900 2250
-Wire Wire Line
-	9350 2850 9350 2750
-Wire Wire Line
-	9350 2750 8850 2750
-Connection ~ 7000 3450
-Wire Wire Line
-	7000 3550 7000 3450
-Wire Wire Line
-	10250 2750 10400 2750
-Wire Wire Line
-	7150 2450 7150 2650
-Wire Wire Line
-	7150 2450 6800 2450
-Wire Wire Line
-	8850 3450 9150 3450
-Wire Wire Line
-	9950 2350 10300 2350
-Connection ~ 8950 2350
-Wire Wire Line
-	9550 2350 7350 2350
-Wire Wire Line
-	7150 2650 7500 2650
-Wire Wire Line
-	7500 2750 7150 2750
-Wire Wire Line
-	7500 2850 7350 2850
-Wire Wire Line
-	7350 2850 7350 2350
-Wire Wire Line
-	8950 2350 8950 2650
-Wire Wire Line
-	8950 2650 8850 2650
-Wire Wire Line
-	6800 2450 6800 2150
-Wire Wire Line
-	8850 3350 9150 3350
-Wire Wire Line
-	8850 3550 9150 3550
-Wire Wire Line
-	6800 2850 7150 2850
-Wire Wire Line
-	7150 2850 7150 2750
-Connection ~ 9350 2750
-Wire Wire Line
-	6900 3450 7500 3450
-Wire Wire Line
-	4150 4350 4150 4550
-Wire Wire Line
-	3500 4950 4150 4950
-Wire Wire Line
-	3400 1550 3900 1550
-Wire Wire Line
-	3400 4250 4100 4250
-Wire Wire Line
-	900  1100 900  1250
-Wire Wire Line
-	4150 2750 4350 2750
-Wire Wire Line
-	3400 2850 3900 2850
-Wire Wire Line
-	3400 4050 3400 4050
-Wire Wire Line
-	4350 2550 4050 2550
-Wire Wire Line
-	3400 2650 4050 2650
-Wire Wire Line
-	4050 2650 4050 2550
-Wire Wire Line
-	3400 2050 6550 2050
-Wire Wire Line
-	6550 2050 6550 3250
-Wire Wire Line
-	6550 3250 7500 3250
-Wire Wire Line
-	5500 2750 5700 2750
-Wire Wire Line
-	5700 2750 5700 3000
-Wire Wire Line
-	900  4050 1200 4050
-Wire Wire Line
-	900  2250 900  4450
-Wire Wire Line
-	900  4450 1200 4450
-Connection ~ 900  4050
-Wire Wire Line
-	7250 5950 7050 5950
-Connection ~ 7050 5950
-Connection ~ 8600 6250
-Wire Wire Line
-	1950 5400 1600 5400
-Wire Wire Line
-	2750 5300 2950 5300
-Wire Wire Line
-	2750 5500 2950 5500
-Wire Wire Line
-	7250 6400 6400 6400
+	5800 3000 5700 3000
 Wire Wire Line
 	3900 4050 4400 4050
 Wire Wire Line
-	5700 3000 5800 3000
+	3400 6500 2800 6500
 Wire Wire Line
-	900  1250 1450 1250
-Connection ~ 1200 1250
+	2750 5500 2950 5500
 Wire Wire Line
-	7800 4500 7950 4500
+	2750 5300 2950 5300
 Wire Wire Line
-	6650 4500 6350 4500
+	1950 5400 1600 5400
+Connection ~ 4750 6350
 Wire Wire Line
-	7950 4800 7650 4800
+	3400 6050 2800 6050
+Connection ~ 900  4050
 Wire Wire Line
-	7950 5000 7550 5000
-Connection ~ 7550 5000
+	1200 4450 900  4450
 Wire Wire Line
-	1200 1850 900  1850
+	900  4450 900  2250
 Wire Wire Line
-	1200 2750 900  2750
-Connection ~ 900  2750
-Text HLabel 9050 6250 2    60   Input ~ 0
-ExtraDriver
-Text HLabel 9050 5950 2    60   Input ~ 0
+	900  4050 1200 4050
+Wire Wire Line
+	5700 3000 5700 2750
+Wire Wire Line
+	5700 2750 5500 2750
+Wire Wire Line
+	7500 3250 6550 3250
+Wire Wire Line
+	6550 3250 6550 2050
+Wire Wire Line
+	6550 2050 3400 2050
+Wire Wire Line
+	4050 2650 4050 2550
+Wire Wire Line
+	4050 2650 3400 2650
+Wire Wire Line
+	4050 2550 4350 2550
+Wire Wire Line
+	3400 4050 3400 4050
+Wire Wire Line
+	4150 2750 4350 2750
+Wire Wire Line
+	900  1250 900  1100
+Wire Wire Line
+	3400 4250 4100 4250
+Wire Wire Line
+	3400 1550 3900 1550
+Wire Wire Line
+	3500 4950 4150 4950
+Wire Wire Line
+	4150 4350 4150 4550
+Wire Wire Line
+	6900 3450 7500 3450
+Connection ~ 9350 2750
+Wire Wire Line
+	7150 2850 7150 2750
+Wire Wire Line
+	7150 2850 6800 2850
+Wire Wire Line
+	8850 3550 9150 3550
+Wire Wire Line
+	8850 3350 9150 3350
+Wire Wire Line
+	6800 2150 6800 2450
+Wire Wire Line
+	8850 2650 8950 2650
+Wire Wire Line
+	8950 2650 8950 2350
+Wire Wire Line
+	7350 2850 7350 2350
+Wire Wire Line
+	7350 2850 7500 2850
+Wire Wire Line
+	7150 2750 7500 2750
+Wire Wire Line
+	7500 2650 7150 2650
+Wire Wire Line
+	7350 2350 9550 2350
+Connection ~ 8950 2350
+Wire Wire Line
+	9950 2350 10300 2350
+Wire Wire Line
+	8850 3450 9150 3450
+Wire Wire Line
+	6800 2450 7150 2450
+Wire Wire Line
+	7150 2450 7150 2650
+Wire Wire Line
+	10250 2750 10400 2750
+Wire Wire Line
+	7000 3550 7000 3450
+Connection ~ 7000 3450
+Wire Wire Line
+	8850 2750 9350 2750
+Wire Wire Line
+	9350 2750 9350 2850
+Wire Wire Line
+	3400 2250 3900 2250
+Wire Wire Line
+	3550 4350 3400 4350
+Wire Wire Line
+	3500 4550 3500 4350
+Connection ~ 3500 4350
+Wire Wire Line
+	3400 4450 4150 4450
+Connection ~ 4150 4450
+Wire Wire Line
+	3400 1650 3900 1650
+Wire Wire Line
+	3400 3450 6000 3450
+Wire Wire Line
+	4600 4250 4850 4250
+Wire Wire Line
+	4350 2650 4300 2650
+Wire Wire Line
+	4300 2650 4300 3050
+Wire Wire Line
+	4300 3050 5600 3050
+Wire Wire Line
+	5600 3050 5600 2550
+Wire Wire Line
+	5600 2550 5500 2550
+Wire Wire Line
+	3900 3850 4400 3850
+Wire Wire Line
+	3400 3950 3400 3950
+Wire Wire Line
+	4350 2850 4050 2850
+Wire Wire Line
+	3400 2750 4050 2750
+Wire Wire Line
+	4050 2750 4050 2850
+Wire Wire Line
+	5500 2650 5700 2650
+Wire Wire Line
+	5700 2650 5700 2500
+Wire Wire Line
+	3400 2150 6450 2150
+Wire Wire Line
+	6450 2150 6450 3350
+Wire Wire Line
+	6450 3350 7500 3350
+Wire Wire Line
+	1850 1250 2350 1250
+Connection ~ 900  1850
+Wire Wire Line
+	2800 6350 3400 6350
+Wire Wire Line
+	4750 6350 4750 6500
+Wire Wire Line
+	4750 6500 4600 6500
+Wire Wire Line
+	1950 5300 1600 5300
+Wire Wire Line
+	1950 5500 1600 5500
+Wire Wire Line
+	2750 5400 2950 5400
+Wire Wire Line
+	3400 3650 3900 3650
+Wire Wire Line
+	3900 3950 4400 3950
+Wire Wire Line
+	5700 2500 5800 2500
+Wire Wire Line
+	5200 6350 4600 6350
+Wire Wire Line
+	3400 6200 2800 6200
+Wire Wire Line
+	4600 6200 4750 6200
+Connection ~ 4750 6050
+Wire Wire Line
+	4750 6200 4750 6050
+Wire Wire Line
+	5200 6050 4600 6050
+Wire Wire Line
+	1200 1550 1200 1250
+Wire Wire Line
+	3400 3550 3900 3550
+Wire Wire Line
+	9050 5400 8600 5400
+Wire Wire Line
+	9050 5700 8600 5700
+Wire Wire Line
+	9050 6000 8600 6000
+Wire Wire Line
+	3400 1950 3900 1950
+Wire Wire Line
+	6800 5150 6300 5150
+Wire Wire Line
+	6800 5500 6300 5500
+Wire Wire Line
+	6800 5800 6300 5800
+Text Label 4800 6350 0    60   ~ 0
+12V
+Text HLabel 5200 6350 2    60   Input ~ 0
+12V
+Text Label 6700 5000 2    60   ~ 0
+12V
+Text Label 6700 5150 2    60   ~ 0
+5V
+Text Label 6700 5300 2    60   ~ 0
+GND
+Text Label 6750 5500 2    60   ~ 0
+12VMeasure
+Text Label 6750 5800 2    60   ~ 0
+Phase5V
+$Sheet
+S 6800 4900 700  1050
+U 4EABDB9D
+F0 "alternator" 60
+F1 "alternator.sch" 60
+F2 "5V" I L 6800 5150 60 
+F3 "GND" I L 6800 5300 60 
+F4 "12VMeasure" I L 6800 5500 60 
+F5 "Phase5V" I L 6800 5800 60 
+F6 "Phase12V" I L 6800 5650 60 
+F7 "12V" I L 6800 5000 60 
+$EndSheet
+Text Label 3450 3750 0    60   ~ 0
+Phase5V
+Text Label 9000 6000 2    60   ~ 0
+AccelCS
+Text Label 3450 1950 0    60   ~ 0
+AccelCS
+Text Label 9000 5850 2    60   ~ 0
+MISO
+Text Label 9000 5700 2    60   ~ 0
+MOSI
+Text Label 9000 5550 2    60   ~ 0
+SCLK
+Text Label 9000 5400 2    60   ~ 0
+GND
+Text Label 9000 5250 2    60   ~ 0
+5V
+$Sheet
+S 9050 5150 500  1000
+U 4EABC9CA
+F0 "accelerometer" 60
+F1 "accelerometer.sch" 60
+F2 "5V" I L 9050 5250 60 
+F3 "GND" I L 9050 5400 60 
+F4 "SCL" I L 9050 5550 60 
+F5 "SDI" I L 9050 5700 60 
+F6 "CS" I L 9050 6000 60 
+F7 "SDO" I L 9050 5850 60 
+$EndSheet
+Text Notes 2150 5700 0    60   ~ 0
+ISP Header
+Text Label 3450 3550 0    60   ~ 0
+FieldDriver
+Text HLabel 2800 6350 0    60   Input ~ 0
+FieldDriver
+Text HLabel 5200 6050 2    60   Input ~ 0
 IAC
 Text HLabel 5800 3000 2    60   Input ~ 0
 CANL
@@ -288,39 +348,7 @@ Text HLabel 2350 1250 2    60   Input ~ 0
 GND
 Text HLabel 5800 2500 2    60   Input ~ 0
 CANH
-Text Label 6450 4500 0    60   ~ 0
-5V
-Text Label 7650 5000 0    60   ~ 0
-GND
-Text Label 7700 4900 0    60   ~ 0
-ZAxis
-Text Label 7700 4800 0    60   ~ 0
-YAxis
-Text Label 7700 4700 0    60   ~ 0
-XAxis
-$Comp
-L 3.3V_REGULATOR U10
-U 1 1 4EA23B2C
-P 7200 4600
-F 0 "U10" H 7000 4400 60  0000 C CNN
-F 1 "3.3V_REGULATOR" H 7250 4850 60  0000 C CNN
-F 2 "SOT23-5" H 6900 4750 60  0001 C CNN
-	1    7200 4600
-	1    0    0    -1  
-$EndComp
-$Comp
-L ADXL335BOARD U13
-U 1 1 4EA238D2
-P 8250 4700
-F 0 "U13" H 8300 4250 60  0000 C CNN
-F 1 "ADXL335BOARD" H 8500 5050 60  0000 C CNN
-F 2 "ADXL335Breakout" H 8450 4150 60  0001 C CNN
-	1    8250 4700
-	1    0    0    -1  
-$EndComp
-Text Label 3450 3050 0    60   ~ 0
-ZAxis
-Text Label 6450 6100 0    60   ~ 0
+Text Label 3350 6200 2    60   ~ 0
 Idle
 $Comp
 L CONN_3X2 P2
@@ -382,16 +410,16 @@ Text Label 1650 5400 0    60   ~ 0
 SCLK
 Text Label 1650 5300 0    60   ~ 0
 MISO
-Text Label 7050 5850 1    60   ~ 0
+Text Label 3350 6050 2    60   ~ 0
 GND
 $Comp
 L VNS3NV04D U11
 U 1 1 4E9E8628
-P 7850 6250
-F 0 "U11" H 7650 6650 60  0000 C CNN
-F 1 "VNS3NV04D" H 7800 5950 60  0000 C CNN
-F 2 "SO8N" H 7550 6550 60  0001 C CNN
-	1    7850 6250
+P 4000 6350
+F 0 "U11" H 3800 6750 60  0000 C CNN
+F 1 "VNS3NV04D" H 3950 6050 60  0000 C CNN
+F 2 "SO8N" H 3700 6650 60  0001 C CNN
+	1    4000 6350
 	1    0    0    -1  
 $EndComp
 Text Label 5150 3450 0    60   ~ 0
@@ -400,8 +428,8 @@ Text Label 4850 2150 0    60   ~ 0
 ChipSelect
 Text Label 4850 2050 0    60   ~ 0
 Window
-Text Label 6450 6400 0    60   ~ 0
-ExtraPin
+Text Label 3350 6500 2    60   ~ 0
+FieldDriver
 Text Label 900  3400 1    60   ~ 0
 GND
 Text Label 1950 1250 0    60   ~ 0
@@ -461,10 +489,6 @@ F 4 "399-4329-ND" H 9900 2550 60  0001 C CNN "Digikey"
 	1    9750 2350
 	0    1    1    0   
 $EndComp
-Text Label 3450 2950 0    60   ~ 0
-YAxis
-Text Label 3450 2850 0    60   ~ 0
-XAxis
 Text Label 6800 2300 1    60   ~ 0
 5V
 Text Label 4150 2750 0    60   ~ 0

@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 10/26/2011 2:49:24 PM
+EESchema-DOCLIB  Version 2.0  Date: 10/29/2011 2:39:03 AM
 #
 $CMP 2N2222A
 F transistors/bipolar/*.*
@@ -10,6 +10,10 @@ $ENDCMP
 #
 $CMP ADXL335BOARD
 F http://www.analog.com/en/sensors/inertial-sensors/adxl335/products/product.html
+$ENDCMP
+#
+$CMP ADXL345BOARD
+F http://www.sparkfun.com/products/9836
 $ENDCMP
 #
 $CMP BYPASS
