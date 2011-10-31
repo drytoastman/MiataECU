@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/29/2011 5:48:19 AM
+EESchema Schematic File Version 2  date 10/30/2011 11:53:45 PM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 2 10
+Sheet 2 11
 Title ""
-Date "29 oct 2011"
+Date "31 oct 2011"
 Rev ""
 Comp ""
 Comment1 ""
@@ -96,6 +96,7 @@ P 5150 1700
 F 0 "D13" H 5150 1800 40  0000 C CNN
 F 1 "1N4001" H 5150 1600 40  0000 C CNN
 F 2 "D4" H 5150 1700 60  0001 C CNN
+F 4 "V3-D9" H 5150 1700 60  0001 C CNN "Digikey"
 	1    5150 1700
 	-1   0    0    1   
 $EndComp
@@ -199,7 +200,7 @@ U 1 1 4EA86FA3
 P 5150 2200
 F 0 "U4" H 4950 2450 60  0000 C CNN
 F 1 "LM2937" H 5300 2450 60  0000 C CNN
-F 2 "TO220" H 4850 2350 60  0001 C CNN
+F 2 "TO220-123" H 4850 2350 60  0001 C CNN
 F 4 "V3-U5" H 5150 2200 60  0001 C CNN "Digikey"
 	1    5150 2200
 	1    0    0    -1  

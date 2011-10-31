@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/29/2011 5:48:19 AM
+EESchema Schematic File Version 2  date 10/30/2011 11:53:45 PM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 1 10
+Sheet 1 11
 Title "Standalone ECU for 99 Miata using MicroSquirtModule"
-Date "29 oct 2011"
+Date "31 oct 2011"
 Rev "1"
 Comp ""
 Comment1 ""
@@ -45,10 +45,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 2700 5600 0    60   ~ 0
-Phase12V
-Text Label 4600 7000 2    60   ~ 0
-FieldDriver
+Wire Wire Line
+	10350 3050 10600 3050
 Wire Wire Line
 	4650 7000 4300 7000
 Wire Wire Line
@@ -115,7 +113,7 @@ Wire Wire Line
 Wire Wire Line
 	9800 5150 10100 5150
 Wire Wire Line
-	9950 2800 8800 2800
+	8800 2800 9950 2800
 Wire Wire Line
 	8800 2000 9100 2000
 Wire Wire Line
@@ -332,6 +330,26 @@ Wire Wire Line
 	4900 5400 4500 5400
 Wire Wire Line
 	5700 6800 6100 6800
+Wire Wire Line
+	9950 2800 9950 3050
+Connection ~ 9950 2800
+Text Label 10400 3050 0    60   ~ 0
+GND
+$Comp
+L DIODE D14
+U 1 1 4EAD230C
+P 10150 3050
+F 0 "D14" H 10150 3150 40  0000 C CNN
+F 1 "1N4001" H 10150 2950 40  0000 C CNN
+F 2 "D4" H 10150 3050 60  0001 C CNN
+F 4 "parts" H 10150 3050 60  0001 C CNN "Digikey"
+	1    10150 3050
+	-1   0    0    1   
+$EndComp
+Text Label 2700 5600 0    60   ~ 0
+Phase12V
+Text Label 4600 7000 2    60   ~ 0
+FieldDriver
 Text Label 4600 6400 2    60   ~ 0
 Phase12V
 Text Label 5750 6800 0    60   ~ 0
@@ -486,7 +504,7 @@ PhaseSense
 Text Label 1800 5600 2    60   ~ 0
 FieldDriver
 Text Label 1800 5800 2    60   ~ 0
-12VRAW
+12V
 Text Label 1800 5700 2    60   ~ 0
 FieldCtl
 $Comp
@@ -496,6 +514,7 @@ P 2250 5750
 F 0 "P1" H 2250 6000 50  0000 C CNN
 F 1 "CONN_3X2" V 2250 5800 40  0000 C CNN
 F 2 "PIN_ARRAY_3x2" H 2250 5750 60  0001 C CNN
+F 4 "parts" H 2250 5750 60  0001 C CNN "Digikey"
 	1    2250 5750
 	1    0    0    -1  
 $EndComp
@@ -541,6 +560,7 @@ P 8450 6600
 F 0 "K3" V 8400 6600 50  0000 C CNN
 F 1 "CONN_3" V 8500 6600 40  0000 C CNN
 F 2 "External3" H 8450 6600 60  0001 C CNN
+F 4 "609-3820-ND,609-3798-ND" V 8450 6600 60  0001 C CNN "Digikey"
 	1    8450 6600
 	1    0    0    -1  
 $EndComp
@@ -588,7 +608,7 @@ F13 "FieldDriver" I L 4650 7000 60
 $EndSheet
 Text Label 8900 3000 0    60   ~ 0
 Purge
-Text Notes 9450 3150 0    60   ~ 0
+Text Notes 9350 3300 0    60   ~ 0
 Idle Driver used for Purge
 Text Label 8900 2600 0    60   ~ 0
 OilPressure
@@ -603,6 +623,7 @@ P 10150 2800
 F 0 "D1" H 10150 2900 40  0000 C CNN
 F 1 "1N4001" H 10150 2700 40  0000 C CNN
 F 2 "D4" H 10150 2800 60  0001 C CNN
+F 4 "parts" H 10150 2800 60  0001 C CNN "Digikey"
 	1    10150 2800
 	1    0    0    -1  
 $EndComp
@@ -613,6 +634,7 @@ P 10700 5400
 F 0 "U3" H 10450 5750 60  0000 C CNN
 F 1 "MPX4250AP" H 10600 5050 60  0000 C CNN
 F 2 "MPX4250AP" H 10350 5650 60  0001 C CNN
+F 4 "V3" H 10700 5400 60  0001 C CNN "Digikey"
 	1    10700 5400
 	1    0    0    -1  
 $EndComp
@@ -671,6 +693,7 @@ P 9350 2400
 F 0 "R1" V 9430 2400 50  0000 C CNN
 F 1 "470" V 9350 2400 50  0000 C CNN
 F 2 "R4" H 9350 2400 60  0001 C CNN
+F 4 "parts" V 9350 2400 60  0001 C CNN "Digikey"
 	1    9350 2400
 	0    1    1    0   
 $EndComp
@@ -683,6 +706,7 @@ P 9350 2900
 F 0 "R2" V 9430 2900 50  0000 C CNN
 F 1 "470" V 9350 2900 50  0000 C CNN
 F 2 "R4" H 9350 2900 60  0001 C CNN
+F 4 "parts" V 9350 2900 60  0001 C CNN "Digikey"
 	1    9350 2900
 	0    1    1    0   
 $EndComp
@@ -739,7 +763,7 @@ Text Label 1500 2350 2    60   ~ 0
 Text Label 3150 1150 0    60   ~ 0
 12VRAW
 Text Label 9100 1100 0    60   ~ 0
-12VRAW
+12V
 Text Label 8900 3600 0    60   ~ 0
 TACH
 Text Label 8900 3200 0    60   ~ 0
@@ -763,6 +787,7 @@ P 8050 2650
 F 0 "U2" H 7650 4350 60  0000 C CNN
 F 1 "USMODULE" H 8300 800 60  0000 C CNN
 F 2 "USMODULE" H 8300 4350 60  0001 C CNN
+F 4 "PNP" H 8050 2650 60  0001 C CNN "Digikey"
 	1    8050 2650
 	1    0    0    -1  
 $EndComp
@@ -773,6 +798,7 @@ P 2150 2500
 F 0 "U1" H 1900 4050 60  0000 C CNN
 F 1 "ECU" H 2650 450 60  0000 C CNN
 F 2 "MiataECU" H 2450 4050 60  0001 C CNN
+F 4 "OnlineComponents" H 2150 2500 60  0001 C CNN "Digikey"
 	1    2150 2500
 	1    0    0    -1  
 $EndComp

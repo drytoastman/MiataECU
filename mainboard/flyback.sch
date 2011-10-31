@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/29/2011 5:48:19 AM
+EESchema Schematic File Version 2  date 10/30/2011 11:53:45 PM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -35,9 +35,9 @@ EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
-Sheet 2 10
+Sheet 3 11
 Title ""
-Date "29 oct 2011"
+Date "31 oct 2011"
 Rev ""
 Comp ""
 Comment1 ""
@@ -51,7 +51,8 @@ U 1 1 4EA88072
 P 5300 2850
 F 0 "Q1" H 5300 2700 60  0000 R CNN
 F 1 "TIP42C" H 5300 3000 60  0000 R CNN
-F 2 "TO220" H 5200 2600 60  0001 C CNN
+F 2 "TO220-123" H 5200 2600 60  0001 C CNN
+F 4 "PH" H 5300 2850 60  0001 C CNN "Digikey"
 	1    5300 2850
 	1    0    0    1   
 $EndComp
@@ -66,6 +67,7 @@ P 4850 2600
 F 0 "R4" H 4930 2600 50  0000 C CNN
 F 1 "270" V 4850 2600 50  0000 C CNN
 F 2 "R4" H 4850 2600 60  0001 C CNN
+F 4 "PH" H 4850 2600 60  0001 C CNN "Digikey"
 	1    4850 2600
 	1    0    0    -1  
 $EndComp
@@ -76,6 +78,7 @@ P 4850 3050
 F 0 "D2" H 4850 3150 50  0000 C CNN
 F 1 "36V" H 4850 2950 40  0000 C CNN
 F 2 "D4" H 4850 3050 60  0001 C CNN
+F 4 "PH" H 4850 3050 60  0001 C CNN "Digikey"
 	1    4850 3050
 	0    -1   -1   0   
 $EndComp
