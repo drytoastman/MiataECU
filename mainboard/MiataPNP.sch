@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 11/1/2011 9:13:20 PM
+EESchema Schematic File Version 2  date 11/2/2011 2:39:47 AM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -45,10 +45,12 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Label 4600 6800 2    60   ~ 0
+FieldDriver
 Wire Wire Line
 	10350 3050 10600 3050
 Wire Wire Line
-	4650 7000 4300 7000
+	4650 6800 4300 6800
 Wire Wire Line
 	5450 5550 5850 5550
 Wire Wire Line
@@ -91,7 +93,7 @@ Wire Wire Line
 Wire Wire Line
 	5700 6500 6100 6500
 Wire Wire Line
-	4650 6900 4300 6900
+	6050 6900 5700 6900
 Wire Wire Line
 	4650 6700 4300 6700
 Wire Wire Line
@@ -105,7 +107,9 @@ Wire Wire Line
 Wire Wire Line
 	10100 5250 9800 5250
 Wire Wire Line
-	7050 1300 7300 1300
+	7050 1300 7200 1300
+Wire Wire Line
+	7200 1300 7300 1300
 Wire Wire Line
 	3100 1150 3350 1150
 Wire Wire Line
@@ -126,7 +130,15 @@ Connection ~ 8800 4150
 Connection ~ 8800 4350
 Connection ~ 7300 4350
 Wire Wire Line
-	7300 3950 7300 4650
+	7300 3950 7300 4050
+Wire Wire Line
+	7300 4050 7300 4150
+Wire Wire Line
+	7300 4150 7300 4250
+Wire Wire Line
+	7300 4250 7300 4350
+Wire Wire Line
+	7300 4350 7300 4650
 Connection ~ 7300 4150
 Wire Wire Line
 	8800 1700 9100 1700
@@ -188,14 +200,20 @@ Wire Wire Line
 Wire Wire Line
 	8800 1200 9100 1200
 Wire Wire Line
-	9100 1200 9100 950 
+	9100 1200 9100 1100
+Wire Wire Line
+	9100 1100 9100 950 
 Connection ~ 9100 1100
 Wire Wire Line
 	1400 1150 1550 1150
 Wire Wire Line
-	1150 1250 1550 1250
+	1150 1250 1250 1250
 Wire Wire Line
-	1550 1050 1150 1050
+	1250 1250 1550 1250
+Wire Wire Line
+	1550 1050 1400 1050
+Wire Wire Line
+	1400 1050 1150 1050
 Wire Wire Line
 	3100 3600 3450 3600
 Wire Wire Line
@@ -229,7 +247,15 @@ Wire Wire Line
 	7300 4650 8800 4650
 Connection ~ 8800 4250
 Wire Wire Line
-	8800 4650 8800 3950
+	8800 4650 8800 4350
+Wire Wire Line
+	8800 4350 8800 4250
+Wire Wire Line
+	8800 4250 8800 4150
+Wire Wire Line
+	8800 4150 8800 4050
+Wire Wire Line
+	8800 4050 8800 3950
 Connection ~ 8800 4050
 Wire Wire Line
 	6850 1400 7300 1400
@@ -253,7 +279,7 @@ Wire Wire Line
 Wire Wire Line
 	4650 6600 4300 6600
 Wire Wire Line
-	4650 6800 4300 6800
+	6050 7000 5700 7000
 Wire Wire Line
 	5700 6400 6100 6400
 Wire Wire Line
@@ -323,7 +349,9 @@ Wire Wire Line
 Wire Wire Line
 	9600 2400 9800 2400
 Wire Wire Line
-	9800 2400 9800 2000
+	9800 2400 9800 2300
+Wire Wire Line
+	9800 2300 9800 2000
 Wire Wire Line
 	4900 4600 4450 4600
 Wire Wire Line
@@ -348,8 +376,6 @@ F 4 "parts" H 10150 3050 60  0001 C CNN "Digikey"
 $EndComp
 Text Label 2700 5600 0    60   ~ 0
 Phase12V
-Text Label 4600 7000 2    60   ~ 0
-FieldDriver
 Text Label 4600 6400 2    60   ~ 0
 Phase12V
 Text Label 5750 6800 0    60   ~ 0
@@ -578,9 +604,9 @@ Text Label 5750 6500 0    60   ~ 0
 GND
 Text Label 5750 6400 0    60   ~ 0
 5V
-Text Label 4600 6900 2    60   ~ 0
+Text Label 6000 6900 2    60   ~ 0
 IGN1
-Text Label 4600 6800 2    60   ~ 0
+Text Label 6000 7000 2    60   ~ 0
 IGN2
 Text Label 4600 6700 2    60   ~ 0
 KnockSensor
@@ -596,15 +622,15 @@ F1 "CoProcessor.sch" 60
 F2 "IAC" I L 4650 6500 60 
 F3 "CANL" I R 5700 6700 60 
 F4 "KnockSensor" I L 4650 6700 60 
-F5 "Ignition2" I L 4650 6800 60 
-F6 "Ignition1" I L 4650 6900 60 
+F5 "Ignition2" I R 5700 7000 60 
+F6 "Ignition1" I R 5700 6900 60 
 F7 "VSSSignal" I L 4650 6600 60 
 F8 "5V" I R 5700 6400 60 
 F9 "GND" I R 5700 6500 60 
 F10 "CANH" I R 5700 6600 60 
 F11 "12V" I R 5700 6800 60 
 F12 "Phase12V" I L 4650 6400 60 
-F13 "FieldDriver" I L 4650 7000 60 
+F13 "FieldDriver" I L 4650 6800 60 
 $EndSheet
 Text Label 8900 3000 0    60   ~ 0
 Purge
