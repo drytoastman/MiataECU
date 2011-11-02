@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/30/2011 11:53:45 PM
+EESchema Schematic File Version 2  date 11/1/2011 9:13:20 PM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -37,7 +37,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 8 11
 Title "CoProcessor"
-Date "31 oct 2011"
+Date "2 nov 2011"
 Rev "1"
 Comp ""
 Comment1 ""
@@ -45,6 +45,10 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Label 2350 3600 2    60   ~ 0
+AccelCS
+Wire Wire Line
+	2400 3600 1950 3600
 Connection ~ 1250 800 
 Connection ~ 2250 1300
 Wire Wire Line
@@ -229,8 +233,6 @@ Wire Wire Line
 Wire Wire Line
 	3200 4100 3200 4400
 Wire Wire Line
-	2400 2600 1950 2600
-Wire Wire Line
 	4600 1700 4600 1250
 Wire Wire Line
 	2500 800  850  800 
@@ -281,6 +283,8 @@ Wire Wire Line
 Wire Wire Line
 	1950 1200 1950 1300
 Connection ~ 1950 1300
+Wire Wire Line
+	4400 4100 4400 4450
 $Comp
 L C C21
 U 1 1 4EADF704
@@ -483,11 +487,9 @@ F4 "Phase12V" I L 8950 4800 60
 F5 "12V" I L 8950 4300 60 
 F6 "PhasePin" I L 8950 4950 60 
 $EndSheet
-Text Label 2350 2600 2    60   ~ 0
+Text Label 4400 4150 3    60   ~ 0
 PhasePin
 Text Label 8900 3800 2    60   ~ 0
-AccelCS
-Text Label 4500 1650 1    60   ~ 0
 AccelCS
 Text Label 8900 3650 2    60   ~ 0
 MISO
@@ -514,7 +516,7 @@ $EndSheet
 Text Notes 2350 6600 0    60   ~ 0
 ISP Header
 Text Label 2350 3400 2    60   ~ 0
-FieldDriver
+FieldPWM
 Text HLabel 8000 6150 0    60   Input ~ 0
 FieldDriver
 Text HLabel 10400 5850 2    60   Input ~ 0
@@ -556,8 +558,6 @@ F 2 "R4" H 1850 2900 60  0001 C CNN
 	1    1850 2900
 	0    1    1    0   
 $EndComp
-Text Notes 700  2050 0    60   ~ 0
-PE4-7\ninput square \nwaves
 Text Label 3200 4150 3    60   ~ 0
 Idle
 Text Label 3000 6400 0    60   ~ 0
@@ -592,7 +592,7 @@ Window
 Text Label 4600 1650 1    60   ~ 0
 KnockCS
 Text Label 8550 6300 2    60   ~ 0
-FieldDriver
+FieldPWM
 Text Label 4850 4650 0    60   ~ 0
 5V
 Text Label 6200 4950 0    60   ~ 0
@@ -624,7 +624,7 @@ U 1 1 4E993F05
 P 3250 4600
 F 0 "R20" V 3330 4600 50  0000 C CNN
 F 1 "10K" V 3250 4600 50  0000 C CNN
-F 2 "R4" H 3250 4600 60  0001 C CNN
+F 2 "SM0805" H 3250 4600 60  0001 C CNN
 	1    3250 4600
 	0    1    1    0   
 $EndComp
@@ -648,7 +648,7 @@ U 1 1 4E97F046
 P 4200 5100
 F 0 "C15" H 4250 5200 50  0000 L CNN
 F 1 "22pF" H 4250 5000 50  0000 L CNN
-F 2 "C2" H 4200 5100 60  0001 C CNN
+F 2 "SM0805" H 4200 5100 60  0001 C CNN
 	1    4200 5100
 	-1   0    0    1   
 $EndComp
@@ -658,7 +658,7 @@ U 1 1 4E97F033
 P 3600 5100
 F 0 "C14" H 3650 5200 50  0000 L CNN
 F 1 "22pF" H 3650 5000 50  0000 L CNN
-F 2 "C2" H 3600 5100 60  0001 C CNN
+F 2 "SM0805" H 3600 5100 60  0001 C CNN
 	1    3600 5100
 	-1   0    0    1   
 $EndComp

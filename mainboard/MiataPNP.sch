@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date 10/30/2011 11:53:45 PM
+EESchema Schematic File Version 2  date 11/1/2011 9:13:20 PM
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -37,7 +37,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 11
 Title "Standalone ECU for 99 Miata using MicroSquirtModule"
-Date "31 oct 2011"
+Date "2 nov 2011"
 Rev "1"
 Comp ""
 Comment1 ""
@@ -504,7 +504,7 @@ PhaseSense
 Text Label 1800 5600 2    60   ~ 0
 FieldDriver
 Text Label 1800 5800 2    60   ~ 0
-12V
+12VRAW
 Text Label 1800 5700 2    60   ~ 0
 FieldCtl
 $Comp
@@ -759,7 +759,7 @@ BIGGND
 Text Label 1500 1250 2    60   ~ 0
 GND
 Text Label 1500 2350 2    60   ~ 0
-12V
+12VRAW
 Text Label 3150 1150 0    60   ~ 0
 12VRAW
 Text Label 9100 1100 0    60   ~ 0

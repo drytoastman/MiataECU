@@ -1,12 +1,12 @@
-# EESchema Netlist Version 1.1 created  10/30/2011 11:14:34 PM
+# EESchema Netlist Version 1.1 created  11/1/2011 9:13:24 PM
 (
  ( /4EAD230C D4  D14 1N4001 {Lib=DIODE}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /Launch )
  )
  ( /4EA870DE JACK_ALIM  K2 CONN_3 {Lib=CONN_3}
   (    1 /PowerSupply/12VRAW )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
   (    3 ? )
  )
  ( /4EA5B563 PIN_ARRAY_3x2  P1 CONN_3X2 {Lib=CONN_3X2}
@@ -14,18 +14,18 @@
   (    2 /CoProcessor/Phase12V )
   (    3 /FieldCtl )
   (    4 /PhaseSense )
-  (    5 /CoProcessor/12V )
+  (    5 /PowerSupply/12VRAW )
   (    6 /ChargeLight )
  )
  ( /4EA319A1 MiniJack  K1 3.5mm {Lib=CONN_3}
   (    1 /SerialRX )
   (    2 /SerialTX )
-  (    3 /CoProcessor/GND )
+  (    3 /Inj2/GND )
  )
  ( /4EA3176F External3  K3 CONN_3 {Lib=CONN_3}
   (    1 /WB )
   (    2 /OilPressure )
-  (    3 /CoProcessor/GND )
+  (    3 /Inj2/GND )
  )
  ( /4EA08EF7 D4  D1 1N4001 {Lib=DIODE}
   (    1 /Launch )
@@ -33,7 +33,7 @@
  )
  ( /4E9F35B8 MPX4250AP  U3 MPX4250AP {Lib=MPX4250AP}
   (    1 /MAP )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
   (    3 /Vref )
   (    4 ? )
   (    5 ? )
@@ -82,31 +82,31 @@
   (   28 ? )
   (   29 /TACH )
   (   30 ? )
-  (   31 /CoProcessor/GND )
+  (   31 /Inj2/GND )
   (   32 ? )
-  (   33 /CoProcessor/GND )
+  (   33 /Inj2/GND )
   (   34 ? )
-  (   35 /CoProcessor/GND )
+  (   35 /Inj2/GND )
   (   36 ? )
-  (   37 /CoProcessor/GND )
+  (   37 /Inj2/GND )
   (   38 ? )
-  (   39 /CoProcessor/GND )
+  (   39 /Inj2/GND )
   (   40 ? )
-  (   41 /CoProcessor/GND )
+  (   41 /Inj2/GND )
   (   42 ? )
-  (   43 /CoProcessor/GND )
+  (   43 /Inj2/GND )
   (   44 /CoProcessor/Ignition2 )
-  (   45 /CoProcessor/GND )
+  (   45 /Inj2/GND )
   (   46 ? )
-  (   47 /CoProcessor/GND )
+  (   47 /Inj2/GND )
   (   48 /CoProcessor/Ignition1 )
-  (   49 /CoProcessor/GND )
+  (   49 /Inj2/GND )
   (   50 ? )
   (   B1 ? )
   (   B2 ? )
-  (   B3 /CoProcessor/GND )
+  (   B3 /Inj2/GND )
   (   B4 /Inj1/IN )
-  (   B5 /CoProcessor/GND )
+  (   B5 /Inj2/GND )
   (   B6 /Inj2/IN )
   (   B7 /Inj4/IN )
   (   B8 ? )
@@ -147,9 +147,9 @@
   (   2P ? )
   (   3A /Flyback/Gnd )
   (   3B /Flyback/Gnd )
-  (   3C /CoProcessor/GND )
+  (   3C /Inj2/GND )
   (   3E /TPS )
-  (   3F /CoProcessor/GND )
+  (   3F /Inj2/GND )
   (   3G /CoProcessor/Ignition1 )
   (   3H /CoProcessor/Ignition2 )
   (   3I /Clutch )
@@ -158,7 +158,7 @@
   (   3L /Purge )
   (   3M /CoProcessor/IAC )
   (   3N /FuelPump )
-  (   3O /CoProcessor/12V )
+  (   3O /PowerSupply/12VRAW )
   (   3Q ? )
   (   3S ? )
   (   3T ? )
@@ -170,206 +170,206 @@
   (   3Z /Inj4/INJ )
  )
  ( /4EA86F7C/4EABC49D D4  D13 1N4001 {Lib=DIODE}
-  (    1 N-000170 )
+  (    1 N-000171 )
   (    2 /CoProcessor/12V )
  )
  ( /4EA86F7C/4EA86FAB C2V8  C2 33uF {Lib=CP1}
-  (    1 N-000170 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000171 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86F7C/4EA86FAA C2V8  C1 33uF {Lib=CP1}
   (    1 /CoProcessor/12V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
  ( /4EA86F7C/4EA86FA9 D4  D7 5.6V_1W {Lib=ZENER}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /CoProcessor/5V )
  )
  ( /4EA86F7C/4EA86FA8 R4  M1 MOV {Lib=R}
   (    1 /PowerSupply/12VRAW )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
  ( /4EA86F7C/4EA86FA7 D4  D3 1N4001 {Lib=DIODE}
-  (    1 N-000171 )
+  (    1 N-000172 )
   (    2 /PowerSupply/12VRAW )
  )
  ( /4EA86F7C/4EA86FA6 D4  D4 12V_1W {Lib=ZENER}
-  (    1 N-000171 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000172 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86F7C/4EA86FA5 D4  D5 1N4001 {Lib=DIODE}
   (    1 /PowerSupply/12VRAW )
   (    2 /CoProcessor/12V )
  )
  ( /4EA86F7C/4EA86FA4 D4  D6 22V_1W {Lib=ZENER}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /CoProcessor/12V )
  )
- ( /4EA86F7C/4EA86FA3 TO220  U4 LM2937 {Lib=LM2937}
+ ( /4EA86F7C/4EA86FA3 TO220-123  U4 LM2937 {Lib=LM2937}
   (    1 /CoProcessor/12V )
-  (    2 /CoProcessor/GND )
-  (    3 N-000170 )
+  (    2 /Inj2/GND )
+  (    3 N-000171 )
  )
  ( /4EA86F7C/4EA86FA2 C2  F1 FUSE {Lib=FUSE}
-  (    1 N-000170 )
+  (    1 N-000171 )
   (    2 /CoProcessor/5V )
  )
- ( /4EA87E8C/4EA88072 TO220  Q1 TIP42C {Lib=TIP42C}
-  (    1 N-000172 )
+ ( /4EA87E8C/4EA88072 TO220-123  Q1 TIP42C {Lib=TIP42C}
+  (    1 N-000173 )
   (    2 /Flyback/Gnd )
-  (    3 /Inj1/FB )
+  (    3 /Inj3/FB )
  )
  ( /4EA87E8C/4EA87EBB R4  R4 270 {Lib=R}
-  (    1 /Inj1/FB )
-  (    2 N-000172 )
+  (    1 /Inj3/FB )
+  (    2 N-000173 )
  )
  ( /4EA87E8C/4EA87EBA D4  D2 36V {Lib=ZENER}
   (    1 /Flyback/Gnd )
-  (    2 N-000172 )
+  (    2 N-000173 )
  )
  ( /4EA86E88/4E9A5D38 C2  C4 0.1uF {Lib=BYPASS}
-  (    1 N-000166 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000167 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86E88/4E9A5D30 C2  C3 0.1uF {Lib=BYPASS}
-  (    1 N-000169 )
-  (    2 N-000167 )
+  (    1 N-000170 )
+  (    2 N-000168 )
  )
  ( /4EA86E88/4E9A56EF DIP-8__300  U5 LM1949 {Lib=LM1949}
   (    1 /Inj3/IN )
-  (    2 N-000167 )
-  (    3 N-000169 )
-  (    4 N-000168 )
+  (    2 N-000168 )
+  (    3 N-000170 )
+  (    4 N-000169 )
   (    5 /Flyback/Gnd )
-  (    6 /CoProcessor/GND )
+  (    6 /Inj2/GND )
   (    7 /CoProcessor/5V )
-  (    8 N-000166 )
+  (    8 N-000167 )
  )
- ( /4EA86E88/4E9A5680 TO220  Q2 TIP121 {Lib=TIP121}
-  (    1 N-000167 )
+ ( /4EA86E88/4E9A5680 TO220-123  Q2 TIP121 {Lib=TIP121}
+  (    1 N-000168 )
   (    2 /Inj3/INJ )
-  (    3 N-000168 )
+  (    3 N-000169 )
  )
  ( /4EA86E88/4E98D486 D4  D8 FR302 {Lib=DIODE}
   (    1 /Inj3/INJ )
-  (    2 /Inj1/FB )
+  (    2 /Inj3/FB )
  )
  ( /4EA86E88/4E98D43F R6  R5 0.1 {Lib=R}
-  (    1 N-000168 )
+  (    1 N-000169 )
   (    2 /Flyback/Gnd )
  )
  ( /4EA86E88/4E98D2AF R4  R6 39K {Lib=R}
   (    1 /CoProcessor/5V )
-  (    2 N-000166 )
+  (    2 N-000167 )
  )
  ( /4EA86E88/4E98CF40 R4  R7 100K {Lib=R}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /Inj3/IN )
  )
  ( /4EA86E87/4E9A5D38 C2  C6 0.1uF {Lib=BYPASS}
-  (    1 N-000162 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000163 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86E87/4E9A5D30 C2  C5 0.1uF {Lib=BYPASS}
-  (    1 N-000165 )
-  (    2 N-000163 )
+  (    1 N-000166 )
+  (    2 N-000164 )
  )
  ( /4EA86E87/4E9A56EF DIP-8__300  U6 LM1949 {Lib=LM1949}
   (    1 /Inj4/IN )
-  (    2 N-000163 )
-  (    3 N-000165 )
-  (    4 N-000164 )
+  (    2 N-000164 )
+  (    3 N-000166 )
+  (    4 N-000165 )
   (    5 /Flyback/Gnd )
-  (    6 /CoProcessor/GND )
+  (    6 /Inj2/GND )
   (    7 /CoProcessor/5V )
-  (    8 N-000162 )
+  (    8 N-000163 )
  )
- ( /4EA86E87/4E9A5680 TO220  Q3 TIP121 {Lib=TIP121}
-  (    1 N-000163 )
+ ( /4EA86E87/4E9A5680 TO220-123  Q3 TIP121 {Lib=TIP121}
+  (    1 N-000164 )
   (    2 /Inj4/INJ )
-  (    3 N-000164 )
+  (    3 N-000165 )
  )
  ( /4EA86E87/4E98D486 D4  D9 FR302 {Lib=DIODE}
   (    1 /Inj4/INJ )
-  (    2 /Inj1/FB )
+  (    2 /Inj3/FB )
  )
  ( /4EA86E87/4E98D43F R6  R8 0.1 {Lib=R}
-  (    1 N-000164 )
+  (    1 N-000165 )
   (    2 /Flyback/Gnd )
  )
  ( /4EA86E87/4E98D2AF R4  R9 39K {Lib=R}
   (    1 /CoProcessor/5V )
-  (    2 N-000162 )
+  (    2 N-000163 )
  )
  ( /4EA86E87/4E98CF40 R4  R10 100K {Lib=R}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /Inj4/IN )
  )
  ( /4EA86E5C/4E9A5D38 C2  C8 0.1uF {Lib=BYPASS}
-  (    1 N-000159 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000160 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86E5C/4E9A5D30 C2  C7 0.1uF {Lib=BYPASS}
-  (    1 N-000161 )
-  (    2 N-000158 )
+  (    1 N-000162 )
+  (    2 N-000159 )
  )
  ( /4EA86E5C/4E9A56EF DIP-8__300  U7 LM1949 {Lib=LM1949}
   (    1 /Inj2/IN )
-  (    2 N-000158 )
-  (    3 N-000161 )
-  (    4 N-000160 )
+  (    2 N-000159 )
+  (    3 N-000162 )
+  (    4 N-000161 )
   (    5 /Flyback/Gnd )
-  (    6 /CoProcessor/GND )
+  (    6 /Inj2/GND )
   (    7 /CoProcessor/5V )
-  (    8 N-000159 )
+  (    8 N-000160 )
  )
- ( /4EA86E5C/4E9A5680 TO220  Q4 TIP121 {Lib=TIP121}
-  (    1 N-000158 )
+ ( /4EA86E5C/4E9A5680 TO220-123  Q4 TIP121 {Lib=TIP121}
+  (    1 N-000159 )
   (    2 /Inj2/INJ )
-  (    3 N-000160 )
+  (    3 N-000161 )
  )
  ( /4EA86E5C/4E98D486 D4  D10 FR302 {Lib=DIODE}
   (    1 /Inj2/INJ )
-  (    2 /Inj1/FB )
+  (    2 /Inj3/FB )
  )
  ( /4EA86E5C/4E98D43F R6  R11 0.1 {Lib=R}
-  (    1 N-000160 )
+  (    1 N-000161 )
   (    2 /Flyback/Gnd )
  )
  ( /4EA86E5C/4E98D2AF R4  R12 39K {Lib=R}
   (    1 /CoProcessor/5V )
-  (    2 N-000159 )
+  (    2 N-000160 )
  )
  ( /4EA86E5C/4E98CF40 R4  R13 100K {Lib=R}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /Inj2/IN )
  )
  ( /4EA86CCC/4E9A5D38 C2  C10 0.1uF {Lib=BYPASS}
-  (    1 N-000156 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000157 )
+  (    2 /Inj2/GND )
  )
  ( /4EA86CCC/4E9A5D30 C2  C9 0.1uF {Lib=BYPASS}
-  (    1 N-000154 )
-  (    2 N-000157 )
+  (    1 N-000156 )
+  (    2 N-000158 )
  )
  ( /4EA86CCC/4E9A56EF DIP-8__300  U8 LM1949 {Lib=LM1949}
   (    1 /Inj1/IN )
-  (    2 N-000157 )
-  (    3 N-000154 )
+  (    2 N-000158 )
+  (    3 N-000156 )
   (    4 N-000155 )
   (    5 /Flyback/Gnd )
-  (    6 /CoProcessor/GND )
+  (    6 /Inj2/GND )
   (    7 /CoProcessor/5V )
-  (    8 N-000156 )
+  (    8 N-000157 )
  )
- ( /4EA86CCC/4E9A5680 TO220  Q5 TIP121 {Lib=TIP121}
-  (    1 N-000157 )
+ ( /4EA86CCC/4E9A5680 TO220-123  Q5 TIP121 {Lib=TIP121}
+  (    1 N-000158 )
   (    2 /Inj1/INJ )
   (    3 N-000155 )
  )
  ( /4EA86CCC/4E98D486 D4  D11 FR302 {Lib=DIODE}
   (    1 /Inj1/INJ )
-  (    2 /Inj1/FB )
+  (    2 /Inj3/FB )
  )
  ( /4EA86CCC/4E98D43F R6  R14 0.1 {Lib=R}
   (    1 N-000155 )
@@ -377,22 +377,22 @@
  )
  ( /4EA86CCC/4E98D2AF R4  R15 39K {Lib=R}
   (    1 /CoProcessor/5V )
-  (    2 N-000156 )
+  (    2 N-000157 )
  )
  ( /4EA86CCC/4E98CF40 R4  R16 100K {Lib=R}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /Inj1/IN )
  )
- ( /4EA3092F/4EADF704 SM0806  C21 33nF {Lib=C}
+ ( /4EA3092F/4EADF704 SM0805  C21 33nF {Lib=C}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
- ( /4EA3092F/4EADF6FF SM0806  C20 120nF {Lib=C}
+ ( /4EA3092F/4EADF6FF SM0805  C20 120nF {Lib=C}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
  ( /4EA3092F/4EADBC26 R4  R18 1K {Lib=R}
-  (    1 N-000103 )
+  (    1 N-000104 )
   (    2 /CoProcessor/Ignition1 )
  )
  ( /4EA3092F/4EADBC22 R4  R19 1K {Lib=R}
@@ -401,40 +401,40 @@
  )
  ( /4EA3092F/4EADB758 SIL-7  P3 CONN_7 {Lib=CONN_7}
   (    1 N-000113 )
-  (    2 N-000094 )
+  (    2 N-000101 )
   (    3 N-000114 )
-  (    4 N-000101 )
+  (    4 N-000102 )
   (    5 N-000115 )
-  (    6 N-000102 )
-  (    7 N-000104 )
+  (    6 N-000103 )
+  (    7 N-000116 )
  )
  ( /4EA3092F/4EADB714 SIL-7  P5 CONN_7 {Lib=CONN_7}
-  (    1 N-000095 )
-  (    2 N-000116 )
-  (    3 N-000096 )
-  (    4 N-000117 )
-  (    5 N-000097 )
-  (    6 N-000118 )
-  (    7 N-000098 )
+  (    1 N-000094 )
+  (    2 N-000117 )
+  (    3 N-000095 )
+  (    4 N-000118 )
+  (    5 N-000096 )
+  (    6 N-000119 )
+  (    7 N-000097 )
  )
  ( /4EA3092F/4EADB6E1 SIL-5  P4 CONN_5 {Lib=CONN_5}
-  (    1 N-000119 )
-  (    2 N-000100 )
-  (    3 N-000107 )
-  (    4 N-000099 )
-  (    5 N-000108 )
+  (    1 N-000107 )
+  (    2 N-000099 )
+  (    3 N-000108 )
+  (    4 N-000098 )
+  (    5 N-000109 )
  )
- ( /4EA3092F/4EADAA5E SM0806  C13 120nF {Lib=C}
-  (    1 /CoProcessor/GND )
+ ( /4EA3092F/4EADAA5E SM0805  C13 120nF {Lib=C}
+  (    1 /Inj2/GND )
   (    2 N-000120 )
  )
- ( /4EA3092F/4EADAA55 SM0806  C12 33nF {Lib=C}
+ ( /4EA3092F/4EADAA55 SM0805  C12 33nF {Lib=C}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
- ( /4EA3092F/4EADAA52 SM0806  C11 120nF {Lib=C}
+ ( /4EA3092F/4EADAA52 SM0805  C11 120nF {Lib=C}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
  ( /4EA3092F/4EADA89D TQFP_64  IC1 AT90CAN {Lib=AT90CAN}
   (    1 ? )
@@ -442,64 +442,64 @@
   (    3 /CoProcessor/PMISO )
   (    4 ? )
   (    5 ? )
-  (    6 /CoProcessor/alternator/PhasePin )
-  (    7 N-000103 )
+  (    6 ? )
+  (    7 N-000104 )
   (    8 N-000105 )
-  (    9 N-000106 )
+  (    9 N-000100 )
   (   10 ? )
   (   11 /CoProcessor/accelerometer/SCL )
-  (   12 /CoProcessor/knock/SDI )
-  (   13 /CoProcessor/accelerometer/SDO )
-  (   14 /CoProcessor/FieldDriver )
+  (   12 /CoProcessor/accelerometer/SDI )
+  (   13 /CoProcessor/knock/SDO )
+  (   14 /CoProcessor/FieldPWM )
   (   15 ? )
-  (   16 ? )
+  (   16 /CoProcessor/accelerometer/CS )
   (   17 /CoProcessor/Idle )
   (   18 ? )
   (   19 ? )
   (   20 /CoProcessor/RESET )
   (   21 /CoProcessor/5V )
-  (   22 /CoProcessor/GND )
-  (   23 N-000129 )
-  (   24 N-000130 )
+  (   22 /Inj2/GND )
+  (   23 N-000130 )
+  (   24 N-000131 )
   (   25 ? )
   (   26 ? )
   (   27 ? )
   (   28 ? )
-  (   29 ? )
+  (   29 /CoProcessor/alternator/PhasePin )
   (   30 /CoProcessor/CanTx )
   (   31 /CoProcessor/CanRx )
   (   32 ? )
   (   33 ? )
   (   34 ? )
-  (   35 N-000095 )
-  (   36 N-000116 )
-  (   37 N-000096 )
-  (   38 N-000117 )
-  (   39 N-000097 )
-  (   40 N-000118 )
-  (   41 N-000098 )
+  (   35 N-000094 )
+  (   36 N-000117 )
+  (   37 N-000095 )
+  (   38 N-000118 )
+  (   39 N-000096 )
+  (   40 N-000119 )
+  (   41 N-000097 )
   (   42 /CoProcessor/knock/Clock )
   (   43 ? )
-  (   44 N-000108 )
-  (   45 N-000099 )
-  (   46 N-000107 )
-  (   47 N-000100 )
-  (   48 N-000119 )
+  (   44 N-000109 )
+  (   45 N-000098 )
+  (   46 N-000108 )
+  (   47 N-000099 )
+  (   48 N-000107 )
   (   49 /CoProcessor/knock/Window )
   (   50 /CoProcessor/knock/CS )
-  (   51 /CoProcessor/accelerometer/CS )
+  (   51 ? )
   (   52 /CoProcessor/5V )
-  (   53 /CoProcessor/GND )
-  (   54 N-000104 )
-  (   55 N-000102 )
+  (   53 /Inj2/GND )
+  (   54 N-000116 )
+  (   55 N-000103 )
   (   56 N-000115 )
-  (   57 N-000101 )
+  (   57 N-000102 )
   (   58 N-000114 )
-  (   59 N-000094 )
+  (   59 N-000101 )
   (   60 N-000113 )
   (   61 /CoProcessor/alternator/12VMeasure )
   (   62 ? )
-  (   63 /CoProcessor/GND )
+  (   63 /Inj2/GND )
   (   64 N-000120 )
  )
  ( /4EA3092F/4EA0F9A7 PIN_ARRAY_3x2  P2 CONN_3X2 {Lib=CONN_3X2}
@@ -508,17 +508,17 @@
   (    3 /CoProcessor/accelerometer/SCL )
   (    4 /CoProcessor/PMOSI )
   (    5 /CoProcessor/RESET )
-  (    6 /CoProcessor/GND )
+  (    6 /Inj2/GND )
  )
  ( /4EA3092F/4E9FE3CD R4  R17 1K {Lib=R}
-  (    1 N-000106 )
+  (    1 N-000100 )
   (    2 /CoProcessor/VSSSignal )
  )
  ( /4EA3092F/4E9E8628 SO8N  U11 VNS3NV04D {Lib=VNS3NV04D}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /CoProcessor/Idle )
   (    3 /CoProcessor/FieldDriver )
-  (    4 /CoProcessor/FieldDriver )
+  (    4 /CoProcessor/FieldPWM )
   (    5 /CoProcessor/12V )
   (    6 /CoProcessor/12V )
   (    7 /CoProcessor/IAC )
@@ -526,155 +526,169 @@
  )
  ( /4EA3092F/4E994AB0 SO8E  U9 MCP2551 {Lib=MCP2551}
   (    1 /CoProcessor/CanTx )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
   (    3 /CoProcessor/5V )
   (    4 /CoProcessor/CanRx )
   (    5 ? )
   (    6 /CoProcessor/CANL )
   (    7 /CoProcessor/CANH )
-  (    8 /CoProcessor/GND )
+  (    8 /Inj2/GND )
  )
  ( /4EA3092F/4E9947FE SM1206  L1 10uH {Lib=INDUCTOR}
   (    1 N-000120 )
   (    2 /CoProcessor/5V )
  )
- ( /4EA3092F/4E993F05 R4  R20 10K {Lib=R}
+ ( /4EA3092F/4E993F05 SM0805  R20 10K {Lib=R}
   (    1 /CoProcessor/RESET )
   (    2 /CoProcessor/5V )
  )
  ( /4EA3092F/4E97F0C2 HC-49V  X1 8MHz {Lib=CRYSTAL}
-  (    1 N-000129 )
-  (    2 N-000130 )
+  (    1 N-000130 )
+  (    2 N-000131 )
  )
- ( /4EA3092F/4E97F046 C2  C15 22pF {Lib=C}
-  (    1 /CoProcessor/GND )
-  (    2 N-000130 )
+ ( /4EA3092F/4E97F046 SM0805  C15 22pF {Lib=C}
+  (    1 /Inj2/GND )
+  (    2 N-000131 )
  )
- ( /4EA3092F/4E97F033 C2  C14 22pF {Lib=C}
-  (    1 /CoProcessor/GND )
-  (    2 N-000129 )
+ ( /4EA3092F/4E97F033 SM0805  C14 22pF {Lib=C}
+  (    1 /Inj2/GND )
+  (    2 N-000130 )
  )
  ( /4EA3092F/4EACEB12/4EACEB37 SO20L  U10 TPIC8101 {Lib=TPIC8101}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
-  (    3 N-000187 )
+  (    2 /Inj2/GND )
+  (    3 N-000189 )
   (    4 ? )
   (    5 ? )
   (    6 ? )
   (    7 /CoProcessor/knock/Window )
   (    8 /CoProcessor/knock/CS )
   (    9 /CoProcessor/knock/KnockXin )
-  (   10 N-000185 )
-  (   11 /CoProcessor/accelerometer/SDO )
-  (   12 /CoProcessor/knock/SDI )
+  (   10 N-000187 )
+  (   11 /CoProcessor/knock/SDO )
+  (   12 /CoProcessor/accelerometer/SDI )
   (   13 /CoProcessor/accelerometer/SCL )
   (   14 ? )
   (   15 ? )
   (   16 ? )
   (   17 ? )
-  (   18 N-000188 )
-  (   19 N-000184 )
-  (   20 N-000187 )
+  (   18 N-000190 )
+  (   19 N-000186 )
+  (   20 N-000189 )
  )
  ( /4EA3092F/4EACEB12/4EACEB36 R4  R24 TBD {Lib=R}
-  (    1 N-000184 )
-  (    2 N-000188 )
+  (    1 N-000186 )
+  (    2 N-000190 )
  )
  ( /4EA3092F/4EACEB12/4EACEB35 R4  R27 TBD {Lib=R}
-  (    1 N-000189 )
-  (    2 N-000184 )
+  (    1 N-000191 )
+  (    2 N-000186 )
  )
  ( /4EA3092F/4EACEB12/4EACEB34 C2  C19 3.3nF {Lib=C}
   (    1 /CoProcessor/KnockSensor )
-  (    2 N-000189 )
+  (    2 N-000191 )
  )
  ( /4EA3092F/4EACEB12/4EACEB33 R4  R23 1M {Lib=R}
-  (    1 N-000185 )
+  (    1 N-000187 )
   (    2 /CoProcessor/knock/KnockXin )
  )
  ( /4EA3092F/4EACEB12/4EACEB32 C2  C16 470pF {Lib=C}
   (    1 /CoProcessor/knock/KnockXin )
-  (    2 N-000186 )
+  (    2 N-000188 )
  )
  ( /4EA3092F/4EACEB12/4EACEB31 R4  R22 1k {Lib=R}
-  (    1 N-000186 )
+  (    1 N-000188 )
   (    2 /CoProcessor/knock/Clock )
  )
  ( /4EA3092F/4EACEB12/4EACEB30 SM0805  C18 100nF {Lib=BYPASS}
-  (    1 /CoProcessor/GND )
-  (    2 N-000187 )
+  (    1 /Inj2/GND )
+  (    2 N-000189 )
  )
  ( /4EA3092F/4EACEB12/4EACEB2F SM0805  C17 4.7uF {Lib=C}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
  )
  ( /4EA3092F/4EABDB9D/4EADFC0D D4  D15 5.1V {Lib=ZENER}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /CoProcessor/alternator/12VMeasure )
  )
- ( /4EA3092F/4EABDB9D/4EADFC02 $noname  R21 1K {Lib=R}
+ ( /4EA3092F/4EABDB9D/4EADFC02 R4  R21 1K {Lib=R}
   (    1 /CoProcessor/alternator/12VMeasure )
-  (    2 N-000181 )
+  (    2 N-000183 )
  )
  ( /4EA3092F/4EABDB9D/4EAC4F9C DIP-4__300  U12 FOD817 {Lib=FOD817}
   (    1 /CoProcessor/Phase12V )
-  (    2 N-000182 )
-  (    3 /CoProcessor/GND )
+  (    2 N-000185 )
+  (    3 /Inj2/GND )
   (    4 /CoProcessor/alternator/PhasePin )
  )
  ( /4EA3092F/4EABDB9D/4EABDBCA SO8E  U13 AD8276 {Lib=AD8276}
-  (    1 /CoProcessor/GND )
+  (    1 /Inj2/GND )
   (    2 /CoProcessor/12V )
-  (    3 N-000183 )
-  (    4 /CoProcessor/GND )
-  (    5 N-000181 )
-  (    6 N-000181 )
+  (    3 N-000184 )
+  (    4 /Inj2/GND )
+  (    5 N-000183 )
+  (    6 N-000183 )
   (    7 /CoProcessor/12V )
  )
  ( /4EA3092F/4EABDB9D/4EABDBC9 R4  R26 10K {Lib=R}
-  (    1 N-000183 )
+  (    1 N-000184 )
   (    2 /CoProcessor/12V )
  )
  ( /4EA3092F/4EABDB9D/4EABDBC8 SOT23-3  D12 LM4040,10V {Lib=ZENER}
-  (    1 /CoProcessor/GND )
-  (    2 N-000183 )
+  (    1 /Inj2/GND )
+  (    2 N-000184 )
  )
  ( /4EA3092F/4EABDB9D/4EABDBC6 R4  R25 10K {Lib=R}
-  (    1 N-000182 )
-  (    2 /CoProcessor/GND )
+  (    1 N-000185 )
+  (    2 /Inj2/GND )
+ )
+ ( /4EA3092F/4EABC9CA/4EAF1C80 SM0805  C24 1uF {Lib=C}
+  (    1 /CoProcessor/accelerometer/3V )
+  (    2 /Inj2/GND )
+ )
+ ( /4EA3092F/4EABC9CA/4EAF1C74 SM0805  C22 1uF {Lib=C}
+  (    1 /CoProcessor/5V )
+  (    2 /Inj2/GND )
+ )
+ ( /4EA3092F/4EABC9CA/4EAF1C6B SM0805  C23 470pF {Lib=C}
+  (    1 N-000179 )
+  (    2 /Inj2/GND )
  )
  ( /4EA3092F/4EABC9CA/4EABF319 SO16E  U16 SI8441 {Lib=SI8441}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
+  (    2 /Inj2/GND )
   (    3 /CoProcessor/accelerometer/CS )
-  (    4 /CoProcessor/knock/SDI )
+  (    4 /CoProcessor/accelerometer/SDI )
   (    5 /CoProcessor/accelerometer/SCL )
-  (    6 /CoProcessor/accelerometer/SDO )
+  (    6 /CoProcessor/knock/SDO )
   (    7 /CoProcessor/5V )
-  (    8 /CoProcessor/GND )
-  (    9 /CoProcessor/GND )
-  (   10 N-000177 )
-  (   11 N-000174 )
-  (   12 N-000176 )
-  (   13 N-000173 )
-  (   14 N-000175 )
-  (   15 /CoProcessor/GND )
-  (   16 N-000177 )
+  (    8 /Inj2/GND )
+  (    9 /Inj2/GND )
+  (   10 /CoProcessor/accelerometer/3V )
+  (   11 N-000176 )
+  (   12 N-000175 )
+  (   13 N-000177 )
+  (   14 N-000174 )
+  (   15 /Inj2/GND )
+  (   16 /CoProcessor/accelerometer/3V )
  )
  ( /4EA3092F/4EABC9CA/4EABCA04 SOT23-5  U14 3.3V_REGULATOR {Lib=3.3V_REGULATOR}
   (    1 /CoProcessor/5V )
-  (    2 /CoProcessor/GND )
-  (    3 N-000177 )
+  (    2 /Inj2/GND )
+  (    3 /CoProcessor/5V )
+  (    4 N-000179 )
+  (    5 /CoProcessor/accelerometer/3V )
  )
  ( /4EA3092F/4EABC9CA/4EABC9F0 ADXL345Breakout  U15 ADXL345BOARD {Lib=ADXL345BOARD}
   (    1 ? )
-  (    2 N-000177 )
-  (    3 N-000175 )
+  (    2 /CoProcessor/accelerometer/3V )
+  (    3 N-000174 )
   (    4 ? )
   (    5 ? )
-  (    6 N-000174 )
-  (    7 N-000173 )
-  (    8 N-000176 )
+  (    6 N-000176 )
+  (    7 N-000177 )
+  (    8 N-000175 )
  )
 )
 *
@@ -1044,53 +1058,68 @@ $component R25
  R?-*
  SM1206
 $endlist
+$component C24
+ SM*
+ C?
+ C1-1
+$endlist
+$component C22
+ SM*
+ C?
+ C1-1
+$endlist
+$component C23
+ SM*
+ C?
+ C1-1
+$endlist
 $endfootprintlist
 }
 { Pin List by Nets
 Net 1 "/CoProcessor/12V" "12V"
+ D13 2
+ C1 1
+ D5 2
+ D6 2
+ U4 1
  U11 5
  U11 6
- P1 5
+ R2 1
+ U2 2
+ U2 1
  R26 2
  U13 7
  U13 2
- U2 1
- U2 2
- U1 3O
- C1 1
- D13 2
- R2 1
- U4 1
- D6 2
- D5 2
 Net 2 "/CoProcessor/5V" "5V"
- U10 1
+ C20 1
+ C11 1
+ C12 1
  P2 2
- R1 1
  U9 3
  L1 2
- R20 2
- C17 1
- D7 2
  C21 1
- C20 1
- C12 1
- F1 2
- C11 1
  U5 7
+ F1 2
+ D7 2
+ U10 1
+ C17 1
+ R1 1
+ U16 7
+ U16 1
+ C22 1
+ U14 3
+ U14 1
+ R20 2
+ IC1 21
+ R3 2
+ IC1 52
+ U8 7
  R15 1
  R12 1
  U7 7
- U16 7
- U16 1
- U14 1
+ R6 1
  R9 1
  U6 7
- R6 1
- IC1 52
- IC1 21
- R3 2
- U8 7
 Net 3 "/OilPressure" "OilPressure"
  K3 2
  U2 16
@@ -1108,8 +1137,8 @@ Net 10 "/Clutch" "Clutch"
  D1 2
  U1 3I
 Net 14 "/CoProcessor/KnockSensor" "KnockSensor"
- U1 2F
  C19 1
+ U1 2F
 Net 16 "/CLT" "CLT"
  U1 2E
  U2 5
@@ -1117,457 +1146,467 @@ Net 17 "/CoProcessor/VSSSignal" "VSSSignal"
  R17 2
  U1 2D
 Net 21 "/PowerSupply/12VRAW" "12VRAW"
- D5 1
+ P1 5
  D3 2
  M1 1
  K2 1
+ D5 1
+ U1 3O
  U1 1B
 Net 22 "/FuelPressure" "FuelPressure"
- U2 17
  U1 2A
+ U2 17
 Net 25 "/Inj3/IN" "IN"
  R7 2
- U5 1
  U2 B9
+ U5 1
 Net 26 "/Inj4/INJ" "INJ"
+ D9 1
  Q3 2
  U1 3Z
- D9 1
 Net 27 "/Inj3/INJ" "INJ"
+ U1 3Y
  D8 1
  Q2 2
- U1 3Y
 Net 28 "/Inj2/INJ" "INJ"
- U1 3X
- Q4 2
  D10 1
+ Q4 2
+ U1 3X
 Net 29 "/Inj1/INJ" "INJ"
+ D11 1
  U1 3W
  Q5 2
- D11 1
 Net 35 "/PhaseSense" "PhaseSense"
  P1 4
  U1 1T
 Net 39 "/ChargeLight" "ChargeLight"
- U1 1Q
  P1 6
+ U1 1Q
 Net 43 "/FieldCtl" "FieldCtl"
  P1 3
  U1 1O
 Net 45 "/CoProcessor/IAC" "IAC"
+ U1 3M
  U11 7
  U11 8
- U1 3M
 Net 47 "/Purge" "Purge"
- U1 3L
  U2 20
+ U1 3L
 Net 50 "/TACH" "TACH"
  U2 29
  U1 2K
 Net 53 "/TPS" "TPS"
- U2 13
  U1 3E
+ U2 13
 Net 57 "/FuelPump" "FuelPump"
  U1 3N
  U2 22
 Net 58 "/CoProcessor/CANL" "CANL"
- U9 6
  U2 12
+ U9 6
 Net 60 "/FAN" "FAN"
- U2 11
  U1 1R
+ U2 11
 Net 64 "/CoProcessor/CANH" "CANH"
- U2 10
  U9 7
+ U2 10
 Net 67 "/CEL" "CEL"
  U1 1E
  U2 7
 Net 68 "/SerialTX" "SerialTX"
- K1 2
  U2 6
+ K1 2
 Net 69 "/SerialRX" "SerialRX"
  U2 4
  K1 1
 Net 70 "" ""
- R2 2
  U2 19
+ R2 2
 Net 72 "/CoProcessor/Ignition1" "Ignition1"
+ U2 48
  R18 2
  U1 3G
- U2 48
 Net 75 "/Launch" "Launch"
- D14 2
  R3 1
  D1 1
  U2 18
+ D14 2
 Net 76 "/Inj4/IN" "IN"
  R10 2
- U6 1
  U2 B7
+ U6 1
 Net 77 "/WB" "WB"
  U2 27
  K3 1
 Net 78 "/Inj2/IN" "IN"
  U7 1
- U2 B6
  R13 2
-Net 82 "/CoProcessor/GND" "GND"
- IC1 63
- M1 2
- IC1 53
- IC1 22
- U3 2
+ U2 B6
+Net 82 "/Inj2/GND" "GND"
+ U7 6
+ K1 3
+ R13 1
+ C8 2
  U8 6
- U9 8
+ C6 2
+ C10 2
+ R7 1
+ IC1 63
+ IC1 53
+ C4 2
+ U5 6
+ IC1 22
+ K3 3
+ U6 6
  D6 1
- U1 3C
- U9 2
+ C14 1
+ C15 1
  D4 2
  C2 2
  C1 2
  D7 1
- U2 49
- U4 2
- C17 2
- C18 1
+ U9 8
+ M1 2
+ U9 2
+ U3 2
  U11 1
- U1 3F
- P2 6
- C14 1
- C15 1
- R7 1
- C8 2
- D15 1
- R13 1
- U12 3
- U14 2
  R10 1
- U16 2
- U5 6
- U16 8
- U16 9
- U16 15
- U7 6
- U6 6
- C10 2
- C4 2
- C6 2
- U13 1
- K3 3
- U13 4
- R25 2
- K1 3
- D12 1
  R16 1
- U2 47
- U2 39
+ U4 2
+ P2 6
+ C21 2
+ C18 1
+ C17 2
  U10 2
+ D14 1
+ U2 49
+ K2 2
+ C12 2
+ U1 3F
+ D15 1
+ C13 1
+ U1 3C
+ U2 43
+ U2 33
+ U2 B3
+ U2 35
  U2 45
  U2 B5
  U2 37
- C20 2
- U2 33
- C21 2
- D14 1
- U2 41
+ U2 47
+ U2 39
  U2 31
- K2 2
+ U2 41
+ C23 2
+ U16 2
+ R25 2
+ U16 8
+ U16 9
+ D12 1
+ U13 1
+ U13 4
  C11 2
- C12 2
- C13 1
- U2 43
- U2 B3
- U2 35
+ C20 2
+ U12 3
+ U16 15
+ U14 2
+ C24 2
+ C22 2
 Net 84 "/Inj1/IN" "IN"
+ R16 2
  U2 B4
  U8 1
- R16 2
 Net 85 "/CoProcessor/Ignition2" "Ignition2"
- U2 44
  U1 3H
+ U2 44
  R19 2
 Net 88 "/CAM" "CAM"
+ U1 2H
  R1 2
  U2 14
- U1 2H
 Net 89 "/Flyback/Gnd" "Gnd"
- U1 3B
- U1 3A
- U8 5
+ R8 2
  U7 5
  R14 2
  R11 2
- U6 5
- R8 2
  Q1 2
  U5 5
+ U1 3B
+ U1 3A
  D2 1
+ U6 5
+ U8 5
  R5 2
-Net 91 "/Inj1/FB" "FB"
- D9 2
- R4 1
- D11 2
+Net 91 "/Inj3/FB" "FB"
  D8 2
+ D11 2
  D10 2
+ R4 1
+ D9 2
  Q1 3
 Net 92 "/CoProcessor/FieldDriver" "FieldDriver"
  P1 1
- IC1 14
  U11 3
- U11 4
 Net 93 "/CoProcessor/Phase12V" "Phase12V"
  U12 1
  P1 2
 Net 94 "" ""
- IC1 59
- P3 2
-Net 95 "" ""
  IC1 35
  P5 1
-Net 96 "" ""
- IC1 37
+Net 95 "" ""
  P5 3
-Net 97 "" ""
- IC1 39
+ IC1 37
+Net 96 "" ""
  P5 5
-Net 98 "" ""
- IC1 41
+ IC1 39
+Net 97 "" ""
  P5 7
-Net 99 "" ""
+ IC1 41
+Net 98 "" ""
  IC1 45
  P4 4
-Net 100 "" ""
+Net 99 "" ""
  IC1 47
  P4 2
-Net 101 "" ""
- P3 4
- IC1 57
-Net 102 "" ""
- IC1 55
- P3 6
-Net 103 "" ""
- IC1 7
- R18 1
-Net 104 "" ""
- IC1 54
- P3 7
-Net 105 "" ""
- R19 1
- IC1 8
-Net 106 "" ""
+Net 100 "" ""
  IC1 9
  R17 1
+Net 101 "" ""
+ IC1 59
+ P3 2
+Net 102 "" ""
+ P3 4
+ IC1 57
+Net 103 "" ""
+ IC1 55
+ P3 6
+Net 104 "" ""
+ IC1 7
+ R18 1
+Net 105 "" ""
+ IC1 8
+ R19 1
+Net 106 "/CoProcessor/accelerometer/CS" "CS"
+ U16 3
+ IC1 16
 Net 107 "" ""
- P4 3
- IC1 46
+ IC1 48
+ P4 1
 Net 108 "" ""
- P4 5
+ IC1 46
+ P4 3
+Net 109 "" ""
  IC1 44
-Net 109 "/CoProcessor/RESET" "RESET"
+ P4 5
+Net 110 "/CoProcessor/RESET" "RESET"
+ R20 1
  IC1 20
  P2 5
- R20 1
 Net 111 "/CoProcessor/PMISO" "PMISO"
- IC1 3
  P2 1
+ IC1 3
 Net 112 "/CoProcessor/PMOSI" "PMOSI"
- P2 4
  IC1 2
+ P2 4
 Net 113 "" ""
  P3 1
  IC1 60
 Net 114 "" ""
- IC1 58
  P3 3
+ IC1 58
 Net 115 "" ""
- IC1 56
  P3 5
+ IC1 56
 Net 116 "" ""
+ IC1 54
+ P3 7
+Net 117 "" ""
  IC1 36
  P5 2
-Net 117 "" ""
- IC1 38
- P5 4
 Net 118 "" ""
+ P5 4
+ IC1 38
+Net 119 "" ""
  P5 6
  IC1 40
-Net 119 "" ""
- P4 1
- IC1 48
 Net 120 "" ""
  C13 2
- IC1 64
  L1 1
-Net 121 "/CoProcessor/accelerometer/SCL" "SCL"
- P2 3
- IC1 11
- U16 5
- U10 13
-Net 122 "/CoProcessor/Idle" "Idle"
- IC1 17
- U11 2
-Net 123 "/CoProcessor/alternator/12VMeasure" "12VMeasure"
- IC1 61
- D15 2
- R21 1
-Net 124 "/CoProcessor/alternator/PhasePin" "PhasePin"
- U12 4
- IC1 6
-Net 125 "/CoProcessor/accelerometer/CS" "CS"
- IC1 51
- U16 3
-Net 126 "/CoProcessor/accelerometer/SDO" "SDO"
- U10 11
- U16 6
- IC1 13
-Net 127 "/CoProcessor/knock/SDI" "SDI"
+ IC1 64
+Net 122 "/CoProcessor/accelerometer/SDI" "SDI"
+ U10 12
  U16 4
  IC1 12
- U10 12
-Net 129 "" ""
+Net 123 "/CoProcessor/accelerometer/SCL" "SCL"
+ U16 5
+ IC1 11
+ U10 13
+ P2 3
+Net 124 "/CoProcessor/FieldPWM" "FieldPWM"
+ IC1 14
+ U11 4
+Net 125 "/CoProcessor/Idle" "Idle"
+ IC1 17
+ U11 2
+Net 126 "/CoProcessor/alternator/12VMeasure" "12VMeasure"
+ D15 2
+ R21 1
+ IC1 61
+Net 127 "/CoProcessor/alternator/PhasePin" "PhasePin"
+ U12 4
+ IC1 29
+Net 128 "/CoProcessor/knock/SDO" "SDO"
+ IC1 13
+ U10 11
+ U16 6
+Net 130 "" ""
+ IC1 23
  X1 1
  C14 2
- IC1 23
-Net 130 "" ""
- C15 2
+Net 131 "" ""
  X1 2
+ C15 2
  IC1 24
-Net 131 "/CoProcessor/knock/Clock" "Clock"
+Net 132 "/CoProcessor/knock/Clock" "Clock"
  IC1 42
  R22 2
-Net 132 "/CoProcessor/knock/Window" "Window"
- IC1 49
+Net 133 "/CoProcessor/knock/Window" "Window"
  U10 7
-Net 133 "/CoProcessor/knock/CS" "CS"
+ IC1 49
+Net 134 "/CoProcessor/knock/CS" "CS"
  U10 8
  IC1 50
-Net 139 "/CoProcessor/CanTx" "CanTx"
- IC1 30
+Net 140 "/CoProcessor/CanTx" "CanTx"
  U9 1
-Net 140 "/CoProcessor/CanRx" "CanRx"
+ IC1 30
+Net 141 "/CoProcessor/CanRx" "CanRx"
  U9 4
  IC1 31
-Net 154 "" ""
- C9 1
- U8 3
 Net 155 "" ""
  Q5 3
- R14 1
  U8 4
+ R14 1
 Net 156 "" ""
- R15 2
- C10 1
- U8 8
+ U8 3
+ C9 1
 Net 157 "" ""
- Q5 1
+ C10 1
+ R15 2
+ U8 8
+Net 158 "" ""
  C9 2
  U8 2
-Net 158 "" ""
- Q4 1
- U7 2
- C7 2
+ Q5 1
 Net 159 "" ""
- R12 2
+ U7 2
+ Q4 1
+ C7 2
+Net 160 "" ""
  C8 1
  U7 8
-Net 160 "" ""
+ R12 2
+Net 161 "" ""
  R11 1
  Q4 3
  U7 4
-Net 161 "" ""
- C7 1
- U7 3
 Net 162 "" ""
- C6 1
- R9 2
- U6 8
+ U7 3
+ C7 1
 Net 163 "" ""
- Q3 1
- C5 2
- U6 2
+ R9 2
+ C6 1
+ U6 8
 Net 164 "" ""
- Q3 3
- R8 1
- U6 4
+ Q3 1
+ U6 2
+ C5 2
 Net 165 "" ""
- U6 3
- C5 1
+ R8 1
+ Q3 3
+ U6 4
 Net 166 "" ""
+ C5 1
+ U6 3
+Net 167 "" ""
  U5 8
  C4 1
  R6 2
-Net 167 "" ""
- C3 2
+Net 168 "" ""
  U5 2
  Q2 1
-Net 168 "" ""
+ C3 2
+Net 169 "" ""
+ U5 4
  Q2 3
  R5 1
- U5 4
-Net 169 "" ""
- U5 3
- C3 1
 Net 170 "" ""
+ C3 1
+ U5 3
+Net 171 "" ""
+ D13 1
+ C2 1
  F1 1
  U4 3
- C2 1
- D13 1
-Net 171 "" ""
+Net 172 "" ""
  D3 1
  D4 1
-Net 172 "" ""
- Q1 1
- R4 2
- D2 2
 Net 173 "" ""
- U16 13
- U15 7
+ D2 2
+ R4 2
+ Q1 1
 Net 174 "" ""
- U16 11
- U15 6
-Net 175 "" ""
  U15 3
  U16 14
-Net 176 "" ""
+Net 175 "" ""
  U15 8
  U16 12
+Net 176 "" ""
+ U15 6
+ U16 11
 Net 177 "" ""
+ U15 7
+ U16 13
+Net 178 "/CoProcessor/accelerometer/3V" "3V"
+ U16 16
+ U14 5
+ C24 1
  U16 10
  U15 2
- U14 3
- U16 16
-Net 181 "" ""
+Net 179 "" ""
+ C23 1
+ U14 4
+Net 183 "" ""
+ R21 2
  U13 6
  U13 5
- R21 2
-Net 182 "" ""
+Net 184 "" ""
+ D12 2
+ U13 3
+ R26 1
+Net 185 "" ""
  U12 2
  R25 1
-Net 183 "" ""
- U13 3
- D12 2
- R26 1
-Net 184 "" ""
+Net 186 "" ""
  R27 2
  R24 1
  U10 19
-Net 185 "" ""
- U10 10
- R23 1
-Net 186 "" ""
- R22 1
- C16 2
 Net 187 "" ""
- U10 3
- C18 2
- U10 20
+ R23 1
+ U10 10
 Net 188 "" ""
+ C16 2
+ R22 1
+Net 189 "" ""
+ U10 3
+ U10 20
+ C18 2
+Net 190 "" ""
  U10 18
  R24 2
-Net 189 "" ""
+Net 191 "" ""
  R27 1
  C19 2
-Net 190 "/CoProcessor/knock/KnockXin" "KnockXin"
+Net 192 "/CoProcessor/knock/KnockXin" "KnockXin"
  C16 1
  R23 2
  U10 9
