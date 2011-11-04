@@ -1,0 +1,619 @@
+# EESchema Netlist Version 1.1 created  11/2/2011 4:30:18 AM
+(
+ ( /4EADF704 SM0805  C21 33nF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4EADF6FF SM0805  C20 120nF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4EADBC26 R4  R18 1K {Lib=R}
+  (    1 N-000070 )
+  (    2 ? )
+ )
+ ( /4EADBC22 R4  R19 1K {Lib=R}
+  (    1 N-000022 )
+  (    2 ? )
+ )
+ ( /4EADB758 SIL-7  P3 CONN_7 {Lib=CONN_7}
+  (    1 N-000019 )
+  (    2 N-000068 )
+  (    3 N-000001 )
+  (    4 N-000067 )
+  (    5 N-000007 )
+  (    6 N-000066 )
+  (    7 N-000027 )
+ )
+ ( /4EADB714 SIL-7  P5 CONN_7 {Lib=CONN_7}
+  (    1 N-000065 )
+  (    2 N-000009 )
+  (    3 N-000064 )
+  (    4 N-000003 )
+  (    5 N-000063 )
+  (    6 N-000020 )
+  (    7 N-000073 )
+ )
+ ( /4EADB6E1 SIL-5  P4 CONN_5 {Lib=CONN_5}
+  (    1 N-000002 )
+  (    2 N-000072 )
+  (    3 N-000008 )
+  (    4 N-000071 )
+  (    5 N-000028 )
+ )
+ ( /4EADAA5E SM0805  C13 120nF {Lib=C}
+  (    1 /GND )
+  (    2 N-000062 )
+ )
+ ( /4EADAA55 SM0805  C12 33nF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4EADAA52 SM0805  C11 120nF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4EADA89D TQFP_64  IC1 AT90CAN {Lib=AT90CAN}
+  (    1 ? )
+  (    2 /PMOSI )
+  (    3 /PMISO )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+  (    7 N-000070 )
+  (    8 N-000022 )
+  (    9 N-000051 )
+  (   10 ? )
+  (   11 /knock/SCLK )
+  (   12 /knock/SDI )
+  (   13 /knock/SDO )
+  (   14 /FieldPWM )
+  (   15 ? )
+  (   16 ? )
+  (   17 /Idle )
+  (   18 ? )
+  (   19 ? )
+  (   20 /RESET )
+  (   21 /5V )
+  (   22 /GND )
+  (   23 N-000032 )
+  (   24 N-000037 )
+  (   25 ? )
+  (   26 ? )
+  (   27 ? )
+  (   28 ? )
+  (   29 /alternator/PhasePin )
+  (   30 /CanTx )
+  (   31 /CanRx )
+  (   32 ? )
+  (   33 ? )
+  (   34 ? )
+  (   35 N-000065 )
+  (   36 N-000009 )
+  (   37 N-000064 )
+  (   38 N-000003 )
+  (   39 N-000063 )
+  (   40 N-000020 )
+  (   41 N-000073 )
+  (   42 /knock/Clock )
+  (   43 ? )
+  (   44 N-000028 )
+  (   45 N-000071 )
+  (   46 N-000008 )
+  (   47 N-000072 )
+  (   48 N-000002 )
+  (   49 /knock/Window )
+  (   50 /knock/CS )
+  (   51 ? )
+  (   52 /5V )
+  (   53 /GND )
+  (   54 N-000027 )
+  (   55 N-000066 )
+  (   56 N-000007 )
+  (   57 N-000067 )
+  (   58 N-000001 )
+  (   59 N-000068 )
+  (   60 N-000019 )
+  (   61 /alternator/12VMeasure )
+  (   62 ? )
+  (   63 /GND )
+  (   64 N-000062 )
+ )
+ ( /4EA0F9A7 PIN_ARRAY_3x2  P2 CONN_3X2 {Lib=CONN_3X2}
+  (    1 /PMISO )
+  (    2 /5V )
+  (    3 /knock/SCLK )
+  (    4 /PMOSI )
+  (    5 /RESET )
+  (    6 /GND )
+ )
+ ( /4E9FE3CD R4  R17 1K {Lib=R}
+  (    1 N-000051 )
+  (    2 ? )
+ )
+ ( /4E9E8628 SO8N  U11 VNS3NV04D {Lib=VNS3NV04D}
+  (    1 /GND )
+  (    2 /Idle )
+  (    3 ? )
+  (    4 /FieldPWM )
+  (    5 /12V )
+  (    6 /12V )
+  (    7 /IAC )
+  (    8 /IAC )
+ )
+ ( /4E994AB0 SO8E  U9 MCP2551 {Lib=MCP2551}
+  (    1 /CanTx )
+  (    2 /GND )
+  (    3 /5V )
+  (    4 /CanRx )
+  (    5 ? )
+  (    6 ? )
+  (    7 ? )
+  (    8 /GND )
+ )
+ ( /4E9947FE SM1206  L1 10uH {Lib=INDUCTOR}
+  (    1 N-000062 )
+  (    2 /5V )
+ )
+ ( /4E993F05 SM0805  R20 10K {Lib=R}
+  (    1 /RESET )
+  (    2 /5V )
+ )
+ ( /4E97F0C2 HC-49V  X1 8MHz {Lib=CRYSTAL}
+  (    1 N-000032 )
+  (    2 N-000037 )
+ )
+ ( /4E97F046 SM0805  C15 22pF {Lib=C}
+  (    1 /GND )
+  (    2 N-000037 )
+ )
+ ( /4E97F033 SM0805  C14 22pF {Lib=C}
+  (    1 /GND )
+  (    2 N-000032 )
+ )
+ ( /4EACEB12/4EACEB37 SO20L  U10 TPIC8101 {Lib=TPIC8101}
+  (    1 /5V )
+  (    2 /GND )
+  (    3 N-000080 )
+  (    4 ? )
+  (    5 ? )
+  (    6 ? )
+  (    7 /knock/Window )
+  (    8 /knock/CS )
+  (    9 /knock/KnockXin )
+  (   10 N-000078 )
+  (   11 /knock/SDO )
+  (   12 /knock/SDI )
+  (   13 /knock/SCLK )
+  (   14 ? )
+  (   15 ? )
+  (   16 ? )
+  (   17 ? )
+  (   18 N-000082 )
+  (   19 N-000077 )
+  (   20 N-000080 )
+ )
+ ( /4EACEB12/4EACEB36 R4  R24 TBD {Lib=R}
+  (    1 N-000077 )
+  (    2 N-000082 )
+ )
+ ( /4EACEB12/4EACEB35 R4  R27 TBD {Lib=R}
+  (    1 N-000081 )
+  (    2 N-000077 )
+ )
+ ( /4EACEB12/4EACEB34 C2  C19 3.3nF {Lib=C}
+  (    1 ? )
+  (    2 N-000081 )
+ )
+ ( /4EACEB12/4EACEB33 SM0805  R23 1M {Lib=R}
+  (    1 N-000078 )
+  (    2 /knock/KnockXin )
+ )
+ ( /4EACEB12/4EACEB32 SM0805  C16 470pF {Lib=C}
+  (    1 /knock/KnockXin )
+  (    2 N-000079 )
+ )
+ ( /4EACEB12/4EACEB31 SM0805  R22 1k {Lib=R}
+  (    1 N-000079 )
+  (    2 /knock/Clock )
+ )
+ ( /4EACEB12/4EACEB30 SM0805  C18 100nF {Lib=BYPASS}
+  (    1 /GND )
+  (    2 N-000080 )
+ )
+ ( /4EACEB12/4EACEB2F SM0805  C17 4.7uF {Lib=C}
+  (    1 /5V )
+  (    2 /GND )
+ )
+ ( /4EABDB9D/4EADFC0D SOD123  D15 5.1V {Lib=ZENER}
+  (    1 /GND )
+  (    2 /alternator/12VMeasure )
+ )
+ ( /4EABDB9D/4EADFC02 SM0805  R21 1K {Lib=R}
+  (    1 /alternator/12VMeasure )
+  (    2 N-000074 )
+ )
+ ( /4EABDB9D/4EAC4F9C DIP-4__300  U12 FOD817 {Lib=FOD817}
+  (    1 ? )
+  (    2 N-000076 )
+  (    3 /GND )
+  (    4 /alternator/PhasePin )
+ )
+ ( /4EABDB9D/4EABDBCA SO8E  U13 AD8276 {Lib=AD8276}
+  (    1 /GND )
+  (    2 /12V )
+  (    3 N-000075 )
+  (    4 /GND )
+  (    5 N-000074 )
+  (    6 N-000074 )
+  (    7 /12V )
+ )
+ ( /4EABDB9D/4EABDBC9 SM0805  R26 10K {Lib=R}
+  (    1 N-000075 )
+  (    2 /12V )
+ )
+ ( /4EABDB9D/4EABDBC8 SOT23-3  D12 LM4040,10V {Lib=ZENER}
+  (    1 /GND )
+  (    2 N-000075 )
+ )
+ ( /4EABDB9D/4EABDBC6 SM0805  R25 10K {Lib=R}
+  (    1 N-000076 )
+  (    2 /GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C21
+ SM*
+ C?
+ C1-1
+$endlist
+$component C20
+ SM*
+ C?
+ C1-1
+$endlist
+$component R18
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R19
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component R17
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R20
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ SM*
+ C?
+ C1-1
+$endlist
+$component R24
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R27
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C19
+ SM*
+ C?
+ C1-1
+$endlist
+$component R23
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C16
+ SM*
+ C?
+ C1-1
+$endlist
+$component R22
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C18
+ SM*
+ C?
+ C1-1
+$endlist
+$component C17
+ SM*
+ C?
+ C1-1
+$endlist
+$component D15
+ D?
+ SO*
+ SM*
+$endlist
+$component R21
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R26
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D12
+ D?
+ SO*
+ SM*
+$endlist
+$component R25
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "" ""
+ P3 3
+ IC1 58
+Net 2 "" ""
+ P4 1
+ IC1 48
+Net 3 "" ""
+ IC1 38
+ P5 4
+Net 7 "" ""
+ P3 5
+ IC1 56
+Net 8 "" ""
+ IC1 46
+ P4 3
+Net 9 "" ""
+ IC1 36
+ P5 2
+Net 13 "/5V" "5V"
+ IC1 52
+ P2 2
+ R20 2
+ L1 2
+ U9 3
+ C21 1
+ C11 1
+ C12 1
+ C20 1
+ C17 1
+ U10 1
+ IC1 21
+Net 14 "/knock/SDI" "SDI"
+ IC1 12
+ U10 12
+Net 15 "/knock/SDO" "SDO"
+ IC1 13
+ U10 11
+Net 18 "/CanRx" "CanRx"
+ IC1 31
+ U9 4
+Net 19 "" ""
+ IC1 60
+ P3 1
+Net 20 "" ""
+ P5 6
+ IC1 40
+Net 22 "" ""
+ R19 1
+ IC1 8
+Net 27 "" ""
+ P3 7
+ IC1 54
+Net 28 "" ""
+ P4 5
+ IC1 44
+Net 32 "" ""
+ X1 1
+ C14 2
+ IC1 23
+Net 36 "/FieldPWM" "FieldPWM"
+ U11 4
+ IC1 14
+Net 37 "" ""
+ IC1 24
+ X1 2
+ C15 2
+Net 39 "/CanTx" "CanTx"
+ IC1 30
+ U9 1
+Net 40 "/alternator/PhasePin" "PhasePin"
+ IC1 29
+ U12 4
+Net 41 "/alternator/12VMeasure" "12VMeasure"
+ IC1 61
+ D15 2
+ R21 1
+Net 42 "/12V" "12V"
+ R26 2
+ U13 7
+ U11 5
+ U11 6
+ U13 2
+Net 45 "/knock/Window" "Window"
+ IC1 49
+ U10 7
+Net 46 "/knock/CS" "CS"
+ U10 8
+ IC1 50
+Net 47 "/knock/Clock" "Clock"
+ IC1 42
+ R22 2
+Net 48 "/GND" "GND"
+ C13 1
+ C20 2
+ C18 1
+ C17 2
+ C12 2
+ U10 2
+ R25 2
+ D12 1
+ U13 4
+ C21 2
+ U13 1
+ U12 3
+ D15 1
+ IC1 22
+ P2 6
+ IC1 53
+ IC1 63
+ C11 2
+ U11 1
+ U9 8
+ U9 2
+ C14 1
+ C15 1
+Net 49 "/knock/SCLK" "SCLK"
+ IC1 11
+ U10 13
+ P2 3
+Net 50 "/Idle" "Idle"
+ IC1 17
+ U11 2
+Net 51 "" ""
+ R17 1
+ IC1 9
+Net 52 "/RESET" "RESET"
+ P2 5
+ R20 1
+ IC1 20
+Net 53 "/PMOSI" "PMOSI"
+ IC1 2
+ P2 4
+Net 54 "/PMISO" "PMISO"
+ IC1 3
+ P2 1
+Net 60 "/IAC" "IAC"
+ U11 7
+ U11 8
+Net 62 "" ""
+ IC1 64
+ C13 2
+ L1 1
+Net 63 "" ""
+ IC1 39
+ P5 5
+Net 64 "" ""
+ P5 3
+ IC1 37
+Net 65 "" ""
+ IC1 35
+ P5 1
+Net 66 "" ""
+ IC1 55
+ P3 6
+Net 67 "" ""
+ IC1 57
+ P3 4
+Net 68 "" ""
+ P3 2
+ IC1 59
+Net 70 "" ""
+ R18 1
+ IC1 7
+Net 71 "" ""
+ IC1 45
+ P4 4
+Net 72 "" ""
+ P4 2
+ IC1 47
+Net 73 "" ""
+ IC1 41
+ P5 7
+Net 74 "" ""
+ R21 2
+ U13 5
+ U13 6
+Net 75 "" ""
+ U13 3
+ R26 1
+ D12 2
+Net 76 "" ""
+ U12 2
+ R25 1
+Net 77 "" ""
+ U10 19
+ R24 1
+ R27 2
+Net 78 "" ""
+ U10 10
+ R23 1
+Net 79 "" ""
+ C16 2
+ R22 1
+Net 80 "" ""
+ C18 2
+ U10 20
+ U10 3
+Net 81 "" ""
+ C19 2
+ R27 1
+Net 82 "" ""
+ U10 18
+ R24 2
+Net 90 "/knock/KnockXin" "KnockXin"
+ U10 9
+ R23 2
+ C16 1
+}
+#End
