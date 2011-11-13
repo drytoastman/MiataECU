@@ -35,6 +35,11 @@
       </AvrGcc>
     </ToolchainSettings>
     <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="0">
+          <Address>0xff00</Address>
+        </InitialStack>
+      </MemorySegments>
     </MemorySettings>
     <GenerateHexFile>True</GenerateHexFile>
     <GenerateMapFile>True</GenerateMapFile>
@@ -61,9 +66,18 @@
     <GenerateEepFile>True</GenerateEepFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="pffs\mmc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pffs\pff.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="PNPAddOns.c">
       <SubType>compile</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="pffs" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
 </Project>
