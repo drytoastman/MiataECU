@@ -5,12 +5,14 @@
  *  Author: bwilson
  */ 
 
-#include <avr/io.h>
+#include "PNPAddOns.h"
+DiskInfo disk;
 
 int main(void)
 {
-    while(1)
-    {
-        //TODO:: Please write your application code 
-    }
+	initInfo(&disk);
+	scanMBR(&disk);
+	scanFAT(&disk);
+	determineFileName(&disk);
+	//findFreeCluster(&disk);
 }

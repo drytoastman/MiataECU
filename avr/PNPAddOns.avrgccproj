@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>5.0</ProjectVersion>
     <ProjectGuid>{25d3cb9c-0676-4f88-82a0-cb602bbf8f45}</ProjectGuid>
-    <avrdevice>AT90CAN64</avrdevice>
+    <avrdevice>ATmega128</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>C</Language>
@@ -21,6 +21,19 @@
     <AssemblyName>PNPAddOns</AssemblyName>
     <Name>PNPAddOns</Name>
     <RootNamespace>PNPAddOns</RootNamespace>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolName xmlns="">AVR Simulator</ToolName>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <Channel xmlns="">
+        <host>127.0.0.1</host>
+        <port>50141</port>
+        <ssl>False</ssl>
+      </Channel>
+    </com_atmel_avrdbg_tool_simulator>
+    <avrtoolinterface />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -66,18 +79,12 @@
     <GenerateEepFile>True</GenerateEepFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="pffs\mmc.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="pffs\pff.c">
+    <Compile Include="fat.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PNPAddOns.c">
       <SubType>compile</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pffs" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
 </Project>
