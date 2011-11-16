@@ -13,6 +13,12 @@ int main(void)
 	initInfo(&disk);
 	scanMBR(&disk);
 	scanFAT(&disk);
-	determineFileName(&disk);
-	//findFreeCluster(&disk);
+	//determineFileName(&disk);
+	findNextFreeCluster(&disk);
+	// write data into disk at clusterNumber
+	// when full
+		// save offset and buffer
+		// disk.clusterOffset++;
+	findNextFreeCluster(&disk);
+		// write new cluster number into old location
 }

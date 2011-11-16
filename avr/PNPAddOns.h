@@ -1,3 +1,6 @@
+#ifndef _ADDONS_H_
+#define _ADDONS_H_
+
 #include <avr/io.h>
 #include <string.h>
 
@@ -37,7 +40,9 @@ typedef struct
 {
 	uint32 partition; // lba of partition
 	
+	uint8  isFat32; // true for FAT32, false for FAT16
 	uint32 fat1;  // lba for start of FAT1
+	uint32 fat2;  // lba for start of FAT2
 	uint8  fatsize; // how many LBA in a fat
 	uint32 fatEntries; // how many clusters in each FAT
 	
@@ -53,13 +58,16 @@ typedef struct
 	uint32 bufferlba; // lba of current buffer;
 	uint8_t buffer[512];
 	
-	// store our log file info that we can write back later
+	// store our 'open' log file info that we can write back later
 	DirEntry fileInfo;
 	uint32 fileLBA;
 	uint16 fileoffset;
+	
+	// store info of which FAT entry we are currently using and the recorded 
+	uint32 clusterLBA;
+	uint16 clusterOffset;
+	uint32 clusterNumber;
 } DiskInfo;
-
-
 
 //#define WORD32(b, l) (((uint32)b[l+3]<<24) + ((uint32)b[l+2]<<16) + ((uint32)b[l+1]<<8) + (uint32)b[l+0] )
 //#define WORD16(b, l) (((uint16)b[l+1]<<8) + (uint16)b[l+0] )
@@ -70,3 +78,6 @@ void initInfo(DiskInfo *disk);
 uint8 scanMBR(DiskInfo *disk);
 void scanFAT(DiskInfo *disk);
 void determineFileName(DiskInfo *disk);
+char findNextFreeCluster(DiskInfo *disk);
+
+#endif

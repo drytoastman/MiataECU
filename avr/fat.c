@@ -8,14 +8,22 @@ void read_sdcard(DiskInfo *disk, int lba)
 	if (disk->bufferlba == lba)
 		return;
 	
-	switch(lba)
+	if ((lba > 9) && (lba < 238))
 	{
-		case 0: memcpy(disk->buffer, block0, 512); break;
-		case 8: memcpy(disk->buffer, block8, 512); break;
-		case 9: memcpy(disk->buffer, block9, 512); break;
-		case 504: memcpy(disk->buffer, block504, 512); break;
-		case 505: memcpy(disk->buffer, block505, 512); break;
+		//memcpy(disk->buffer, block9, 512);
 	}
+	else
+	{
+		switch(lba)
+		{
+			case 0: memcpy(disk->buffer, block0, 512); break;
+			case 8: memcpy(disk->buffer, block8, 512); break;
+			case 9: memcpy(disk->buffer, block9, 512); break;
+			case 238: memcpy(disk->buffer, block238, 512); break;
+			case 504: memcpy(disk->buffer, block504, 512); break;
+			case 505: memcpy(disk->buffer, block505, 512); break;
+		}
+	}	
 		
 	disk->bufferlba = lba;
 }	
@@ -82,7 +90,10 @@ void scanFAT(DiskInfo *disk)
 
 	// calculatable parameters
 	disk->fat1 = disk->partition + reservedSectors;  // where fat tables are
-	disk->data = disk->fat1 + (disk->fatsize * 2); // where data clusters start
+	disk->fat2 = disk->fat1 + disk->fatsize;  // where fat tables are
+	disk->data = disk->fat2 + disk->fatsize; // where data clusters start
+	disk->clusterLBA = disk->fat1;
+	disk->clusterOffset = 2;
 	
 	if (disk->fatsize == 0) // special case for FAT32
 	{
@@ -92,12 +103,14 @@ void scanFAT(DiskInfo *disk)
 		disk->root = disk->data + (rootCluster-2)*disk->sectorsPerCluster;
 		disk->rootCount = BYTESPERSECTOR * disk->sectorsPerCluster / DIRENTRY_SIZE;  // for simplicity, assume a single cluster, thats 128 files for 4K cluster size
 		disk->fatEntries = disk->fatsize * BYTESPERSECTOR / 32;
+		disk->isFat32 = 1;
 	}
 	else // finalize for FAT16 and skip the root dir
 	{
 		disk->root = disk->data;
 		disk->data += (disk->rootCount * DIRENTRY_SIZE) / BYTESPERSECTOR;
 		disk->fatEntries = (uint32)disk->fatsize * BYTESPERSECTOR / 16;
+		disk->isFat32 = 0;
 	}
 }
 
@@ -109,7 +122,6 @@ void determineFileName(DiskInfo *disk)
 	uint16 ptr = 512;
 	DirEntry *file;
 	
-	disk->rootCount = 32;
 	while (direntry < disk->rootCount)
 	{
 		if 	(ptr >= 512)   // sector boundary
@@ -178,7 +190,52 @@ void determineFileName(DiskInfo *disk)
 	file->fileSize = 0; 
 }
 
-void findNextFreeCluster(DiskInfo *disk)
-{	
+char findNextFreeCluster(DiskInfo *disk)
+{
+	if (disk->isFat32)
+	{
+		uint32 *entry = (uint32*)&(disk->buffer);
+		uint16 offset = disk->clusterOffset;
+		while (disk->clusterLBA < disk->fat2)
+		{
+			read_sdcard(disk, disk->clusterLBA);
+			while (offset < 128) // 128 entries per sector
+			{
+				if (entry[offset] == 0)
+				{
+					disk->clusterOffset = offset;
+					disk->clusterNumber = (disk->clusterLBA - disk->fat1)/128 + disk->clusterOffset;
+					return 0;
+				}				
+				offset++;
+			}
+			disk->clusterLBA++;
+			offset = 0;
+		}		
+	}
+	else
+	{
+		uint16 *entry = (uint16*)&(disk->buffer);
+		uint16 offset = disk->clusterOffset;
+		while (disk->clusterLBA < disk->fat2)
+		{
+			read_sdcard(disk, disk->clusterLBA);
+			while (offset < 256) // 256 entries per sector
+			{
+				if (entry[offset] == 0)
+				{
+					disk->clusterOffset = offset;
+					disk->clusterNumber = (disk->clusterLBA - disk->fat1)/256 + disk->clusterOffset;
+					return 0;
+				}		
+				offset++;
+			}
+			disk->clusterLBA++;
+			offset = 0;
+		}		
+	}
+	
+	// if we get here, the disk if full
+	return -1;
 }
 
