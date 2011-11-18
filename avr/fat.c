@@ -1,13 +1,22 @@
 
 #include "PNPAddOns.h"
 
-#include "test.c"
+#define FATCOUNT 2
+#define DIRENTRY_SIZE 32
+#define DIRENTRY_PERSECTOR 16
+#define BYTESPERSECTOR 512
+#define SIG55_LOCATION 510
+#define SIGAA_LOCATION 511
+#define PARTITION1_TYPECODE_LOCATION 450
+#define PARTITION1_LBA_BEGIN_LOCATION 454
+
+//#include "test.c"
 
 void read_sdcard(DiskInfo *disk, int lba)
 {
 	if (disk->bufferlba == lba)
 		return;
-	
+	/*	
 	if ((lba > 9) && (lba < 238))
 	{
 		//memcpy(disk->buffer, block9, 512);
@@ -23,7 +32,7 @@ void read_sdcard(DiskInfo *disk, int lba)
 			case 504: memcpy(disk->buffer, block504, 512); break;
 			case 505: memcpy(disk->buffer, block505, 512); break;
 		}
-	}	
+	} */	
 		
 	disk->bufferlba = lba;
 }	
@@ -190,6 +199,7 @@ void determineFileName(DiskInfo *disk)
 	file->fileSize = 0; 
 }
 
+
 char findNextFreeCluster(DiskInfo *disk)
 {
 	if (disk->isFat32)
@@ -225,7 +235,7 @@ char findNextFreeCluster(DiskInfo *disk)
 				if (entry[offset] == 0)
 				{
 					disk->clusterOffset = offset;
-					disk->clusterNumber = (disk->clusterLBA - disk->fat1)/256 + disk->clusterOffset;
+					disk->clusterNumber = (disk->clusterLBA - disk->fat1)/256 + offset;
 					return 0;
 				}		
 				offset++;

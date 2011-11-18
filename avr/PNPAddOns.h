@@ -2,20 +2,14 @@
 #define _ADDONS_H_
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <string.h>
 
 typedef uint8_t uint8;
 typedef uint16_t uint16;
 typedef uint32_t uint32;
 
-#define FATCOUNT 2
-#define DIRENTRY_SIZE 32
-#define DIRENTRY_PERSECTOR 16
-#define BYTESPERSECTOR 512
-#define SIG55_LOCATION 510
-#define SIGAA_LOCATION 511
-#define PARTITION1_TYPECODE_LOCATION 450
-#define PARTITION1_LBA_BEGIN_LOCATION 454
+
 
 typedef struct
 {
@@ -36,7 +30,7 @@ typedef struct
 	uint32 fileSize;
 } DirEntry;
 
-typedef struct  
+typedef struct DiskInfo
 {
 	uint32 partition; // lba of partition
 	
@@ -56,7 +50,9 @@ typedef struct
 	uint8 nextOnes;
 	
 	uint32 bufferlba; // lba of current buffer;
-	uint8_t buffer[512];
+	uint8  *buffer;
+	uint8  buffer1[512];
+	uint8  buffer2[512];
 	
 	// store our 'open' log file info that we can write back later
 	DirEntry fileInfo;
@@ -69,8 +65,7 @@ typedef struct
 	uint32 clusterNumber;
 } DiskInfo;
 
-//#define WORD32(b, l) (((uint32)b[l+3]<<24) + ((uint32)b[l+2]<<16) + ((uint32)b[l+1]<<8) + (uint32)b[l+0] )
-//#define WORD16(b, l) (((uint16)b[l+1]<<8) + (uint16)b[l+0] )
+
 #define WORD32(b, l) *((uint32*)&b[l])
 #define WORD16(b, l) *((uint16*)&b[l])
 
@@ -79,5 +74,8 @@ uint8 scanMBR(DiskInfo *disk);
 void scanFAT(DiskInfo *disk);
 void determineFileName(DiskInfo *disk);
 char findNextFreeCluster(DiskInfo *disk);
+
+void vss_init();
+void knock_init();
 
 #endif
