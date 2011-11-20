@@ -11,10 +11,10 @@ UsedLibrary="PNP.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="379 28 1630 765"
+Loc="112 0 1363 737"
 State=1
 Number=0
 
 [Desktop]
-Screen="3200 1080"
+Screen="1364 768"
 Window="Win_1"
