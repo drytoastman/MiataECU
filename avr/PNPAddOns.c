@@ -33,8 +33,9 @@ int main(void)
 	TCCR1B = 0b00001101; // clk/1024, WGM Mode 4 = CTC, rollover at OC1A but no pin changes
 	TCCR1C = 0;
 	TIMSK1 = 0b01001110; // interupts: ICP1, OC1A, OC1B, OC1C
-	OCR1A = 62500; // overflow at 4.000 seconds
+	OCR1A = 62500; // overflow at 4.000 seconds, we are using CTC so it rolls over automatically
 	OCR1B = 1250; // used by logging, initial 80ms
+	OCR1C = 12345; // used by ???
 
 
 	/*
