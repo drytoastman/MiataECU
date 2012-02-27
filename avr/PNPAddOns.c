@@ -50,9 +50,20 @@ int main(void)
 }
 
 
+#define LOGSWITCH PORTD & BV_(7)
+#define CARDDETECT PORTD & BV_(4)
+
+#define SDCS PORTB & BV_(0)
+#define WINDOW PORTB & BV_(4)
+#define KNOCKCS PORTB & BV_(5)
+#define ACCELCS PORTB & BV_(6)
+
+#define CELLIGHT PORTF & BV_(0)
+
 /** */
 ISR(CANIT_vect)
 {
+	
 }
 
 ISR(SPI_STC_vect)

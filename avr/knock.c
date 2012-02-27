@@ -39,10 +39,12 @@ inline void startKnockTimer()
 
 inline void openWindow()
 {
+	PORTB |= PB4;
 }
 
 inline void closeWindow()
 {
+	PORTB &= ~PB4;
 }
 
 inline void scheduleKnockRead()
