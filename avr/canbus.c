@@ -207,7 +207,40 @@ extern U8 can_get_status (st_cmd_t *);
 	CANMSG - data byte
 */
 
+/*
 
+AVR Registers
+CANIDT4 - IDT4  IDT3  IDT2  IDT1  IDT0  RTRTAG RB1TAG RB0TAG
+CANIDT3 - IDT12 IDT11 IDT10 IDT9  IDT8  IDT7  IDT6  IDT5 
+CANIDT2 - IDT20 IDT19 IDT18 IDT17 IDT16 IDT15 IDT14 IDT13 
+CANIDT1 - IDT28 IDT27 IDT26 IDT25 IDT24 IDT23 IDT22 IDT21 
+
+MS Extra Registers
+CAN_RB_IDR0 (0x20)	var_offset	 	28 ← 21
+CAN_RB_IDR1 (0x21)	var_offset	SRR=1	IDE=1	msg_type	 	20 ← 15
+CAN_RB_IDR2 (0x22)	From ID	To ID	 	14 ← 7
+CAN_RB_IDR3 (0x23)	var_blk	spare	RTR	 	6 ← 0, RTR
+
+CAN BUS wire
+Identifier A 	11 	First part of the (unique) identifier for the data which also represents the message priority
+Substitute remote request (SRR) 	1 	Must be recessive (1)Optional
+Identifier extension bit (IDE) 	1 	Must be recessive (1)Optional
+Identifier B 	18 	Second part of the (unique) identifier for the data which also represents the message priority
+Remote transmission request (RTR) 	1 	Must be dominant (0)
+
+VarOffset (11bits)- 0-10
+MsgType (3bits) -  11-13
+FromID (4bits) -   14-17
+ToID (4bits) -     18-21
+VarBlk(4bits) -    22-25
+Spare (3bits) -    26-28
+
+ Bits 7->0
+IDT4 - VarOffset(4-0) / 3control
+IDT3 - MsgType(1-0)  / VarOffset(10-5)
+IDT2 - ToID(2-0)  / FromID(3-0) / MsgType(2)
+IDT1 - Spare(2-0) / VarBlk(3-0) / ToID(3)
+*/
 
 #define CAN_Reset()   CANGCON  =  _BV(SWRES) 
 #define CAN_Enable()  CANGCON |=  _BV(ENASTB)
@@ -232,38 +265,25 @@ void can_init()
 	CANGIE = 0b10111110;   // interupts for general, rx, tx, MOb error, frame buffer, general error
 	CANIE1 = MOb interrupt;
 
+
 	// 0 to 6 set aside for receive
 	for (ii = 0; ii < 7; ii++)
 	{
 		CANPAGE = ii << 4;
 
-		CANIDT1 = ;
-		CANIDT2 = ;
-		CANIDT3 = ;
-		CANIDT4 = ;
-		CANIDM1 = ;
-		CANIDM2 = ;
-		CANIDM3 = ;
-		CANIDM4 = ;
+		CANIDT1 = 0x00;
+		CANIDT2 = 0x00;
+		CANIDT3 = 3 << 5;  // ID[2-0] == 5
+		CANIDT4 = 0x00;    // ID[3] = 0
+
+		CANIDM1 = 0x00;
+		CANIDM2 = 0x00;
+		CANIDM3 = 0xE0;
+		CANIDM4 = 0x01;    // mask out only ToID
 		CANCDMOB = ;
 	}
 
 	// 7 to 14 set aside for transmit
-	for (ii = 7; ii < 14; ii++)
-	{
-		CANPAGE = ii << 4;
-
-		CANIDT1 = ;
-		CANIDT2 = ;
-		CANIDT3 = ;
-		CANIDT4 = ;
-		CANIDM1 = ;
-		CANIDM2 = ;
-		CANIDM3 = ;
-		CANIDM4 = ;
-		CANCDMOB = ;
-
-	}
 
 
 	CAN_Enable();
@@ -271,7 +291,21 @@ void can_init()
 
 
 
+U8 can_send(xxxx)
+{
+	for (ii = 7; ii < 14; ii++)
+	{
+		// find open buffer
 
+		CANPAGE = ii << 4;
+		CANIDT1 = ;
+		CANIDT2 = ;
+		CANIDT3 = ;
+		CANIDT4 = ;
+		CANCDMOB = ;
+	}
+
+}
 
 U8 can_get_mob_status(void)
 {
