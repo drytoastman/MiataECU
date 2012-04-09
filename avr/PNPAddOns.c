@@ -28,6 +28,7 @@ int main(void)
 
 	knock_init();
 	vss_init();
+	can_init();
 
 	TCCR1A = 0; // no wave generation
 	TCCR1B = 0b00001101; // clk/1024, WGM Mode 4 = CTC, rollover at OC1A but no pin changes
@@ -61,10 +62,6 @@ int main(void)
 #define CELLIGHT PORTF & BV_(0)
 
 /** */
-ISR(CANIT_vect)
-{
-	
-}
 
 ISR(SPI_STC_vect)
 {

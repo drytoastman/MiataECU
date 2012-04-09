@@ -1,436 +1,244 @@
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
-#define ERR_GEN_MSK ((1<<SERG)|(1<<CERG)|(1<<FERG)|(1<<AERG))            //! MaSK for GENeral ERRors INTerrupts
-#define INT_GEN_MSK ((1<<BOFFIT)|(1<<BXOK)|(ERR_GEN_MSK))                //! MaSK for GENeral INTerrupts
-
-#define HPMOB_MSK   ((1<<HPMOB3)|(1<<HPMOB2)|(1<<HPMOB1)|(1<<HPMOB0))    //! MaSK for MOb in HPMOB
-#define MOBNB_MSK   ((1<<MOBNB3)|(1<<MOBNB2)|(1<<MOBNB1)|(1<<MOBNB0))    //! MaSK for MOb in CANPAGE
-
-#define ERR_MOB_MSK ((1<<BERR)|(1<<SERR)|(1<<CERR)|(1<<FERR)|(1<<AERR))  //! MaSK for MOb ERRors
-#define INT_MOB_MSK ((1<<TXOK)|(1<<RXOK)|(1<<BERR)|(1<<SERR)|(1<<CERR)|(1<<FERR)|(1<<AERR)) //! MaSK for MOb INTerrupts
-
-#define CONMOB_MSK  ((1<<CONMOB1)|(1<<CONMOB0))                          //! MaSK for CONfiguration MOb
-#define DLC_MSK     ((1<<DLC3)|(1<<DLC2)|(1<<DLC1)|(1<<DLC0))            //! MaSK for Data Length Coding
-#define CONMOB      (CONMOB0)                                            //! CONfiguration MOb
-#define DLC         (DLC0)                                               //! Data Length Coding
-
-    // ----------
-#define NB_MOB       15
-#define NB_DATA_MAX  8
-#define LAST_MOB_NB  (NB_MOB-1)
-#define NO_MOB       0xFF
-    // ----------
-#define STATUS_CLEARED            0x00
-    // ----------
-#define MOB_NOT_COMPLETED         0x00                                              // 0x00
-#define MOB_TX_COMPLETED        (1<<TXOK)                                           // 0x40
-#define MOB_RX_COMPLETED        (1<<RXOK)                                           // 0x20
-#define MOB_RX_COMPLETED_DLCW  ((1<<RXOK)|(1<<DLCW))                                // 0xA0
-#define MOB_ACK_ERROR           (1<<AERR)                                           // 0x01
-#define MOB_FORM_ERROR          (1<<FERR)                                           // 0x02
-#define MOB_CRC_ERROR           (1<<CERR)                                           // 0x04
-#define MOB_STUFF_ERROR         (1<<SERR)                                           // 0x08
-#define MOB_BIT_ERROR           (1<<BERR)                                           // 0x10
-#define MOB_PENDING            ((1<<RXOK)|(1<<TXOK))                                // 0x60
-#define MOB_NOT_REACHED        ((1<<AERR)|(1<<FERR)|(1<<CERR)|(1<<SERR)|(1<<BERR))  // 0x1F
-#define MOB_DISABLE               0xFF                                              // 0xFF
-    // ----------
-#define MOB_Tx_ENA  1
-#define MOB_Rx_ENA  2
-#define MOB_Rx_BENA 3
-    // ----------
-
-    // ----------
-
-    // ----------
-#define Can_set_mob(mob)       { CANPAGE = ((mob) << 4);}
-#define Can_set_mask_mob()     {  CANIDM4=0xFF; CANIDM3=0xFF; CANIDM2=0xFF; CANIDM1=0xFF; }
-#define Can_clear_mask_mob()   {  CANIDM4=0x00; CANIDM3=0x00; CANIDM2=0x00; CANIDM1=0x00; }
-#define Can_clear_status_mob() { CANSTMOB=0x00; }
-
-    // ----------
-#define Can_mob_abort()   ( DISABLE_MOB )
-    // ----------
-#define Can_set_dlc(dlc)  ( CANCDMOB |= (dlc)        )
-#define Can_set_ide()     ( CANCDMOB |= (1<<IDE)     )
-#define Can_set_rtr()     ( CANIDT4  |= (1<<RTRTAG)  )
-#define Can_set_rplv()    ( CANCDMOB |= (1<<RPLV)    )
-    // ----------
-#define Can_clear_dlc()   ( CANCDMOB &= ~DLC_MSK     )
-#define Can_clear_ide()   ( CANCDMOB &= ~(1<<IDE)    )
-#define Can_clear_rtr()   ( CANIDT4  &= ~(1<<RTRTAG) )
-#define Can_clear_rplv()  ( CANCDMOB &= ~(1<<RPLV)   )
-    // ----------
-#define DISABLE_MOB       ( CANCDMOB &= (~CONMOB_MSK) )
-#define Can_config_tx()        { DISABLE_MOB; CANCDMOB |= (MOB_Tx_ENA  << CONMOB); }
-#define Can_config_rx()        { DISABLE_MOB; CANCDMOB |= (MOB_Rx_ENA  << CONMOB); }
-#define Can_config_rx_buffer() {              CANCDMOB |= (MOB_Rx_BENA << CONMOB); }
-    // ----------
-#define Can_get_dlc()      ((CANCDMOB &  DLC_MSK)     >> DLC   )
-#define Can_get_ide()      ((CANCDMOB &  (1<<IDE))    >> IDE   )
-#define Can_get_rtr()      ((CANIDT4  &  (1<<RTRTAG)) >> RTRTAG)
-    // ----------
-#define Can_set_rtrmsk()   ( CANIDM4 |= (1<<RTRMSK) )
-#define Can_set_idemsk()   ( CANIDM4 |= (1<<IDEMSK) )
-    // ----------
-#define Can_clear_rtrmsk() ( CANIDM4 &= ~(1<<RTRMSK) )
-#define Can_clear_idemsk() ( CANIDM4 &= ~(1<<IDEMSK) )
-    // ----------
-                //!< STD ID TAG Reading
-#define Can_get_std_id(identifier)  { *((U8 *)(&(identifier))+1) =  CANIDT1>>5              ; \
-                                      *((U8 *)(&(identifier))  ) = (CANIDT2>>5)+(CANIDT1<<3); }
-    // ----------
-                //!< EXT ID TAG Reading
-#define Can_get_ext_id(identifier)  { *((U8 *)(&(identifier))+3) =  CANIDT1>>3              ; \
-                                      *((U8 *)(&(identifier))+2) = (CANIDT2>>3)+(CANIDT1<<5); \
-                                      *((U8 *)(&(identifier))+1) = (CANIDT3>>3)+(CANIDT2<<5); \
-                                      *((U8 *)(&(identifier))  ) = (CANIDT4>>3)+(CANIDT3<<5); }
-    // ----------
-                //!< STD ID Construction
-#define CAN_SET_STD_ID_10_4(identifier)  (((*((U8 *)(&(identifier))+1))<<5)+((* (U8 *)(&(identifier)))>>3))
-#define CAN_SET_STD_ID_3_0( identifier)  (( * (U8 *)(&(identifier))   )<<5)
-    // ----------
-                //!< STD ID TAG writing
-#define Can_set_std_id(identifier)  { CANIDT1   = CAN_SET_STD_ID_10_4(identifier); \
-                                      CANIDT2   = CAN_SET_STD_ID_3_0( identifier); \
-                                      CANCDMOB &= (~(1<<IDE))                    ; }
-    // ----------
-                //!< STD ID MASK writing
-#define Can_set_std_msk(mask)       { CANIDM1   = CAN_SET_STD_ID_10_4(mask); \
-                                      CANIDM2   = CAN_SET_STD_ID_3_0( mask); }
-    // ----------
-                //!< EXT ID Construction
-#define CAN_SET_EXT_ID_28_21(identifier)  (((*((U8 *)(&(identifier))+3))<<3)+((*((U8 *)(&(identifier))+2))>>5))
-#define CAN_SET_EXT_ID_20_13(identifier)  (((*((U8 *)(&(identifier))+2))<<3)+((*((U8 *)(&(identifier))+1))>>5))
-#define CAN_SET_EXT_ID_12_5( identifier)  (((*((U8 *)(&(identifier))+1))<<3)+((* (U8 *)(&(identifier))   )>>5))
-#define CAN_SET_EXT_ID_4_0(  identifier)   ((* (U8 *)(&(identifier))   )<<3)
-    // ----------
-                //!< EXT ID TAG writing
-#define Can_set_ext_id(identifier)  { CANIDT1   = CAN_SET_EXT_ID_28_21(identifier); \
-                                      CANIDT2   = CAN_SET_EXT_ID_20_13(identifier); \
-                                      CANIDT3   = CAN_SET_EXT_ID_12_5( identifier); \
-                                      CANIDT4   = CAN_SET_EXT_ID_4_0(  identifier); \
-                                      CANCDMOB |= (1<<IDE);                         }
-    // ----------
-                //!< EXT ID MASK writing
-#define Can_set_ext_msk(mask)       { CANIDM1   = CAN_SET_EXT_ID_28_21(mask); \
-                                      CANIDM2   = CAN_SET_EXT_ID_20_13(mask); \
-                                      CANIDM3   = CAN_SET_EXT_ID_12_5( mask); \
-                                      CANIDM4   = CAN_SET_EXT_ID_4_0(  mask); }
-extern  void can_clear_all_mob(void);
-extern  U8 can_get_mob_free(void);
-extern  U8 can_get_mob_status(void);
-extern  void can_get_data(U8* p_can_message_data);
-extern U8 can_fixed_baudrate(U8 eval);
-
-#define CAN_CMD_REFUSED  0xFF
-#define CAN_CMD_ACCEPTED         0x00
-#define CAN_STATUS_COMPLETED     0x00
-#define CAN_STATUS_NOT_COMPLETED 0x01
-#define CAN_STATUS_ERROR         0x02
-
-typedef enum {
-  CMD_NONE,
-  CMD_TX_DATA,
-  CMD_RX_DATA_MASKED,
-} can_cmd_t;
-
-typedef union{
-  U16 std;
-  U8  tab[2];
-} can_id_t;
-
-typedef union{
-  U16 std;
-  U8  tab[2];
-} can_msk_t;
-
-typedef  struct{
-  U8         handle;
-  can_cmd_t  cmd;
-  can_id_t   id;
-  can_msk_t  msk;           //- Added element versus "can_lib.h"
-  U8         dlc;
-  U8*        pt_data;
-  U8         status;
-} st_cmd_t;
-
-
-extern U8 can_init(U8 mode);
-extern U8 can_cmd (st_cmd_t *);
-extern U8 can_get_status (st_cmd_t *);
-
-
-
+typedef unsigned char U8;
+typedef unsigned short U16;
 
 /*
-	CANGCON - CAN General Control
-	CANGSTA - CAN General Status Register
-    CANGIT - CAN General Interrupt Flags
-    CANGIE - CAN General Interrupt Enable
+	CANGCON - CAN General Control   (set at boot time, leave after that)
+	CANGSTA - CAN General Status Register (read-only) 
+    CANGIT - CAN General Interrupt Flags   (clear in handler for general interrupt)
+    CANGIE - CAN General Interrupt Enable  (set for desired interrupts)
 
 	CANEN1
-	CANEN2 - status of mob (ready or not)
+	CANEN2 - status of mob, ready or not (read-only)
 
 	CANIE1
-	CANIE2 - interrupt enable for mob
+	CANIE2 - interrupt enable for mob  (set all)
 
     CANSIT1
-	CANSIT2 - interrupt status for mob (flag)
-
-	CANBT1
-	CANBT2
-	CANBT3
-	CANTCON - timing setup
-
-	CANTIML
-	CANTIMH 
-	CANTTCL
-	CANTTCH - can timer, ignored
+	CANSIT2 - interrupt status for mob (read-only)
 
 	CANTEC
-	CANREC - error counters
+	CANREC - error counters (read-only)
 
-	CANHPMOB - mob prority
+	CANHPMOB - mob prority (not used)
+	CANPAGE - Mob pointer setup (pager for below)
 
-	CANPAGE - Mob pointer setup
-*/
-
-/*
-	Per Mob
+	--- Per Mob ---
 
 	CANSTMOB - status
 	CANCDMOB - control
 	CANIDT(1-4) - ID 
-	CANIDM(1-4) - mask
-	CANSTM(L,H) - timestamp
+	CANIDM(1-4) - mask  (for receivers only)
+	CANSTM(L,H) - timestamp (unused)
 	CANMSG - data byte
 */
 
 /*
+MS Wire Format to CANID
+VarOffset (11bits) - 28-18
+MsgType (3bits)    - 17-15
+FromID (4bits)     - 14-11
+ToID (4bits)       - 10-07
+VarBlk(4bits)      - 06-03
+MS3VarBlk4(1bit)   - 02
+Spare(2bits)       - 01-00
 
 AVR Registers
-CANIDT4 - IDT4  IDT3  IDT2  IDT1  IDT0  RTRTAG RB1TAG RB0TAG
-CANIDT3 - IDT12 IDT11 IDT10 IDT9  IDT8  IDT7  IDT6  IDT5 
-CANIDT2 - IDT20 IDT19 IDT18 IDT17 IDT16 IDT15 IDT14 IDT13 
-CANIDT1 - IDT28 IDT27 IDT26 IDT25 IDT24 IDT23 IDT22 IDT21 
-
-MS Extra Registers
-CAN_RB_IDR0 (0x20)	var_offset	 	28 ← 21
-CAN_RB_IDR1 (0x21)	var_offset	SRR=1	IDE=1	msg_type	 	20 ← 15
-CAN_RB_IDR2 (0x22)	From ID	To ID	 	14 ← 7
-CAN_RB_IDR3 (0x23)	var_blk	spare	RTR	 	6 ← 0, RTR
-
-CAN BUS wire
-Identifier A 	11 	First part of the (unique) identifier for the data which also represents the message priority
-Substitute remote request (SRR) 	1 	Must be recessive (1)Optional
-Identifier extension bit (IDE) 	1 	Must be recessive (1)Optional
-Identifier B 	18 	Second part of the (unique) identifier for the data which also represents the message priority
-Remote transmission request (RTR) 	1 	Must be dominant (0)
-
-VarOffset (11bits)- 0-10
-MsgType (3bits) -  11-13
-FromID (4bits) -   14-17
-ToID (4bits) -     18-21
-VarBlk(4bits) -    22-25
-Spare (3bits) -    26-28
-
- Bits 7->0
-IDT4 - VarOffset(4-0) / 3control
-IDT3 - MsgType(1-0)  / VarOffset(10-5)
-IDT2 - ToID(2-0)  / FromID(3-0) / MsgType(2)
-IDT1 - Spare(2-0) / VarBlk(3-0) / ToID(3)
+CANIDT1(28:21) - VarOffset(11-3)
+CANIDT2(20:13) - VarOffset(2-0), MsgType, FromID(3,2)
+CANIDT3(12:05) - FromID(1,0), ToID, VarBlk(3,2)
+CANIDT4(5:0,*) - VarBlk(1,0), MS3VarBlkBit, 5 to ignore
 */
+
+
+#define MS_TYPE()   ((CANIDT2 >> 2) & 0x07)
+#define MS_BLOCK()  (((CANIDT3 << 2) | (CANIDT4 >> 6)) & 0x0F)
+#define MS_OFFSET() (((CANIDT1 << 3) | (CANIDT2 >> 5)) & 0x07FF)
+#define MS_TO()      ((CANIDT3 >> 2) & 0x0F)
+#define MS_FROM()   (((CANIDT2 << 2) | (CANIDT3 >> 6)) & 0x0F)
 
 #define CAN_Reset()   CANGCON  =  _BV(SWRES) 
 #define CAN_Enable()  CANGCON |=  _BV(ENASTB)
 #define CAN_Disable() CANGCON &= ~_BV(ENASTB)
 #define CAN_Abort()   CANGCON |=  (1<<ABRQ); CANGCON &= ~(1<<ABRQ);
-#define ClearMob() { U8  volatile *__i_; for (__i_=&CANSTMOB; __i_<&CANSTML; __i_++) { *__i_=0x00 ;}}
+
+#define MYADDRESS 7
+
+
+U8 mybuffer[20];
+
+
+inline void ms_set_receive()
+{
+	CANIDT1 = 0x00;
+	CANIDT2 = 0x00;
+	CANIDT3 = MYADDRESS << 2;
+	CANIDT4 = 0x00;
+
+	CANIDM1 = 0x00;
+	CANIDM2 = 0x00;
+	CANIDM3 = 0x3C; // only look at To field
+	CANIDM4 = 0x00;
+
+	CANCDMOB = 0x90;   // set to receive with IDE=1, 0 DLC
+}
+
+
+inline void ms_send(U8 from, U8 to, U8 type, U8 block, U16 offset, U8 *buffer, U8 len)
+{
+	U8 ii;
+	for (ii = 0; ii < 7; ii++)
+	{
+		// find open buffer (CANEN shows no activity)
+		if (!(CANEN1 & (1<<ii)))
+		{
+			CANPAGE = (ii+8) << 4;
+
+			CANIDT1 = offset >> 3;
+			CANIDT2 = (offset << 5) | (type << 2) | (from >> 2);
+			CANIDT3 = (from << 6) | (to << 2) | (block >> 2);
+			CANIDT4 = (block << 6);
+
+			for (ii = 0; ii < len; ii++)
+				CANMSG = buffer[offset+ii];
+
+			CANCDMOB = 0x50 | (len & 0x0F);  // set to transmit, IDE=1 and length
+			return;
+		}
+	}
+}
+
 
 void can_init()
 {
+	U8 ii;
 
 	CAN_Reset();
-	CANBT1 = 0x06; 
+	CANBT1 = 0x06; // bit timing for 500kbps, 16MHz clkio, TQ=8
 	CANBT2 = 0x04; 
 	CANBT3 = 0x13;
+	CANTCON = 0; // ???
 
 	for (ii = 0; ii < 15; ii++)
 	{
-		CANPAGE = ii << 4;
-		ClearMob();
+		CANPAGE = (ii << 4);
+		CANSTMOB = 0;
+		CANCDMOB = 0;
 	}
 
-	CANGIE = 0b10111110;   // interupts for general, rx, tx, MOb error, frame buffer, general error
-	CANIE1 = MOb interrupt;
+	CANGIE = 0b10111010;   // interupts for general, rx, tx, MOb error, general error
 
-
-	// 0 to 6 set aside for receive
-	for (ii = 0; ii < 7; ii++)
+	// 0 to 7 set aside for receive (CANEN2)
+	CANIE2 = 0xFF; 
+	for (ii = 0; ii <= 7; ii++)
 	{
-		CANPAGE = ii << 4;
-
-		CANIDT1 = 0x00;
-		CANIDT2 = 0x00;
-		CANIDT3 = 3 << 5;  // ID[2-0] == 5
-		CANIDT4 = 0x00;    // ID[3] = 0
-
-		CANIDM1 = 0x00;
-		CANIDM2 = 0x00;
-		CANIDM3 = 0xE0;
-		CANIDM4 = 0x01;    // mask out only ToID
-		CANCDMOB = ;
+		CANPAGE = (ii << 4);
+		ms_set_receive();
 	}
 
-	// 7 to 14 set aside for transmit
-
+	// 8 to 14 set aside for transmit (CANEN1)
+	CANIE1 = 0x7F;
 
 	CAN_Enable();
 }
 
 
 
-U8 can_send(xxxx)
+/* Process a data push from the MS */
+inline void processData()
 {
-	for (ii = 7; ii < 14; ii++)
-	{
-		// find open buffer
+	U8 ii, len;
+	U16 offset = MS_OFFSET();
+	len = CANCDMOB & 0x0F;
 
-		CANPAGE = ii << 4;
-		CANIDT1 = ;
-		CANIDT2 = ;
-		CANIDT3 = ;
-		CANIDT4 = ;
-		CANCDMOB = ;
+	for (ii = 0; ii < len; ii++, offset++)
+	{
+		mybuffer[offset] = CANMSG;
+	}
+}
+
+/* Process a request for us to send data back to the MS */
+inline void processRequest()
+{
+	/*
+		These are the first three data bytes as written by the msextra code
+        CAN_TB0_DSR0 = can[ix].cx_myvarblk[jx];
+        CAN_TB0_DSR1 = (unsigned char)(can[ix].cx_myvaroff[jx] >> 3);
+        CAN_TB0_DSR2 = (unsigned char)((can[ix].cx_myvaroff[jx] & 0x0007) << 5) | an[ix].cx_varbyt[jx];
+	*/
+
+	U8 myblock, dstblock, length, tmp;
+	U16 myoffset, dstoffset;
+
+	dstblock = CANMSG;
+	dstoffset = CANMSG;
+	tmp = CANMSG;
+
+	dstoffset = (dstoffset << 3) | (tmp >> 5);
+	length = tmp & 0x1F;
+
+	myoffset = MS_OFFSET(); // get my offset from CAN header
+	myblock = MS_BLOCK();  // get my block from CAN heaer
+
+	// find open transmit
+	tmp = CANPAGE;
+	ms_send(MYADDRESS, MS_FROM(), 2, dstblock, dstoffset, mybuffer, length);  // type 2 == MSG_RSP
+	CANPAGE = tmp;
+}
+
+
+#define GENERALERROR ((1<<SERG)|(1<<CERG)|(1<<FERG)|(1<<AERG))
+
+ISR(CANIT_vect)
+{
+	U8 ii;
+
+	if (CANGIT & GENERALERROR)
+	{
+		CANGIT = 0x7F; // just clear it
 	}
 
-}
+	else if (CANSIT2) // something was received
+	{
+		// Find the first interrupted receiver
+		for (ii = 0; ii < 8; ii++) {
+			if (CANSIT2 & (1<<ii)) {
+				CANPAGE = (ii << 4);
+				break;
+		}}
 
-U8 can_get_mob_status(void)
-{
-    U8 mob_status, canstmob_copy;
+		if (CANSTMOB & (DLCW | RXOK))  // catch DLC as well, we don't know ahead of time
+		{
+			switch(MS_TYPE())
+			{
+				case 0: //sending us data
+					processData();
+					break;
+				case 1: // request for data
+					processRequest();
+					break;
+			}
+		}
+		// else some kind of error
 
-    // Test if MOb ENABLE or DISABLE
-    if ((CANCDMOB & 0xC0) == 0x00) {return(MOB_DISABLE);}
+		CANSTMOB = 0;
+		CANCDMOB = 0; 
+	}
 
-    canstmob_copy = CANSTMOB; // Copy for test integrity
+	else if (CANSIT1)
+	{
+		// Find the first interrupted transmitter and silence them
+		for (ii = 0; ii < 7; ii++) {
+			if (CANSIT1 & (1<<ii)) {
+				CANPAGE = ((ii+8)<<4);
+				break;
+		}}
 
-    // If MOb is ENABLE, test if MOb is COMPLETED
-    // - MOb Status = 0x20 then MOB_RX_COMPLETED
-    // - MOb Status = 0x40 then MOB_TX_COMPLETED
-    // - MOb Status = 0xA0 then MOB_RX_COMPLETED_DLCW
-    mob_status = canstmob_copy & ((1<<DLCW)|(1<<TXOK)|(1<<RXOK));
-    if ( (mob_status==MOB_RX_COMPLETED) ||   \
-         (mob_status==MOB_TX_COMPLETED) ||   \
-         (mob_status==MOB_RX_COMPLETED_DLCW) ) { return(mob_status); }
-
-    // If MOb is ENABLE & NOT_COMPLETED, test if MOb is in ERROR
-    // - MOb Status bit_0 = MOB_ACK_ERROR
-    // - MOb Status bit_1 = MOB_FORM_ERROR
-    // - MOb Status bit_2 = MOB_CRC_ERROR
-    // - MOb Status bit_3 = MOB_STUFF_ERROR
-    // - MOb Status bit_4 = MOB_BIT_ERROR
-    mob_status = canstmob_copy & ERR_MOB_MSK;
-    if (mob_status != 0) { return(mob_status); }
-
-    // If CANSTMOB = 0 then MOB_NOT_COMPLETED
-    return(MOB_NOT_COMPLETED);
-}
-
-
-U8 can_cmd(st_cmd_t* cmd)
-{
-	U8  cpt;
-	U8  rtn_val;
-
-    rtn_val = CAN_CMD_ACCEPTED;
-    cmd->status = MOB_PENDING;
-
-    //------------ special for "reduced_can_lib.c"
-    if ((cmd->cmd) == CMD_TX_DATA)
-    {
-        cmd->handle = MOB_14;
-        Can_set_mob(MOB_14);
-        Can_clear_mob();
-        Can_clear_ide();
-        Can_set_std_id(cmd->id.std);
-        for (cpt=0; cpt<cmd->dlc; cpt++) CANMSG = *(cmd->pt_data + cpt);
-        Can_clear_rtr();
-        Can_set_dlc(cmd->dlc);
-        Can_config_tx();
-    }
-    //------------ special for "reduced_can_lib.c"
-    else if ((cmd->cmd) == CMD_RX_DATA_MASKED)
-    {
-        cmd->handle = MOB_0;
-        Can_set_mob(MOB_0);
-        Can_clear_mob();
-        Can_clear_ide();
-        Can_set_std_id(cmd->id.std);
-        Can_set_std_msk(cmd->msk.std);
-        Can_set_rtrmsk(); Can_clear_rtr();
-        Can_set_idemsk();
-        Can_config_rx();
-    }
-    // case CMD_NONE or not implemented command
-    else rtn_val= CAN_CMD_REFUSED;
-
-    return rtn_val;
-}
-
-U8 can_get_status (st_cmd_t* cmd)
-{
-	U8 a_status;
-	U8 rtn_val;
-
-    a_status = cmd->status;
-    if ( (a_status==STATUS_CLEARED)||(a_status==MOB_NOT_REACHED)||(a_status==MOB_DISABLE) )
-    {
-        return CAN_STATUS_ERROR;
-    }
-
-    Can_set_mob(cmd->handle);
-    a_status = can_get_mob_status();
-
-    switch (a_status)
-    {
-        case MOB_NOT_COMPLETED:
-            // cmd->status not updated
-            rtn_val = CAN_STATUS_NOT_COMPLETED;
-            break;
-        //--------------- special for "reduced_can_lib.c"
-        case MOB_RX_COMPLETED:
-        case MOB_RX_COMPLETED_DLCW:
-            cmd->dlc = Can_get_dlc();
-            can_get_data(cmd->pt_data);
-            // Always standard frame
-            Can_get_std_id(cmd->id.std);    //- Warning[Pa082]: undefined behavior: the order of volatile accesses is undefined in this statement
-            // Status field of descriptor: 0x20 if Rx completed
-            // Status field of descriptor: 0xA0 if Rx completed with DLCWarning
-            cmd->status = a_status;
-            Can_mob_abort();        // Freed the MOB
-            Can_clear_status_mob(); //   and reset MOb status
-            rtn_val = CAN_STATUS_COMPLETED;
-            break;
-        //--------------- special for "reduced_can_lib.c"
-        case MOB_TX_COMPLETED:
-            // Status field of descriptor: 0x40 if Tx completed
-            cmd->status = a_status;
-            Can_mob_abort();        // Freed the MOB
-            Can_clear_status_mob(); //   and reset MOb status
-            rtn_val = CAN_STATUS_COMPLETED;
-            break;
-        //---------------
-        default:
-            // Status field of descriptor: (bin)000b.scfa if MOb error
-            cmd->status = a_status;
-            Can_mob_abort();        // Freed the MOB
-            Can_clear_status_mob(); //   and reset MOb status
-            rtn_val = CAN_STATUS_ERROR;
-            break;
-    }
-
-    return (rtn_val);
+		CANSTMOB = 0;
+		CANCDMOB = 0; 
+	}
 }
 

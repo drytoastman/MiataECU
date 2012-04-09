@@ -11,8 +11,8 @@ UsedLibrary="PNP.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="112 0 1363 737"
-State=1
+Loc="224 50 1475 787"
+State=2
 Number=0
 
 [Desktop]
