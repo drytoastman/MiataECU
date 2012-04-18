@@ -1,0 +1,2 @@
+# AVR Studio seems to have gimped the call to avr-size
+avr-size.exe -C --mcu=at90can64 default/PNPAddOns.elf

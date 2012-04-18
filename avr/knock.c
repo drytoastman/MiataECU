@@ -1,5 +1,6 @@
 
 #include "PNPAddOns.h"
+#define NOP() asm("nop");
 
 /**
 
@@ -42,9 +43,8 @@ Instead we add together divisions using powers of 2 for quick approximate
 
 #define DEGREES_20 ((ticksFor70>>2) + (ticksFor70>>5))
 #define DEGREES_52 ((ticksFor70>>1) + (ticksFor70>>2))
-#define SPISETUP()   SPCR = 0b01010100; // master enabled, clk/4, CPOL=0, CPHA=1
+#define SPISETUP()   SPCR = 0b01010100; // master enabled, clk/4 (4MHz), CPOL=0, CPHA=1
 
-#define spi_write(x, o) SPDR = x; while(!(SPSR & (1<<SPIF))) o = SPDR;
 
 U8 knockMode;
 U8 knockReadFlag;
@@ -67,6 +67,24 @@ U16 thresholdTable[TABLESIZE][2] =
 };
 
 
+/* 
+	write the command and get the resposne, adds some delays around de/select (62.5ns)
+ 	for finallity based on tpic8101 datasheet.  Probably not necessary due to natural
+	delays in the movement of the SPI system but just in case.
+*/
+U8 spi_write(U8 byte) 
+{
+	KNK_SELECT();
+	NOP();
+
+	SPDR = byte; 
+	while(!(SPSR & (1<<SPIF)));
+
+	NOP();
+	KNK_DESELECT();
+	return SPDR;
+}
+
 void knock_init()
 {
 	EICRB  |= 0x0F; // int on rising edge INT4 and INT5 for cam/crank signals
@@ -79,18 +97,18 @@ void knock_init()
 	//OCR1B use for triggering next event
 
 	knockMode = MODE_NONE;
+	WINDOW_OFF();
 
 	// Setup the TPIC8101
-	U8 ret;
 	SPISETUP();
-	spi_write(CLK16, ret); // set CLK=16MHz
-	spi_write(CHN1,  ret);  // set channel 1
-	spi_write(0x00 | 29,  ret);  // freq = 4.16kHz (see tables)
-	spi_write(0x80 | 14,  ret);  // gain = 1  (see tables)
-	spi_write(0xC0 | 100, ret); // integrator constant = 100uS (see tables)
-	spi_write(0b01110001, ret); // set advanced mode
-	spi_write(0b01110001, ret); // set advanced mode
-	// SPDR should equal 01110001
+
+	spi_write(CLK16); // set CLK=16MHz
+	spi_write(CHN1);  // set channel 1
+	spi_write(0x00 | 29);  // freq = 4.16kHz (see tables)
+	spi_write(0x80 | 14);  // gain = 1  (see tables)
+	spi_write(0xC0 | 100); // integrator constant = 100uS (see tables)
+	spi_write(0b01110001); // set advanced mode
+	// SPDR should equal 10001110 on next read
 }
 
 
@@ -98,7 +116,7 @@ void knock_init()
 void knock_main()
 {
 	U16 level, rpm, ticks;
-	U8 ii, tmp;
+	U8 ii;
 
 	if (knockReadFlag)
 	{
@@ -108,10 +126,9 @@ void knock_main()
 			rpm = 15000000/ticks;
 			can_set_adc(RPM, rpm);
 
-			spi_write(CLK16, ii);
-			spi_write(CHN1, level); // repsonse to CLK16 (see advanced mode)
-			spi_write(CHN1, ii);
-			level = (ii << 2) | level;   // response to first CHN1
+			spi_write(CLK16);
+			level = spi_write(CHN1); // repsonse to CLK16 (see advanced mode)
+			level = (spi_write(CHN1) << 2) | level; // response to first CHN1
 
 			can_set_adc(lastCylinder, level);
 
@@ -124,8 +141,6 @@ void knock_main()
 					break;
 				}			
 			}
-				
-
 		}
 
 		knockReadFlag = 0;

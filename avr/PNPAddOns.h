@@ -85,14 +85,14 @@ typedef struct DiskInfo
 #define ACCELCS PORTB & BV_(6)
 */
 
-#define WINDOW_ON()    PORTB |= PB4
-#define WINDOW_OFF()   PORTB &= ~PB4;
+#define WINDOW_ON()    PORTB |= _BV(PB4)
+#define WINDOW_OFF()   PORTB &= ~_BV(PB4);
 
-#define KNK_SELECT()   PORTB |= PB5
-#define KNK_DESELECT() PORTB &= ~PB5;
+#define KNK_SELECT()   PORTB &= ~_BV(PB5);
+#define KNK_DESELECT() PORTB |= _BV(PB5);
 
-#define CEL_ON()       PORTF |= PF0;
-#define CEL_OFF()      PORTF &= ~PF0;
+#define CEL_ON()       PORTF |= _BV(PF0);
+#define CEL_OFF()      PORTF &= ~_BV(PF0);
 
 #define KNK_DETECT()   candata[BYTE_KNOCK] |= 0x01
 #define KNK_DONE()     candata[BYTE_KNOCK] &= 0xFE
