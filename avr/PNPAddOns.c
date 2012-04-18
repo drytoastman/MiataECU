@@ -1,65 +1,57 @@
 /*
  * PNPAddOns.c
- *
- * Created: 11/12/2011 3:32:50 PM
- *  Author: bwilson
  */ 
 
-
 #include "PNPAddOns.h"
-//DiskInfo disk;
-
 
 int main(void)
 {
-	/*
-	initInfo(&disk);
-	scanMBR(&disk);
-	scanFAT(&disk);
-	determineFileName(&disk);
-	findNextFreeCluster(&disk);
-	// write data into disk at clusterNumber
-	// when full
-		// save offset and buffer
-		// disk.clusterOffset++;
-	findNextFreeCluster(&disk);
-		// write new cluster number into old location
-	*/
+	// Timer 3 shared between logging and VSS 
+	// clk/1024 = 64uS/tick
+	// 62500 = 4.000 seconds
+	// 625   = 40.000ms  (25 samples/second)
+	// 1250  = 80.000ms  (12.5 samples/second)
+
+	TCCR3A = 0; // OCpins disconnected
+	TCCR3B = 0b00001101; // clk/1024, WGM Mode 4 = CTC, rollover at OC1A
+	TCCR3C = 0;
+	TIMSK3 = 0b00000110; // interupts: OC3A, OC3B
+	OCR3A  = 62500; // overflow at 4.000 seconds, we are using CTC so it rolls over automatically
+	OCR3B  = 1250; // used by logging, initial 80ms (1250*50 == 62500)
+
+	// Timer 0 is used for Idle PWM
+	// clk/64 => fPWM = 16MHz/(64*510) = 490Hz
+	TCCR0A = 0b01100011; // Phase correct PWM, OC0A SetUP/ClearDOWN, Clk/64
+	OCR0A = 255; // initial is 0V
+	DDRB |= _BV(7); // OC0A/PB7 is output
+
+	// Enable SPI bus
+	SPCR = 0b01010000; // enabled as master, no interrtupt, 4MHz, to be reconfigured by different users
+	DDRB |= _BV(0) | _BV(1) | _BV(2); // SS, MOSI, SCK are output
+
+	can_set_adc(0, 720);
+	can_set_adc(1, 360);
+	can_set_adc(2, 48);
+	can_set_adc(3, 49);
 
 	knock_init();
 	vss_init();
 	can_init();
 
-	TCCR1A = 0; // no wave generation
-	TCCR1B = 0b00001101; // clk/1024, WGM Mode 4 = CTC, rollover at OC1A but no pin changes
-	TCCR1C = 0;
-	TIMSK1 = 0b01001110; // interupts: ICP1, OC1A, OC1B, OC1C
-	OCR1A = 62500; // overflow at 4.000 seconds, we are using CTC so it rolls over automatically
-	OCR1B = 1250; // used by logging, initial 80ms
-	OCR1C = 12345; // used by ???
+	sei();
 
-
-	/*
-	clk/1024 = 6uS/tick
-	OVF=4.194seconds
-	62500=4.000 seconds
-	65000=4.160 seconds
-
-	625 = 40.000ms   (25 samples/second)
-	1250 = 80.000ms  (12.5 samples/second)
-	*/
+	while (1) 
+	{
+		knock_main();
+	}
 }
 
-
-#define LOGSWITCH PORTD & BV_(7)
-#define CARDDETECT PORTD & BV_(4)
-
-#define SDCS PORTB & BV_(0)
-#define WINDOW PORTB & BV_(4)
-#define KNOCKCS PORTB & BV_(5)
-#define ACCELCS PORTB & BV_(6)
-
-#define CELLIGHT PORTF & BV_(0)
+/* notification that a byte has been sent to us */
+void can_byte_changed(U16 offset)
+{
+	if (offset == BYTE_IDL)
+		OCR0A = candata[BYTE_IDL];
+}
 
 /** */
 

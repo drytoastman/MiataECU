@@ -1,29 +1,26 @@
 
 #include "PNPAddOns.h"
 
-uint8 speedValid;
-uint16 speed;
 uint16 lastTime;
 uint16 speedFactor;
 
 void vss_init()
 {
-	speedValid = 0;
-	speed = 0;
+	EICRB  |= 0x30; // int on rising edge INT6 for vss signal
+	EIMSK  |= _BV(INT6); // enable interupt
+
+	// shared Timer3 with logging piece
+
 	lastTime = 0;
 	speedFactor = 1;
+	can_set_adc(VSS, 0);
 }
 
-ISR(TIMER1_CAPT_vect)
+ISR(INT6_vect)
 {
-	uint16 tmp = TCNT1;
-	if (speedValid)  // don't bother with measure when we wrap or other
-		speed = (tmp - lastTime) * speedFactor;
+	uint16 tmp = TCNT3;
+	if (tmp <= lastTime)  // don't bother with measure when we wrap or other
+		can_set_adc(VSS, (tmp - lastTime) * speedFactor);
 	lastTime = tmp;
-	speedValid = 1;
 }
 
-ISR(TIMER1_COMPA_vect) // this is timer overflow
-{
-	speedValid = 0;
-}

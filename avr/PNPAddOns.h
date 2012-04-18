@@ -5,11 +5,12 @@
 #include <avr/interrupt.h>
 #include <string.h>
 
-typedef uint8_t uint8;
-typedef uint16_t uint16;
-typedef uint32_t uint32;
-
-
+typedef unsigned char uint8;
+typedef unsigned short uint16;
+typedef unsigned int uint32;
+typedef unsigned char U8;
+typedef unsigned short U16;
+typedef unsigned int U32;
 
 typedef struct
 {
@@ -69,13 +70,48 @@ typedef struct DiskInfo
 #define WORD32(b, l) *((uint32*)&b[l])
 #define WORD16(b, l) *((uint16*)&b[l])
 
+#define KNOCKSIG  0  // remote analog data (as 16 bit locations)
+#define RPM       4
+#define VSS       5
+
+#define BYTE_IDL   16  // byte locations for byte data
+#define BYTE_FREE  17
+#define BYTE_KNOCK 18
+
+/*
+#define LOGSWITCH PORTD & BV_(7)
+#define CARDDETECT PORTD & BV_(4)
+#define SDCS PORTB & BV_(0)
+#define ACCELCS PORTB & BV_(6)
+*/
+
+#define WINDOW_ON()    PORTB |= PB4
+#define WINDOW_OFF()   PORTB &= ~PB4;
+
+#define KNK_SELECT()   PORTB |= PB5
+#define KNK_DESELECT() PORTB &= ~PB5;
+
+#define CEL_ON()       PORTF |= PF0;
+#define CEL_OFF()      PORTF &= ~PF0;
+
+#define KNK_DETECT()   candata[BYTE_KNOCK] |= 0x01
+#define KNK_DONE()     candata[BYTE_KNOCK] &= 0xFE
+
+extern U8 candata[];
+
 void initInfo(DiskInfo *disk);
-uint8 scanMBR(DiskInfo *disk);
+U8   scanMBR(DiskInfo *disk);
 void scanFAT(DiskInfo *disk);
 void determineFileName(DiskInfo *disk);
 char findNextFreeCluster(DiskInfo *disk);
 
 void vss_init();
 void knock_init();
+void knock_main();
+void can_init();
+void can_set_adc(U8 pos, U16 value);
+U16 can_get_adc(U8 pos);
+void can_byte_changed(U16 offset);
+void can_data_sent(U16 offset, U8 length);
 
 #endif
