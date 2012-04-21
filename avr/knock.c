@@ -56,16 +56,6 @@ U8 camCount = 0;
 U8 sync = 0;
 U8 tooth = 0;
 
-U16 thresholdTable[TABLESIZE][2] = 
-{
-	{     0,   4000 },
-	{  1000,   4200 },
-	{  3000,   4500 },
-	{  5000,   5000 },
-	{  7000,   6000 },
-	{ 10000,   7000 },
-};
-
 
 /* 
 	write the command and get the resposne, adds some delays around de/select (62.5ns)
@@ -120,24 +110,23 @@ void knock_main()
 
 	if (knockReadFlag)
 	{
-		if (sync)
+		if (sync && (lastCylinder > 0))
 		{
 			ticks = times[4] - times[0]; // autowrap
 			rpm = 15000000/ticks;
 			can_set_adc(RPM, rpm);
+			can_set_adc(lastCylinder-1, level);
 
 			spi_write(CLK16);
 			level = spi_write(CHN1); // repsonse to CLK16 (see advanced mode)
 			level = (spi_write(CHN1) << 2) | level; // response to first CHN1
 
-			can_set_adc(lastCylinder, level);
-
 			for (ii = 1; ii < TABLESIZE; ii++)
 			{
-				if (rpm < thresholdTable[ii][0])  // use previous
+				if (rpm < can_get_config(ii))  // use previous
 				{
-					if (level > thresholdTable[ii][1]) 
-						KNK_DETECT();
+					if (level > can_get_config(ii*2))
+						can_set_flag(1);
 					break;
 				}			
 			}
@@ -152,7 +141,7 @@ void knock_main()
 void can_data_sent(U16 offset, U8 length)
 {
 	if ((offset <= BYTE_KNOCK) && (offset + length >= BYTE_KNOCK))
-		KNK_DONE();
+		can_clear_flag(1);
 }
 
 
@@ -179,7 +168,14 @@ ISR(TIMER1_COMPB_vect)
 		TIMSK1 &= ~_BV(OCF1B); // clear interrupt for OC1B
 		WINDOW_OFF();
 		knockReadFlag = 1;      // let main function know its time to read in measure
-		lastCylinder = tooth>>1; // map 1to0, 3to1, 5to2, 7to3
+		switch (tooth)
+		{
+			case 1:  lastCylinder = 1;
+			case 3:  lastCylinder = 3;
+			case 5:  lastCylinder = 4;
+			case 7:  lastCylinder = 2;
+			default: lastCylinder = 0;
+		}
 		knockMode = MODE_NONE;
 	}
 }

@@ -42,6 +42,7 @@ int main(void)
 
 	while (1) 
 	{
+		can_main();
 		knock_main();
 	}
 }
@@ -50,7 +51,7 @@ int main(void)
 void can_byte_changed(U16 offset)
 {
 	if (offset == BYTE_IDL)
-		OCR0A = candata[BYTE_IDL];
+		OCR0A = can_get_byte(BYTE_IDL);
 }
 
 

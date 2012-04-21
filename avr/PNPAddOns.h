@@ -94,9 +94,6 @@ typedef struct DiskInfo
 #define CEL_ON()       PORTF |= _BV(PF0);
 #define CEL_OFF()      PORTF &= ~_BV(PF0);
 
-#define KNK_DETECT()   candata[BYTE_KNOCK] |= 0x01
-#define KNK_DONE()     candata[BYTE_KNOCK] &= 0xFE
-
 extern U8 candata[];
 
 void initInfo(DiskInfo *disk);
@@ -106,11 +103,19 @@ void determineFileName(DiskInfo *disk);
 char findNextFreeCluster(DiskInfo *disk);
 
 void vss_init();
+
 void knock_init();
 void knock_main();
+
 void can_init();
+void can_main();
+
 void can_set_adc(U8 pos, U16 value);
 U16 can_get_adc(U8 pos);
+U16 can_get_config(U8 pos);
+void can_set_flag(U8 bit);
+void can_clear_flag(U8 bit);
+U8 can_get_byte(U8 pos);
 void can_byte_changed(U16 offset);
 void can_data_sent(U16 offset, U8 length);
 
