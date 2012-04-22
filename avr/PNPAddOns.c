@@ -29,31 +29,25 @@ int main(void)
 	SPCR = 0b01010000; // enabled as master, no interrtupt, 4MHz, to be reconfigured by different users
 	DDRB |= _BV(0) | _BV(1) | _BV(2) | _BV(4) | _BV(5); // SS, MOSI, SCK, WINDOW, KNKCS are output
 
-	can_set_adc(0, 720);
-	can_set_adc(1, 360);
-	can_set_adc(2, 48);
-	can_set_adc(3, 49);
-
+	data_init();  // read config data before doing anything else
 	knock_init();
 	vss_init();
 	can_init();
 
+	data.myrpm = SWAP16(1234);
 	sei();
 
 	while (1) 
 	{
-		can_main();
 		knock_main();
+		data_main();
 	}
 }
 
-/* notification that a byte has been sent to us */
-void can_byte_changed(U16 offset)
+void idle_changed()
 {
-	if (offset == BYTE_IDL)
-		OCR0A = can_get_byte(BYTE_IDL);
+	OCR0A = data.idle;
 }
-
 
 EMPTY_INTERRUPT(TIMER3_COMPA_vect) // our counter overflow at 62500
 EMPTY_INTERRUPT(TIMER3_COMPB_vect) // start logging

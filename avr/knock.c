@@ -37,43 +37,37 @@ Instead we add together divisions using powers of 2 for quick approximate
 #define MODE_NONE 0
 #define MODE_WAIT 1
 #define MODE_MEASURE 2
+#define MODE_BLOCKED 3
+
 #define TABLESIZE 32
 #define CLK16  0b01001100
 #define CHN1   0b11100000
+
+#define WINDOW_ISON()  (PORTB & _BV(PB4))
+#define WINDOW_ON()    PORTB |= _BV(PB4)
+#define WINDOW_OFF()   PORTB &= ~_BV(PB4);
+
+#define KNK_SELECT()   PORTB &= ~_BV(PB5);
+#define KNK_DESELECT() PORTB |= _BV(PB5);
 
 #define DEGREES_20 ((ticksFor70>>2) + (ticksFor70>>5))
 #define DEGREES_52 ((ticksFor70>>1) + (ticksFor70>>2))
 #define SPISETUP()   SPCR = 0b01010100; // master enabled, clk/4 (4MHz), CPOL=0, CPHA=1
 
+void stop_measurement();
 
 U8 knockMode;
 U8 knockReadFlag;
+U8 settingsChangedFlag;
+
 U16 times[8];
+U16 knockCount[4]; // local copy due to need to swap bytes all the time
 U16 ticksFor70 = 0xFFFF;
 
-U8 lastCylinder = 0;
+S8 lastCylinder = -1;
 U8 camCount = 0;
 U8 sync = 0;
 U8 tooth = 0;
-
-
-/* 
-	write the command and get the resposne, adds some delays around de/select (62.5ns)
- 	for finallity based on tpic8101 datasheet.  Probably not necessary due to natural
-	delays in the movement of the SPI system but just in case.
-*/
-U8 spi_write(U8 byte) 
-{
-	KNK_SELECT();
-	NOP();
-
-	SPDR = byte; 
-	while(!(SPSR & (1<<SPIF)));
-
-	NOP();
-	KNK_DESELECT();
-	return SPDR;
-}
 
 void knock_init()
 {
@@ -87,18 +81,46 @@ void knock_init()
 	//OCR1B use for triggering next event
 
 	knockMode = MODE_NONE;
+	knockReadFlag = 0;
+	settingsChangedFlag = 0;
+	memset(times, 0, sizeof(times));
+	memset(knockCount, 0, sizeof(times));
+	memset(data.cylknkcount, 0, sizeof(data.cylknkcount));
+
 	WINDOW_OFF();
 
 	// Setup the TPIC8101
 	SPISETUP();
-
-	spi_write(CLK16); // set CLK=16MHz
-	spi_write(CHN1);  // set channel 1
-	spi_write(0x00 | 29);  // freq = 4.16kHz (see tables)
-	spi_write(0x80 | 14);  // gain = 1  (see tables)
-	spi_write(0xC0 | 100); // integrator constant = 100uS (see tables)
-	spi_write(0b01110001); // set advanced mode
+	knock_write(CLK16); // set CLK=16MHz
+	knock_write(CHN1);  // set channel 1
+	knock_write(0x00 | config.filterIndex);
+	knock_write(0x80 | config.gainIndex);
+	knock_write(0xC0 | config.integratorIndex);
+	knock_write(0b01110001); // set advanced mode
 	// SPDR should equal 10001110 on next read
+}
+
+void knock_sensor_setting_changed()
+{
+	settingsChangedFlag = 1;
+}
+
+/* 
+	write the command and get the resposne, adds some delays around de/select (62.5ns)
+ 	for finallity based on tpic8101 datasheet.  Probably not necessary due to natural
+	delays in the movement of the SPI system but just in case.
+*/
+U8 knock_write(U8 byte) 
+{
+	KNK_SELECT();
+	NOP();
+
+	SPDR = byte; 
+	while(!(SPSR & (1<<SPIF)));
+
+	NOP();
+	KNK_DESELECT();
+	return SPDR;
 }
 
 
@@ -108,25 +130,47 @@ void knock_main()
 	U16 level, rpm, ticks;
 	U8 ii;
 
+	if (settingsChangedFlag)
+	{
+		stop_measurement(); // window can't be on
+
+		knock_write(0x00 | config.filterIndex);
+		knock_write(0x80 | config.gainIndex);
+		knock_write(0xC0 | config.integratorIndex);
+
+		knockReadFlag = 0;  // clear all our flags
+		settingsChangedFlag = 0;
+		return;
+	}
+
 	if (knockReadFlag)
 	{
-		if (sync && (lastCylinder > 0))
+		if (sync && (lastCylinder >= 0))
 		{
 			ticks = times[4] - times[0]; // autowrap
 			rpm = 15000000/ticks;
-			can_set_adc(RPM, rpm);
-			can_set_adc(lastCylinder-1, level);
 
-			spi_write(CLK16);
-			level = spi_write(CHN1); // repsonse to CLK16 (see advanced mode)
-			level = (spi_write(CHN1) << 2) | level; // response to first CHN1
+			knock_write(CLK16);
+			level = knock_write(CHN1); // repsonse to CLK16 (see advanced mode)
+			level = (knock_write(CHN1) << 2) | level; // response to first CHN1
+
+			data.myrpm = SWAP16(rpm);
+			data.cylnoise[lastCylinder] = SWAP16(level);
 
 			for (ii = 1; ii < TABLESIZE; ii++)
 			{
-				if (rpm < can_get_config(ii))  // use previous
+				if (rpm < SWAP16(config.krpm[ii]))  // use previous
 				{
-					if (level > can_get_config(ii*2))
-						can_set_flag(1);
+					if (level > SWAP16(config.kthreshold[ii]))
+					{
+						knockCount[lastCylinder]++;
+						data.cylknkcount[lastCylinder] = SWAP16(knockCount[lastCylinder]);
+						data.flags |= 0x01;
+					}
+					else
+					{
+						data.flags &= 0xFE;
+					}
 					break;
 				}			
 			}
@@ -137,20 +181,19 @@ void knock_main()
 }
 
 
-/* notificate of data being sent over can bus */
-void can_data_sent(U16 offset, U8 length)
-{
-	if ((offset <= BYTE_KNOCK) && (offset + length >= BYTE_KNOCK))
-		can_clear_flag(1);
-}
-
-
 void start_degree_timer(U16 ticks)
 {
 	U32 tmp = TCNT1 + ticks;
-	OCR1B = tmp & 0x0FFFF;  // mask takes care of addition overflow for us
+	OCR1B = tmp;  // overflow works in our favor
 	TIFR1  |= _BV(OCF1B); // clear any open OC1B interrupt
 	TIMSK1 |= _BV(OCF1B); // enable interrupt for OC1B
+}
+
+void stop_measurement()
+{
+	TIMSK1 &= ~_BV(OCF1B); // clear interrupt for OC1B
+	WINDOW_OFF();
+	knockMode = MODE_NONE;
 }
 
 
@@ -159,24 +202,26 @@ ISR(TIMER1_COMPB_vect)
 {
 	if (knockMode == MODE_WAIT)
 	{  // set timer for length of Window
-		start_degree_timer(DEGREES_52);
-		knockMode = MODE_MEASURE;
-		WINDOW_ON();
+		if (!settingsChangedFlag)  // not if we are updating settings
+		{
+			start_degree_timer(DEGREES_52);
+			knockMode = MODE_MEASURE;
+			WINDOW_ON();
+		}
 	}
 	else if (knockMode == MODE_MEASURE)
 	{
-		TIMSK1 &= ~_BV(OCF1B); // clear interrupt for OC1B
-		WINDOW_OFF();
-		knockReadFlag = 1;      // let main function know its time to read in measure
+		stop_measurement();
+		if (!settingsChangedFlag)
+			knockReadFlag = 1;      // let main function know its time to read in measure
 		switch (tooth)
 		{
-			case 1:  lastCylinder = 1;
-			case 3:  lastCylinder = 3;
-			case 5:  lastCylinder = 4;
-			case 7:  lastCylinder = 2;
-			default: lastCylinder = 0;
+			case 1:  lastCylinder = 0;  // 1
+			case 3:  lastCylinder = 2;  // 3
+			case 5:  lastCylinder = 3;  // 4
+			case 7:  lastCylinder = 1;  // 2
+			default: lastCylinder = -1; // invalid
 		}
-		knockMode = MODE_NONE;
 	}
 }
 
@@ -226,7 +271,8 @@ ISR(INT4_vect)
 		U16 now = TCNT1;  // 4uS/tick
 		times[tooth] = now;
 
-		if (tooth & 0x01) // 1, 3, 5, 7, means 10 BTDC
+		// start measurements on 1,3,5,7 (10BTDC) but only if we aren't updating settings
+		if ((!settingsChangedFlag) && (tooth & 0x01))
 		{
 			ticksFor70 = now - times[tooth-1];  // auto wrap around 16bit counter
 			start_degree_timer(DEGREES_20); // we are at 10BTDC when this is called, wait until 10ATDC

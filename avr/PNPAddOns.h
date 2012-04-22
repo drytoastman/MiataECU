@@ -5,12 +5,62 @@
 #include <avr/interrupt.h>
 #include <string.h>
 
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
+//typedef unsigned char uint8;
+//typedef unsigned short uint16;
+//typedef unsigned int uint32;
+typedef signed char S8;
 typedef unsigned char U8;
 typedef unsigned short U16;
 typedef unsigned int U32;
+
+typedef struct
+{
+	unsigned short krpm[16];
+	unsigned short kthreshold[16];
+	unsigned char  integratorIndex; // 0-31
+	unsigned char  filterIndex;     // 0-63
+	unsigned char  gainIndex;       // 0-63
+} ConfigData;
+
+
+typedef struct 
+{
+	unsigned short cylnoise[4];
+	unsigned short cylknkcount[4];
+	unsigned short vss;
+	unsigned short myrpm;
+	unsigned char  idle;
+	unsigned char  freebyte;
+	unsigned char  flags;
+} IOData;
+
+
+void idle_changed();
+void vss_init();
+void can_init();
+
+void knock_init();
+void knock_main();
+U8   knock_write(U8 byte);
+void knock_sensor_setting_changed();
+
+void data_init();
+void data_burn();
+void data_changed(U8 offset, U8 length);
+void config_changed(U8 offset, U8 length);
+void data_main();
+
+extern ConfigData config;
+extern IOData data;
+extern U8 signature[];
+extern U8 titlebar[];
+
+#define SWAP16(x) ((x << 8) | (x >> 8))
+
+
+/*
+#define WORD32(b, l) *((uint32*)&b[l])
+#define WORD16(b, l) *((uint16*)&b[l])
 
 typedef struct
 {
@@ -31,7 +81,7 @@ typedef struct
 	uint32 fileSize;
 } DirEntry;
 
-typedef struct DiskInfo
+typedef struct
 {
 	uint32 partition; // lba of partition
 	
@@ -67,56 +117,15 @@ typedef struct DiskInfo
 } DiskInfo;
 
 
-#define WORD32(b, l) *((uint32*)&b[l])
-#define WORD16(b, l) *((uint16*)&b[l])
-
-#define KNOCKSIG  0  // remote analog data (as 16 bit locations)
-#define RPM       4
-#define VSS       5
-
-#define BYTE_IDL   16  // byte locations for byte data
-#define BYTE_FREE  17
-#define BYTE_KNOCK 18
-
-/*
-#define LOGSWITCH PORTD & BV_(7)
-#define CARDDETECT PORTD & BV_(4)
-#define SDCS PORTB & BV_(0)
-#define ACCELCS PORTB & BV_(6)
-*/
-
-#define WINDOW_ON()    PORTB |= _BV(PB4)
-#define WINDOW_OFF()   PORTB &= ~_BV(PB4);
-
-#define KNK_SELECT()   PORTB &= ~_BV(PB5);
-#define KNK_DESELECT() PORTB |= _BV(PB5);
-
-#define CEL_ON()       PORTF |= _BV(PF0);
-#define CEL_OFF()      PORTF &= ~_BV(PF0);
-
-extern U8 candata[];
-
 void initInfo(DiskInfo *disk);
 U8   scanMBR(DiskInfo *disk);
 void scanFAT(DiskInfo *disk);
 void determineFileName(DiskInfo *disk);
 char findNextFreeCluster(DiskInfo *disk);
 
-void vss_init();
+#define CEL_ON()       PORTF |= _BV(PF0);
+#define CEL_OFF()      PORTF &= ~_BV(PF0);
 
-void knock_init();
-void knock_main();
-
-void can_init();
-void can_main();
-
-void can_set_adc(U8 pos, U16 value);
-U16 can_get_adc(U8 pos);
-U16 can_get_config(U8 pos);
-void can_set_flag(U8 bit);
-void can_clear_flag(U8 bit);
-U8 can_get_byte(U8 pos);
-void can_byte_changed(U16 offset);
-void can_data_sent(U16 offset, U8 length);
+*/
 
 #endif
