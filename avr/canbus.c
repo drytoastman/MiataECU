@@ -22,7 +22,7 @@ CANIDT4(5:0,*) - VarBlk(1,0), MS3VarBlkBit, 5 to ignore
 #define MS_TYPE()   ((CANIDT2 >> 2) & 0x07)
 #define MS_BLOCK()  (((CANIDT3 << 2) | (CANIDT4 >> 6)) & 0x0F)
 //#define MS_OFFSET() (((CANIDT1 << 3) | (CANIDT2 >> 5)) & 0x07FF)
-#define MS_OFFSET8() (((CANIDT1 << 3) | (CANIDT2 >> 5)) & 0x0FF)
+#define MS_OFFSET8() (((CANIDT1 << 3) | (CANIDT2 >> 5)) & 0x0FF)  // we never have offsets more than 255
 #define MS_TO()      ((CANIDT3 >> 2) & 0x0F)
 #define MS_FROM()   (((CANIDT2 << 2) | (CANIDT3 >> 6)) & 0x0F)
 
@@ -135,11 +135,17 @@ void can_process_CMD()
 	switch (myblock)
 	{
 		case 1:
+			if ((offset + len) > sizeof(config))  // bad write
+				return;
 			ptr = (U8*)&config; 
 			break;
+
 		case 2: 
+			if ((offset + len) > sizeof(data))  // bad write
+				return;
 			ptr = (U8*)&data;
 			break;
+
 		default: 
 			return;
 	}
@@ -207,15 +213,9 @@ void can_process_REQ()
 }
 
 
-
-ISR(CANIT_vect)
+void can_main()
 {
 	U8 ii;
-
-	if (CANGIT & GENERALERROR)
-	{
-		CANGIT = 0xFF; // just clear it
-	}
 
 	if (CANSIT2) // something was received
 	{
@@ -225,7 +225,7 @@ ISR(CANIT_vect)
 			if (CANSIT2 & (1<<ii)) 
 			{
 				CAN_SETPAGE(ii);
-				if (CANSTMOB & (_BV(DLCW) | _BV(RXOK)))  // catch DLC as well, we don't know ahead of time
+				if (CANSTMOB & _BV(RXOK))
 				{
 					switch(MS_TYPE())
 					{
@@ -238,7 +238,7 @@ ISR(CANIT_vect)
 							break;
 						case MSG_XSUB: // xsub
 							break;
-						case 4: // burn
+						case MSG_BURN: // burn
 							data_burn();
 							break;
 					}
@@ -246,6 +246,8 @@ ISR(CANIT_vect)
 				// else some kind of error
 
 				can_set_receive();
+				CANIE2 |= _BV(ii);
+				return;  // cooperative multitasking
 			}
 		}
 	}
@@ -260,8 +262,22 @@ ISR(CANIT_vect)
 				CAN_SETPAGE(ii+8);
 				CANSTMOB = 0;
 				CANCDMOB = 0; 
+				CANIE1 |= _BV(ii);
 			}
 		}
 	}
+}
+
+
+ISR(CANIT_vect)
+{
+	if (CANGIT & GENERALERROR)
+		CANGIT = 0xFF; // just clear it
+
+	if (CANSIT2) // something was received
+		CANIE2 = ~CANSIT2; // disable the interupts for the received buffers, process outside
+
+	if (CANSIT1)
+		CANIE1 = ~CANSIT1; // disable the interupts for the finished transmits, process outside
 }
 

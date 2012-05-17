@@ -21,6 +21,8 @@ unsigned char burnFlag;
 void data_init()
 {
 	eeprom_read_block((void*)&config, EEPROM_CONFIG_BASE, sizeof(config));
+	memset((void*)&data, 0, sizeof(data));
+	knock_sensor_setting_changed();
 	burnFlag = 0;
 }
 
@@ -31,11 +33,8 @@ void data_burn()
 
 void config_changed(U8 offset, U8 length)
 {
-	if ((offset + length) < INTGOFFSET) // end is before our stuff
-		return;
 	if (offset > GAINOFFSET)  // start is after our stuff (which is weird)
 		return
-
 	knock_sensor_setting_changed();
 }
 
