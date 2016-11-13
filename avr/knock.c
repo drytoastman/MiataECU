@@ -29,6 +29,10 @@ Tooth 7 - 10BTDC #2
 #define CLK16  0b01001100
 #define CHN1   0b11100000
 
+#define NOSYNC   0
+#define SYNC1    1
+#define FULLSYNC 2
+
 #define KNK_SELECT()   PORTB &= ~_BV(PB5);
 #define KNK_DESELECT() PORTB |= _BV(PB5);
 
@@ -173,7 +177,7 @@ void knock_main()
 
 	if (knockReadFlag)
 	{
-		if (sync)
+		if (sync == FULLSYNC)
 		{
 			cyl = lastcylinder - 1;
 
@@ -232,27 +236,38 @@ ISR(INT4_vect)
 	tooth = (tooth + 1)%8; // inc our tooth count
 	times[tooth] = now;
 
-	if (!sync)
+	if (sync == NOSYNC)
 	{
 		if (camCount == 1)
 		{
-			sync = 1;
+			sync = SYNC1;
 			tooth = 0;
-			data.flags |= FLAG_SYNC;
 		}
 		else if (camCount == 2)
 		{
-			sync = 1;
+			sync = SYNC1;
 			tooth = 4;
-			data.flags |= FLAG_SYNC;
 		}
 		// else can't sync until we see one of the cam sides
+	}
+	else if (sync == SYNC1)
+	{
+		if (((camCount == 1) && (tooth == 0)) || ((camCount == 2) && (tooth == 4)))
+		{
+			sync = FULLSYNC;
+			data.flags |= FLAG_SYNC;
+		}
+		else if (camCount != 0) // got cam but bad tooth, reset
+		{
+			sync = NOSYNC;
+		}
+
 	}
 	else // should be synced here, double check sanity
 	{
 		if ((camCount > 2) || ((camCount == 1) && (tooth != 0)) || ((camCount == 2) && (tooth != 4)))
 		{
-			sync = 0; 
+			sync = NOSYNC; 
 			data.flags &= ~FLAG_SYNC; 
 			data.lostcount += 1;
 		}
@@ -260,7 +275,7 @@ ISR(INT4_vect)
 
 	camCount = 0; // reset
 
-	if (sync)
+	if (sync == FULLSYNC)
 	{
 		switch (tooth)
 		{
